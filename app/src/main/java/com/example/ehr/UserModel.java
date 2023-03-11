@@ -3,19 +3,28 @@ package com.example.ehr;
 import java.io.Serializable;
 
 public class UserModel implements Serializable {
-    private String emailid;
-    private String password;
-
-    public UserModel(String emailid, String password) {
-        this.emailid = emailid;
-        this.password = password;
-    }
-
     public String getEmailid() {
         return emailid;
     }
 
     public void setEmailid(String emailid) {
         this.emailid = emailid;
+    }
+
+    private String emailid;
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    private String userid;
+
+    public UserModel(String emailid, String userid) {
+        this.emailid = emailid;
+        this.userid = userid;
     }
 }
