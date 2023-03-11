@@ -30,7 +30,7 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... params) {
         actionType = params[0];
-        String baseUrl = "https://kxp9181.uta.cloud";
+        String baseUrl = "https://ssb4235.uta.cloud";
 
         try {
             if (actionType.equals("login")) {
@@ -117,11 +117,9 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
                 this.loginFragment.onLoginFailed(resultObj.getString("error"));
                 return;
             }
-
-
-            String password = resultObj.getString("password");
             String emailid = resultObj.getString("emailid");
-            UserModel user = new UserModel(emailid,password);
+            String userid = resultObj.getString("id");
+            UserModel user = new UserModel(emailid,userid);
 
             this.loginFragment.onLoginSuccess(user);
         } catch (JSONException e) {
