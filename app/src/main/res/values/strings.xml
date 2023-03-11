@@ -7,7 +7,7 @@
     <string name="new_patient">New Patient?</string>
     <string name="register_here">Register here</string>
     <string-array name="user_type_options">
-        <item>Select User</item>
+        <item>Select the User</item>
         <item>Admin</item>
         <item>Doctor</item>
         <item>Pharmacy</item>
