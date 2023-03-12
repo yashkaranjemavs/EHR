@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InsuranceFragment">
+    tools:context=".AdminFragment">
 
     <TextView
-        android:id="@+id/insurance_head"
+        android:id="@+id/admin_head"
         android:layout_width="360dp"
         android:layout_height="70dp"
-        android:text="Insurance"
+        android:text="Admin"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

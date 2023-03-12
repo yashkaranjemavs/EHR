@@ -14,9 +14,34 @@
         android:theme="@style/Theme.EHR"
         tools:targetApi="31">
         <activity
+            android:name=".AdminActivity"
+            android:exported="false"
+            android:label="@string/title_activity_admin"
+            android:theme="@style/Theme.EHR.NoActionBar" />
+        <activity
             android:name=".InsuranceActivity"
             android:exported="false"
             android:label="@string/title_activity_insurance"
+            android:theme="@style/Theme.EHR.NoActionBar" />
+        <activity
+            android:name=".LaboratoryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_laboratory"
+            android:theme="@style/Theme.EHR.NoActionBar" />
+        <activity
+            android:name=".PatientActivity"
+            android:exported="false"
+            android:label="@string/title_activity_patient"
+            android:theme="@style/Theme.EHR.NoActionBar" />
+        <activity
+            android:name=".PharmacyActivity"
+            android:exported="false"
+            android:label="@string/title_activity_pharmacy"
+            android:theme="@style/Theme.EHR.NoActionBar" />
+        <activity
+            android:name=".ProviderActivity"
+            android:exported="false"
+            android:label="@string/title_activity_provider"
             android:theme="@style/Theme.EHR.NoActionBar" />
         <activity
             android:name=".LoginActivity"
