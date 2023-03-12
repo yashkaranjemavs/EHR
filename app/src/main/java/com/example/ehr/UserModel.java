@@ -23,8 +23,20 @@ public class UserModel implements Serializable {
 
     private String userid;
 
-    public UserModel(String emailid, String userid) {
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String userid) {
+        this.role = role;
+    }
+
+    private String role;
+
+    public UserModel(String emailid, String userid, String role) {
         this.emailid = emailid;
         this.userid = userid;
+        this.role = role;
     }
 }

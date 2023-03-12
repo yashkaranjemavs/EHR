@@ -119,7 +119,8 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
             }
             String emailid = resultObj.getString("emailid");
             String userid = resultObj.getString("id");
-            UserModel user = new UserModel(emailid,userid);
+            String role = resultObj.getString("role");
+            UserModel user = new UserModel(emailid,userid, role);
 
             this.loginFragment.onLoginSuccess(user);
         } catch (JSONException e) {

@@ -93,9 +93,34 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
     }
 
     public void onLoginSuccess(UserModel user) {
-        Intent intent = new Intent(getActivity(), InsuranceActivity.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
+        Intent intent;
+        String role = user.getRole();
+
+        if (role.equals("Admin")) {
+            intent = new Intent(getActivity(), AdminActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else if (role.equals("Patient")) {
+            intent = new Intent(getActivity(), PatientActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else if (role.equals("Provider")) {
+            intent = new Intent(getActivity(), ProviderActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else if (role.equals("Laboratory")) {
+            intent = new Intent(getActivity(), LaboratoryActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else if (role.equals("Pharmacy")) {
+            intent = new Intent(getActivity(), PharmacyActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else if (role.equals("Insurance Company")) {
+            intent = new Intent(getActivity(), InsuranceActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        }
     }
 
     public void onLoginFailed(String errorMessage) {

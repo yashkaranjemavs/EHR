@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pharmacy_nav"
+    app:startDestination="@id/pharmacyFragment">
+
+    <fragment
+        android:id="@+id/pharmacyFragment"
+        android:name="com.example.ehr.PharmacyFragment"
+        android:label="Pharmacy"
+        tools:layout="@layout/fragment_pharmacy" />
+</navigation>
