@@ -9,5 +9,34 @@
         android:id="@+id/insuranceFragment"
         android:name="com.example.ehr.InsuranceFragment"
         android:label="Insurance"
-        tools:layout="@layout/fragment_insurance" />
+        tools:layout="@layout/fragment_insurance" >
+        <action
+            android:id="@+id/action_insuranceFragment_to_insuranceProfileFragment"
+            app:destination="@id/insuranceProfileFragment" />
+        <action
+            android:id="@+id/action_insuranceFragment_to_insuranceCoverageFragment"
+            app:destination="@id/insuranceCoverageFragment" />
+        <action
+            android:id="@+id/action_insuranceFragment_to_insuranceSubscribersFragment"
+            app:destination="@id/insuranceSubscribersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceProfileFragment"
+        android:name="com.example.ehr.InsuranceProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_insurance_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.example.ehr.UserModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceCoverageFragment"
+        android:name="com.example.ehr.InsuranceCoverageFragment"
+        android:label="Insurance Coverage"
+        tools:layout="@layout/fragment_insurance_coverage" />
+    <fragment
+        android:id="@+id/insuranceSubscribersFragment"
+        android:name="com.example.ehr.InsuranceSubscribersFragment"
+        android:label="Insurance Subscribers"
+        tools:layout="@layout/fragment_insurance_subscribers" />
 </navigation>

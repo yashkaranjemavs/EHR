@@ -23,4 +23,16 @@
     <string name="title_activity_patient">Patient</string>
     <string name="title_activity_pharmacy">Pharmacy</string>
     <string name="title_activity_provider">Provider</string>
+    <string name="insurance_menu_profile">Profile</string>
+    <string name="insurance_menu_coverage">Coverage</string>
+    <string name="insurance_menu_subscribers">Subscribers</string>
+    <string name="insurance_menu_logout">Logout</string>
+    <string name="email_label">Email:</string>
+    <string name="name_label">Name:</string>
+    <string name="contact_label">Contact:</string>
+    <string name="address1_label">Address1:</string>
+    <string name="address2_label">Address2:</string>
+    <string name="state_label">State:</string>
+    <string name="city_label">City:</string>
+    <string name="zip_label">ZIP:</string>
 </resources>
