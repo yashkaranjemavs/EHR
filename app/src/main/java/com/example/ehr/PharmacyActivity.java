@@ -1,7 +1,13 @@
 package com.example.ehr;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -21,11 +27,43 @@ public class PharmacyActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.pharmacy_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Pharmacy");
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.pharmacy_nav_host);
         if (navHostFragment != null) {
             navController = NavHostFragment.findNavController(navHostFragment);
             NavigationUI.setupWithNavController(toolbar, navController);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.yk_vertical_ellipsis, menu);
+        return true;
+    }
+
+    public Boolean performViewProfile() {
+        Toast.makeText(this, "View Profile", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
+    public Boolean performLogout() {
+//        Intent intent = new Intent(PharmacyActivity.this, LoginActivity.class);
+//        startActivity(intent);
+        finish();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item1:
+                return performViewProfile();
+            case R.id.item2:
+                return performLogout();
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

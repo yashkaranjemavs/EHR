@@ -23,7 +23,6 @@ public class UserModel implements Serializable {
 
     private String userid;
 
-
     public String getRole() {
         return role;
     }

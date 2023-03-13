@@ -9,11 +9,11 @@
     <string-array name="user_type_options">
         <item>Select User</item>
         <item>Admin</item>
-        <item>Insurance Company</item>
-        <item>Laboratory</item>
         <item>Patient</item>
-        <item>Pharmacy</item>
         <item>Provider</item>
+        <item>Laboratory</item>
+        <item>Pharmacy</item>
+        <item>Insurance Company</item>
     </string-array>
     <string name="send_reset_link">Send Reset Link</string>
     <string name="sign_in">Sign In</string>
@@ -23,4 +23,8 @@
     <string name="title_activity_patient">Patient</string>
     <string name="title_activity_pharmacy">Pharmacy</string>
     <string name="title_activity_provider">Provider</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
