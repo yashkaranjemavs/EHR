@@ -51,6 +51,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                 String id = insuranceCompany.getId().trim();
                 String name = insuranceCompany.getName().trim();
                 String email = insuranceCompany.getEmailId().trim();
+                String password = insuranceCompany.getPassword().trim();
                 String contact = insuranceCompany.getContact().trim();
                 String address1 = insuranceCompany.getAddress1().trim();
                 String address2 = insuranceCompany.getAddress2().trim();
@@ -62,6 +63,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                         URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&" +
                                 URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
                                 URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&" +
+                                URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&" +
                                 URLEncoder.encode("contact", "UTF-8") + "=" + URLEncoder.encode(contact, "UTF-8") + "&" +
                                 URLEncoder.encode("address1", "UTF-8") + "=" + URLEncoder.encode(address1, "UTF-8") + "&" +
                                 URLEncoder.encode("address2", "UTF-8") + "=" + URLEncoder.encode(address2, "UTF-8") + "&" +
@@ -141,6 +143,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                 }
                 String id = resultObj.getString("id");
                 String emailId = resultObj.getString("emailid");
+                String password = resultObj.getString("password");
                 String name = resultObj.getString("name");
                 String contact = resultObj.getString("contact");
                 String address1 = resultObj.getString("address1");
@@ -148,7 +151,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                 String city = resultObj.getString("city");
                 String state = resultObj.getString("state");
                 String zip = resultObj.getString("zip");
-                InsuranceCompanyModel insuranceCompany = new InsuranceCompanyModel(id, emailId, name, contact, address1, address2, city, state, zip);
+                InsuranceCompanyModel insuranceCompany = new InsuranceCompanyModel(id, emailId, password, name, contact, address1, address2, city, state, zip);
 
                 this.profileFragment.onLoadSuccess(insuranceCompany);
             } else if (actionType.equals("update_profile")) {

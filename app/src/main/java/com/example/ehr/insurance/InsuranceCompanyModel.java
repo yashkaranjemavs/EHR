@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class InsuranceCompanyModel implements Serializable {
     private String id;
     private String emailId;
+    private String password;
     private String name;
     private String contact;
     private String address1;
@@ -16,6 +17,7 @@ public class InsuranceCompanyModel implements Serializable {
     public InsuranceCompanyModel(
             String id,
             String emailId,
+            String password,
             String name,
             String contact,
             String address1,
@@ -26,6 +28,7 @@ public class InsuranceCompanyModel implements Serializable {
             ) {
         this.id = id;
         this.emailId = emailId;
+        this.password = password;
         this.name = name;
         this.contact = contact;
         this.address1 = address1;
@@ -50,6 +53,14 @@ public class InsuranceCompanyModel implements Serializable {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {

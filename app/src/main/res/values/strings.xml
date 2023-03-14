@@ -36,4 +36,5 @@
     <string name="city_label">City</string>
     <string name="zip_label">ZIP</string>
     <string name="update">Update</string>
+    <string name="password_label">Password</string>
 </resources>

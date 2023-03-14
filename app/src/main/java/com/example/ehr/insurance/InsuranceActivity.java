@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -16,6 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.ehr.R;
 import com.example.ehr.UserModel;
+
+import java.util.List;
 
 
 public class InsuranceActivity extends AppCompatActivity {
@@ -52,18 +55,51 @@ public class InsuranceActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
 
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.insurance_nav_host);
+        Fragment currentFragment = navHostFragment.getChildFragmentManager().getFragments().get(0);
+
         switch (id){
             case R.id.insurance_menu_profile:
-                Navigation.findNavController(findViewById(R.id.insurance_nav_host)).
-                        navigate(R.id.action_insuranceFragment_to_insuranceProfileFragment, bundle);
+                if (currentFragment instanceof InsuranceFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host)).
+                            navigate(R.id.action_insuranceFragment_to_insuranceProfileFragment, bundle);
+                } else if (currentFragment instanceof InsuranceProfileFragment) {
+                    break;
+                } else if (currentFragment instanceof InsuranceCoverageFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceCoverageFragment_to_insuranceProfileFragment, bundle);
+                } else if (currentFragment instanceof InsuranceSubscribersFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceProfileFragment, bundle);
+                }
                 break;
             case R.id.insurance_menu_coverage:
-                Navigation.findNavController(findViewById(R.id.insurance_nav_host))
-                        .navigate(R.id.action_insuranceFragment_to_insuranceCoverageFragment, bundle);
+                if (currentFragment instanceof InsuranceFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host)).
+                            navigate(R.id.action_insuranceFragment_to_insuranceCoverageFragment, bundle);
+                } else if (currentFragment instanceof InsuranceProfileFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceProfileFragment_to_insuranceCoverageFragment, bundle);
+                } else if (currentFragment instanceof InsuranceCoverageFragment) {
+                    break;
+                } else if (currentFragment instanceof InsuranceSubscribersFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceCoverageFragment_to_insuranceSubscribersFragment, bundle);
+                }
                 break;
             case R.id.insurance_menu_subscribers:
-                Navigation.findNavController(findViewById(R.id.insurance_nav_host))
-                        .navigate(R.id.action_insuranceFragment_to_insuranceSubscribersFragment, bundle);
+                if (currentFragment instanceof InsuranceFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host)).
+                            navigate(R.id.action_insuranceFragment_to_insuranceSubscribersFragment, bundle);
+                } else if (currentFragment instanceof InsuranceProfileFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceProfileFragment_to_insuranceSubscribersFragment, bundle);
+                } else if (currentFragment instanceof InsuranceCoverageFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceCoverageFragment, bundle);
+                } else if (currentFragment instanceof InsuranceSubscribersFragment) {
+                    break;
+                }
                 break;
             case R.id.insurance_menu_logout:
 //                Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();

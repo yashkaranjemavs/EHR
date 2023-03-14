@@ -28,15 +28,47 @@
         <argument
             android:name="user"
             app:argType="com.example.ehr.UserModel" />
+        <action
+            android:id="@+id/action_insuranceProfileFragment_to_insuranceSubscribersFragment"
+            app:destination="@id/insuranceSubscribersFragment"
+            app:popUpTo="@id/insuranceProfileFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceProfileFragment_to_insuranceCoverageFragment"
+            app:destination="@id/insuranceCoverageFragment"
+            app:popUpTo="@id/insuranceProfileFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/insuranceCoverageFragment"
         android:name="com.example.ehr.insurance.InsuranceCoverageFragment"
         android:label="Insurance Coverage"
-        tools:layout="@layout/fragment_insurance_coverage" />
+        tools:layout="@layout/fragment_insurance_coverage" >
+        <action
+            android:id="@+id/action_insuranceCoverageFragment_to_insuranceSubscribersFragment"
+            app:destination="@id/insuranceSubscribersFragment"
+            app:popUpTo="@id/insuranceCoverageFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceCoverageFragment_to_insuranceProfileFragment"
+            app:destination="@id/insuranceProfileFragment"
+            app:popUpTo="@id/insuranceCoverageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/insuranceSubscribersFragment"
         android:name="com.example.ehr.insurance.InsuranceSubscribersFragment"
         android:label="Insurance Subscribers"
-        tools:layout="@layout/fragment_insurance_subscribers" />
+        tools:layout="@layout/fragment_insurance_subscribers" >
+        <action
+            android:id="@+id/action_insuranceSubscribersFragment_to_insuranceProfileFragment"
+            app:destination="@id/insuranceProfileFragment"
+            app:popUpTo="@id/insuranceSubscribersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceSubscribersFragment_to_insuranceCoverageFragment"
+            app:destination="@id/insuranceCoverageFragment"
+            app:popUpTo="@id/insuranceSubscribersFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

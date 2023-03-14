@@ -22,15 +22,15 @@ public class InsuranceSubscribersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
+//        setHasOptionsMenu(true);
 
         return inflater.inflate(R.layout.fragment_insurance_subscribers, container, false);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item=menu.findItem(R.id.insurance_menu);
-        if(item!=null)
-            item.setVisible(false);
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item=menu.findItem(R.id.insurance_menu);
+//        if(item!=null)
+//            item.setVisible(false);
+//    }
 }
