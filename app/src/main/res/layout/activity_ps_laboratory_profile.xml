@@ -38,7 +38,7 @@
         android:autofillHints=""
         android:background="@drawable/custom_edit_text"
         android:drawablePadding="8dp"
-        android:hint="Lab Name"
+        android:hint="Name"
         android:inputType="text"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"

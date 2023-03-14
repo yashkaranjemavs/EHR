@@ -31,11 +31,13 @@
 
         <activity
             android:name=".ps_LaboratoryProfileActivity"
-            android:label="Lab Profile"
+            android:label="EHR Lab Profile"
+            android:parentActivityName=".LaboratoryActivity"
             android:exported="false" />
         <activity
             android:name=".ps_LaboratoryTestsActivity"
-            android:label="Lab Test"
+            android:label="EHR Lab Tests "
+            android:parentActivityName=".LaboratoryActivity"
             android:exported="false" />
         <activity
             android:name=".PatientActivity"

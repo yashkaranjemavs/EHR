@@ -24,6 +24,7 @@ public class ps_LaboratoryTestsActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.laboratory_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageView menuIcon=findViewById(R.id.menuIcon);
         menuIcon.setOnClickListener(new View.OnClickListener()
         {

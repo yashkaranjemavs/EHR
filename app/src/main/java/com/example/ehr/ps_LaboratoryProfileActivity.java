@@ -42,6 +42,7 @@ public class ps_LaboratoryProfileActivity extends AppCompatActivity {
         //end of fetching profile data
         Toolbar toolbar = (Toolbar) findViewById(R.id.laboratory_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageView menuIcon=findViewById(R.id.menuIcon);
         menuIcon.setOnClickListener(new View.OnClickListener()
         {
