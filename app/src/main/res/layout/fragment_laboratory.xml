@@ -10,7 +10,7 @@
         android:id="@+id/admin_head"
         android:layout_width="360dp"
         android:layout_height="70dp"
-        android:text="Laboratory"
+        android:text=""
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

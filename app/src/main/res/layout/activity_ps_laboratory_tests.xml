@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LaboratoryActivity">
+    tools:context=".ps_LaboratoryTestsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         app:layout_constraintBottom_toTopOf="@+id/laboratory_toolbar"
         app:layout_constraintEnd_toEndOf="@id/laboratory_toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Laboratory Landing Page"
+        android:contentDescription="Laboratory Tests Page"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
