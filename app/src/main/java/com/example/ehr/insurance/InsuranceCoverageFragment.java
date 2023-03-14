@@ -1,4 +1,4 @@
-package com.example.ehr;
+package com.example.ehr.insurance;
 
 import android.os.Bundle;
 
@@ -10,8 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class InsuranceSubscribersFragment extends Fragment {
+import com.example.ehr.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link InsuranceCoverageFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class InsuranceCoverageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +28,7 @@ public class InsuranceSubscribersFragment extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
-        return inflater.inflate(R.layout.fragment_insurance_subscribers, container, false);
+        return inflater.inflate(R.layout.fragment_insurance_coverage, container, false);
     }
 
     @Override

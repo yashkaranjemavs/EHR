@@ -1,4 +1,4 @@
-package com.example.ehr;
+package com.example.ehr.insurance;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +13,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.ehr.R;
+import com.example.ehr.UserModel;
 
 
 public class InsuranceActivity extends AppCompatActivity {
@@ -51,13 +54,16 @@ public class InsuranceActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.insurance_menu_profile:
-                Navigation.findNavController(findViewById(R.id.insurance_nav_host)).navigate(R.id.action_insuranceFragment_to_insuranceProfileFragment, bundle);
+                Navigation.findNavController(findViewById(R.id.insurance_nav_host)).
+                        navigate(R.id.action_insuranceFragment_to_insuranceProfileFragment, bundle);
                 break;
             case R.id.insurance_menu_coverage:
-                Navigation.findNavController(findViewById(R.id.insurance_nav_host)).navigate(R.id.action_insuranceFragment_to_insuranceCoverageFragment, bundle);
+                Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                        .navigate(R.id.action_insuranceFragment_to_insuranceCoverageFragment, bundle);
                 break;
             case R.id.insurance_menu_subscribers:
-                Navigation.findNavController(findViewById(R.id.insurance_nav_host)).navigate(R.id.action_insuranceFragment_to_insuranceSubscribersFragment, bundle);
+                Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                        .navigate(R.id.action_insuranceFragment_to_insuranceSubscribersFragment, bundle);
                 break;
             case R.id.insurance_menu_logout:
 //                Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();

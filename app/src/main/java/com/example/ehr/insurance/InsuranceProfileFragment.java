@@ -1,37 +1,37 @@
-package com.example.ehr;
+package com.example.ehr.insurance;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuHost;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.Objects;
+import com.example.ehr.R;
+import com.example.ehr.UserModel;
 
 public class InsuranceProfileFragment extends Fragment {
     ProgressBar progressBar;
     TextView errorTextView;
-    TextView emailTextView;
-    TextView nameTextView;
-    TextView contactTextView;
-    TextView address1TextView;
-    TextView address2TextView;
-    TextView cityTextView;
-    TextView stateTextView;
-    TextView zipTextView;
+    TextView updateErrorTextView;
+    EditText emailTextView;
+    EditText nameTextView;
+    EditText contactTextView;
+    EditText address1TextView;
+    EditText address2TextView;
+    EditText cityTextView;
+    EditText stateTextView;
+    EditText zipTextView;
     LinearLayout detailsLinearLayout;
+    AppCompatButton updateBtn;
 
 
     @Override
@@ -48,6 +48,8 @@ public class InsuranceProfileFragment extends Fragment {
         errorTextView = view.findViewById(R.id.insurance_profile_error);
         progressBar = view.findViewById(R.id.insurance_profile_progress);
 
+        updateErrorTextView = view.findViewById(R.id.insurance_profile_update_error);
+
         detailsLinearLayout = view.findViewById(R.id.insurance_profile_details);
         nameTextView = view.findViewById(R.id.insurance_profile_name);
         emailTextView = view.findViewById(R.id.insurance_profile_email);
@@ -58,6 +60,8 @@ public class InsuranceProfileFragment extends Fragment {
         stateTextView = view.findViewById(R.id.insurance_profile_state);
         zipTextView = view.findViewById(R.id.insurance_profile_zip);
 
+        updateBtn = view.findViewById(R.id.insurance_profile_update_button);
+
         if (getArguments() == null) {
             return view;
         }
@@ -65,14 +69,41 @@ public class InsuranceProfileFragment extends Fragment {
         UserModel user = (UserModel) getArguments().getSerializable("user");
         String id = user.getUserid();
 
+        updateErrorTextView.setText("");
         errorTextView.setText("");
         errorTextView.setVisibility(View.GONE);
         detailsLinearLayout.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
 
-        BackgroundInsuranceProfileWorker backgroundWorker = new BackgroundInsuranceProfileWorker(InsuranceProfileFragment.this);
+        BackgroundInsuranceProfileWorker backgroundWorker = new BackgroundInsuranceProfileWorker(
+                InsuranceProfileFragment.this);
         backgroundWorker.execute("get_profile", id);
+
+
+        updateBtn.setOnClickListener(view1 -> {
+            updateErrorTextView.setText("");
+            errorTextView.setText("");
+            errorTextView.setVisibility(View.GONE);
+            detailsLinearLayout.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+
+            String name = nameTextView.getText().toString();
+            String email = emailTextView.getText().toString();
+            String contact = contactTextView.getText().toString();
+            String address1 = address1TextView.getText().toString();
+            String address2 = address2TextView.getText().toString();
+            String city = cityTextView.getText().toString();
+            String state = stateTextView.getText().toString();
+            String zip = zipTextView.getText().toString();
+
+            InsuranceCompanyModel insuranceCompanyModel = new InsuranceCompanyModel(
+                    id, email, name, contact, address1, address2, city,state,zip);
+
+            BackgroundInsuranceProfileWorker backgroundWorker2 = new BackgroundInsuranceProfileWorker(
+                    InsuranceProfileFragment.this);
+            backgroundWorker2.execute("update_profile", insuranceCompanyModel);
+        });
 
         return view;
     }
@@ -84,9 +115,11 @@ public class InsuranceProfileFragment extends Fragment {
             item.setVisible(false);
     }
 
-    public void onSuccess(InsuranceCompanyModel insuranceCompany) {
+    public void onLoadSuccess(InsuranceCompanyModel insuranceCompany) {
         progressBar.setVisibility(View.GONE);
         detailsLinearLayout.setVisibility(View.VISIBLE);
+
+        updateErrorTextView.setText("");
 
         nameTextView.setText(insuranceCompany.getName());
         emailTextView.setText(insuranceCompany.getEmailId());
@@ -98,10 +131,15 @@ public class InsuranceProfileFragment extends Fragment {
         zipTextView.setText(insuranceCompany.getZip());
     }
 
-    public void onFailed(String errorMessage) {
+    public void onLoadFailed(String errorMessage) {
         progressBar.setVisibility(View.GONE);
         errorTextView.setVisibility(View.VISIBLE);
 
         errorTextView.setText(errorMessage);
+    }
+
+    public void onUpdate(String errorMessage, InsuranceCompanyModel insuranceCompany) {
+        onLoadSuccess(insuranceCompany);
+        updateErrorTextView.setText(errorMessage);
     }
 }

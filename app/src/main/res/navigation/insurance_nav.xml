@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/insuranceFragment"
-        android:name="com.example.ehr.InsuranceFragment"
+        android:name="com.example.ehr.insurance.InsuranceFragment"
         android:label="Insurance"
         tools:layout="@layout/fragment_insurance" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/insuranceProfileFragment"
-        android:name="com.example.ehr.InsuranceProfileFragment"
+        android:name="com.example.ehr.insurance.InsuranceProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_insurance_profile" >
         <argument
@@ -31,12 +31,12 @@
     </fragment>
     <fragment
         android:id="@+id/insuranceCoverageFragment"
-        android:name="com.example.ehr.InsuranceCoverageFragment"
+        android:name="com.example.ehr.insurance.InsuranceCoverageFragment"
         android:label="Insurance Coverage"
         tools:layout="@layout/fragment_insurance_coverage" />
     <fragment
         android:id="@+id/insuranceSubscribersFragment"
-        android:name="com.example.ehr.InsuranceSubscribersFragment"
+        android:name="com.example.ehr.insurance.InsuranceSubscribersFragment"
         android:label="Insurance Subscribers"
         tools:layout="@layout/fragment_insurance_subscribers" />
 </navigation>
