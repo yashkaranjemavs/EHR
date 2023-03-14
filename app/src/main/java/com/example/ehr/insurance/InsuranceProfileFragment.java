@@ -4,17 +4,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ehr.R;
 import com.example.ehr.UserModel;
@@ -46,7 +44,6 @@ public class InsuranceProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_insurance_profile, container, false);
-//        setHasOptionsMenu(true);
 
         errorTextView = view.findViewById(R.id.insurance_profile_error);
         progressBar = view.findViewById(R.id.insurance_profile_progress);
@@ -138,6 +135,7 @@ public class InsuranceProfileFragment extends Fragment {
     }
 
     public void onUpdate(String errorMessage, InsuranceCompanyModel insuranceCompany) {
+        Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
         onLoadSuccess(insuranceCompany);
         updateErrorTextView.setText(errorMessage);
     }

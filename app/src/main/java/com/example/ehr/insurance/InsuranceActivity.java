@@ -84,7 +84,7 @@ public class InsuranceActivity extends AppCompatActivity {
                     break;
                 } else if (currentFragment instanceof InsuranceSubscribersFragment) {
                     Navigation.findNavController(findViewById(R.id.insurance_nav_host))
-                            .navigate(R.id.action_insuranceCoverageFragment_to_insuranceSubscribersFragment, bundle);
+                            .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceCoverageFragment, bundle);
                 }
                 break;
             case R.id.insurance_menu_subscribers:
@@ -96,7 +96,7 @@ public class InsuranceActivity extends AppCompatActivity {
                             .navigate(R.id.action_insuranceProfileFragment_to_insuranceSubscribersFragment, bundle);
                 } else if (currentFragment instanceof InsuranceCoverageFragment) {
                     Navigation.findNavController(findViewById(R.id.insurance_nav_host))
-                            .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceCoverageFragment, bundle);
+                            .navigate(R.id.action_insuranceCoverageFragment_to_insuranceSubscribersFragment, bundle);
                 } else if (currentFragment instanceof InsuranceSubscribersFragment) {
                     break;
                 }
