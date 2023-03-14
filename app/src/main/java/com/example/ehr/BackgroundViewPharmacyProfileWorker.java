@@ -2,7 +2,9 @@ package com.example.ehr;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -19,10 +21,11 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void, JSONObject> {
+    ViewPharmacyProfileActivity viewPharmacyProfileActivity;
     Context context;
 
-    public BackgroundViewPharmacyProfileWorker(Context context) {
-        context = context;
+    public BackgroundViewPharmacyProfileWorker(ViewPharmacyProfileActivity viewPharmacyProfileActivity) {
+        this.viewPharmacyProfileActivity = viewPharmacyProfileActivity;
     }
 
     @Override
@@ -32,7 +35,6 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
 
         try {
             if (actionType.equalsIgnoreCase("viewPharmacyProfile")) {
-
                 StringBuilder urlString = new StringBuilder("");
                 String emailid = params[1];
                 urlString.append(baseUrl).append("/getPharmacyProfile.php").append("?").append("emailid").append("=").append(emailid);
@@ -46,8 +48,21 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
 
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
-        System.out.println("onPost: " + jsonObject.toString());
-        new ViewPharmacyProfileActivity().newMethod(jsonObject);
+        try {
+            String emailId = (String) jsonObject.get("emailid");
+            String name = (String) jsonObject.get("name");
+            String contact = (String) jsonObject.get("contact");
+            String addressline1 = (String) jsonObject.get("addressline1");
+            String addressline2 = (String) jsonObject.get("addressline2");
+            String city = (String) jsonObject.get("city");
+            String state = (String) jsonObject.get("state");
+            String zip = (String) jsonObject.get("zip");
+
+            PharmacyUserModel pharmacyUserModel = new PharmacyUserModel(emailId, name, contact, addressline1, addressline2, city, state, zip);
+            this.viewPharmacyProfileActivity.handleUI(pharmacyUserModel);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private JSONObject handleRequest(String urlString) {
@@ -66,9 +81,8 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
                     result.append(line);
                 }
                 bufferedReader.close();
-//                System.out.println(result.toString());
             }else{
-                System.out.println("ERROR with GET call.");
+                Toast.makeText(viewPharmacyProfileActivity, "ERROR with GET call", Toast.LENGTH_SHORT).show();
             }
             return new JSONObject(result.toString());
         } catch (IOException ex) {

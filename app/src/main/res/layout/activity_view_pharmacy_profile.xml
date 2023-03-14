@@ -50,8 +50,8 @@
 
     <EditText
         android:id="@+id/editTextContact"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="346dp"
+        android:layout_height="54dp"
         android:layout_marginStart="31dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="30dp"
@@ -60,13 +60,14 @@
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/editTextMultiLineAdd1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
     <EditText
         android:id="@+id/editTextMultiLineAdd2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="341dp"
+        android:layout_height="51dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="30dp"
@@ -81,8 +82,8 @@
 
     <EditText
         android:id="@+id/editTextMultiLineAdd1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="350dp"
+        android:layout_height="62dp"
         android:layout_marginBottom="30dp"
         android:ems="10"
         android:gravity="start|top"
@@ -90,13 +91,14 @@
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/editTextMultiLineAdd2"
         app:layout_constraintEnd_toEndOf="@+id/editTextMultiLineAdd2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextMultiLineAdd2"
         app:layout_constraintTop_toBottomOf="@+id/editTextContact" />
 
     <EditText
         android:id="@+id/editTextCity"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="344dp"
+        android:layout_height="56dp"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="13dp"
@@ -110,9 +112,8 @@
 
     <EditText
         android:id="@+id/editTextState"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="3dp"
+        android:layout_width="344dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:hint="State"
@@ -124,8 +125,8 @@
 
     <EditText
         android:id="@+id/editTextZip"
-        android:layout_width="353dp"
-        android:layout_height="50dp"
+        android:layout_width="348dp"
+        android:layout_height="51dp"
         android:layout_marginStart="21dp"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="120dp"
