@@ -30,7 +30,7 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... params) {
         actionType = params[0];
-        String baseUrl = "https://kxp9181.uta.cloud";
+        String baseUrl = "https://sxr4177.uta.cloud";
 
         try {
             if (actionType.equals("login")) {
