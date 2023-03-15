@@ -35,6 +35,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
         String baseUrl = "https://pxs9233.uta.cloud";
 
         try {
+            //Viewing Laboratory Profile
             if (actionType.equals("get_profile")) {
                 String urlString = baseUrl + "/ps_getLaboratoryProfile.php";
                 URL url = new URL(urlString);
@@ -44,9 +45,10 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
 
                 return handleRequest(url, postData);
             }
-/*            else if (actionType.equals("update_profile"))
+            //Updating Laboratory Profile
+            else if (actionType.equals("update_profile"))
             {
-                String urlString = baseUrl + "/updateLaboratory.php";
+                String urlString = baseUrl + "/ps_updateLaboratoryProfile.php";
                 URL url = new URL(urlString);
 
                 lab = (LaboratoryUserModel) params[1];
@@ -74,7 +76,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                                 URLEncoder.encode("zip", "UTF-8") + "=" + URLEncoder.encode(zip, "UTF-8");
 
                 return handleRequest(url, postData);
-            }*/
+            }
         } catch (MalformedURLException | UnsupportedEncodingException ex) {
             ex.printStackTrace();
         }
@@ -153,24 +155,22 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                 String zip = resultObj.getString("zip");
                 LaboratoryUserModel lab = new LaboratoryUserModel(laoratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
 
-                this.profileFragment.handleUI(lab);
-            }
-            /*else if (actionType.equals("update_profile")) {
+                this.profileFragment.onLoadSuccess(lab);
+            } else if (actionType.equals("update_profile")) {
                 if (resultObj.has("error")) {
                     this.profileFragment.onUpdate(resultObj.getString("error"), lab);
                     return;
                 }
 
                 this.profileFragment.onUpdate("", lab);
-            }*/
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             if (actionType.equals("get_profile")) {
                 this.profileFragment.onLoadFailed("Something went wrong");
+            } else if (actionType.equals("update_profile")) {
+                this.profileFragment.onUpdate("Something went wrong", lab);
             }
-            /*else if (actionType.equals("update_profile"))
-             {
-                this.profileFragment.onUpdate("Something went wrong", lab);*/
         }
     }
 }

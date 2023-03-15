@@ -87,7 +87,7 @@ public class LaboratoryProfileFragment extends Fragment {
             progressBar.setVisibility(View.VISIBLE);
 
             String name = nameTextView.getText().toString();
-            String emailId = emailTextView.getText().toString();
+            String email = emailTextView.getText().toString();
             String password = passwordTextView.getText().toString();
             String contact = contactTextView.getText().toString();
             String address1 = address1TextView.getText().toString();
@@ -97,7 +97,7 @@ public class LaboratoryProfileFragment extends Fragment {
             String zip = zipTextView.getText().toString();
 
             LaboratoryUserModel lab = new LaboratoryUserModel(
-                    id, emailId, password, name, contact, address1, address2, city, state, zip);
+                    id, email, password, name, contact, address1, address2, city, state, zip);
 
             BackgroundLaboratoryProfileWorker backgroundWorker2 = new BackgroundLaboratoryProfileWorker(
                     LaboratoryProfileFragment.this);
@@ -107,11 +107,12 @@ public class LaboratoryProfileFragment extends Fragment {
         return view;
     }
 
-/*    public void onLoadSuccess(LaboratoryUserModel lab) {
-        progressBar.setVisibility(View.GONE);
-        detailsLinearLayout.setVisibility(View.VISIBLE);
-
+    public void onLoadSuccess(LaboratoryUserModel lab) {
         updateErrorTextView.setText("");
+        errorTextView.setText("");
+        errorTextView.setVisibility(View.GONE);
+        detailsLinearLayout.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
 
         nameTextView.setText(lab.getName());
         emailTextView.setText(lab.getEmailId());
@@ -122,9 +123,9 @@ public class LaboratoryProfileFragment extends Fragment {
         cityTextView.setText(lab.getCity());
         stateTextView.setText(lab.getState());
         zipTextView.setText(lab.getZip());
-    }*/
+    }
 
-    public void handleUI(LaboratoryUserModel lab) {
+/*    public void handleUI(LaboratoryUserModel lab) {
         updateErrorTextView.setText("");
         errorTextView.setText("");
         errorTextView.setVisibility(View.GONE);
@@ -146,9 +147,9 @@ public class LaboratoryProfileFragment extends Fragment {
                 throw new RuntimeException(e);
             }
         }
-   /* else{
-        Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();    }}*/
-    }
+   *//* else{
+        Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();    }}*//*
+    }*/
     public void onLoadFailed(String errorMessage) {
         progressBar.setVisibility(View.GONE);
         errorTextView.setVisibility(View.VISIBLE);
@@ -156,9 +157,9 @@ public class LaboratoryProfileFragment extends Fragment {
         errorTextView.setText(errorMessage);
     }
 
-    /*public void onUpdate(String errorMessage, LaboratoryUserModel lab) {
+    public void onUpdate(String errorMessage, LaboratoryUserModel lab) {
         Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
         onLoadSuccess(lab);
         updateErrorTextView.setText(errorMessage);
-    }*/
+    }
 }
