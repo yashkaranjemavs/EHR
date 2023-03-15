@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/laboratory_menuitem_profile"
-        android:title="Profile" />
-    <item
-        android:id="@+id/laboratory_menuitem_tests"
-        android:title="Tests" />
-    <item
-        android:id="@+id/laboratory_menuitem_logout"
-        android:title="Logout" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/laboratory_menu"
+        android:orderInCategory="100"
+        android:icon="@drawable/ps_lab_menu_icon"
+        app:showAsAction="always"
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/laboratory_menu_profile"
+                android:icon="@drawable/icon_person"
+                android:actionLayout="@layout/activity_laboratory"
+                android:title="Profile" />
+
+            <item
+                android:id="@+id/laboratory_menu_tests"
+                android:icon="@drawable/ps_lab_menu_tests_icon"
+                android:actionLayout="@layout/activity_laboratory"
+                android:title="Tests" />
+
+            <item
+                android:id="@+id/laboratory_menu_logout"
+                android:icon="@drawable/ps_lab_menu_logout_icon"
+                android:actionLayout="@layout/activity_laboratory"
+                android:title="Logout" />
+        </menu>
+    </item>
 </menu>

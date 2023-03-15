@@ -28,17 +28,6 @@
             android:exported="false"
             android:label="@string/title_activity_laboratory"
             android:theme="@style/Theme.EHR.NoActionBar" />
-
-        <activity
-            android:name=".ps_LaboratoryProfileActivity"
-            android:label="EHR Lab Profile"
-            android:parentActivityName=".LaboratoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ps_LaboratoryTestsActivity"
-            android:label="EHR Lab Tests "
-            android:parentActivityName=".LaboratoryActivity"
-            android:exported="false" />
         <activity
             android:name=".PatientActivity"
             android:exported="false"

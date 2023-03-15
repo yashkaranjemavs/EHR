@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 
+
+
 public class LoginFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     TextView email;
     TextView password;
@@ -41,7 +43,7 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
         forgotPassword = scrollView.findViewById(R.id.forgot_password);
         errorText = scrollView.findViewById(R.id.error_text);
         loginBtn = scrollView.findViewById(R.id.login_button);
-        role = (Spinner) scrollView.findViewById(R.id.userType);
+        role = scrollView.findViewById(R.id.userType);
         role.setOnItemSelectedListener(this);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireActivity().getBaseContext(), R.array.user_type_options, android.R.layout.simple_spinner_item);
@@ -96,30 +98,43 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
         Intent intent;
         String role = user.getRole();
 
-        if (role.equals("Admin")) {
-            intent = new Intent(getActivity(), AdminActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
-        } else if (role.equals("Patient")) {
-            intent = new Intent(getActivity(), PatientActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
-        } else if (role.equals("Provider")) {
-            intent = new Intent(getActivity(), ProviderActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
-        } else if (role.equals("Laboratory")) {
-            intent = new Intent(getActivity(), LaboratoryActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
-        } else if (role.equals("Pharmacy")) {
-            intent = new Intent(getActivity(), PharmacyActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
-        } else if (role.equals("Insurance Company")) {
-            intent = new Intent(getActivity(), InsuranceActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
+        switch (role) {
+            case "Admin":
+                intent = new Intent(getActivity(), AdminActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                break;
+            case "Patient":
+                intent = new Intent(getActivity(), PatientActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                break;
+            case "Provider":
+                intent = new Intent(getActivity(), ProviderActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                break;
+            case "Laboratory":
+                intent = new Intent(getActivity(), LaboratoryActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                break;
+            case "Pharmacy":
+                intent = new Intent(getActivity(), PharmacyActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                break;
+            case "Insurance Company":
+                intent = new Intent(getActivity(), InsuranceActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                break;
         }
     }
 

@@ -1,41 +1,32 @@
 package com.example.ehr;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+
 public class LaboratoryActivity extends AppCompatActivity {
     NavController navController;
+    UserModel user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laboratory);
 
-        UserModel user = (UserModel) getIntent().getSerializableExtra("user");
+        user = (UserModel) getIntent().getSerializableExtra("user");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.laboratory_toolbar);
+        Toolbar toolbar = findViewById(R.id.laboratory_toolbar);
         setSupportActionBar(toolbar);
-        ImageView menuIcon=findViewById(R.id.menuIcon);
-        menuIcon.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                //Toast.makeText(LaboratoryActivity.this,"You clicked on the menu icon",Toast.LENGTH_SHORT).show();
-                showMenu(v);
-            }
-        });
+        toolbar.inflateMenu(R.menu.ps_laboratory_menu);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.laboratory_nav_host);
         if (navHostFragment != null) {
@@ -43,35 +34,57 @@ public class LaboratoryActivity extends AppCompatActivity {
             NavigationUI.setupWithNavController(toolbar, navController);
         }
     }
-    private void showMenu(View v)
-    {
-        PopupMenu popupmenu=new PopupMenu(LaboratoryActivity.this, v);
-        popupmenu.getMenuInflater().inflate(R.menu.ps_laboratory_menu,popupmenu.getMenu());
-        popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-// Navigation for Profile menu option to Profile activity page when clicked
-                if(menuItem.getItemId()==R.id.laboratory_menuitem_profile)
-                {
-                    Intent intent=new Intent(LaboratoryActivity.this, ps_LaboratoryProfileActivity.class);
-                    startActivity(intent);
-                }
-// Navigation for Tests menu option to Tests activity page when clicked
-                else if(menuItem.getItemId()==R.id.laboratory_menuitem_tests)
-                {
-                    Intent intent=new Intent(LaboratoryActivity.this,ps_LaboratoryTestsActivity.class);
-                    startActivity(intent);
-                }
-// Navigation for Logout menu option to Login activity page when clicked
-                else if(menuItem.getItemId()==R.id.laboratory_menuitem_logout)
-                {
-                    Intent intent=new Intent(LaboratoryActivity.this,LoginActivity.class);
-                    startActivity(intent);
-                }
-                return false;
-            }
-        });
-        popupmenu.show();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.ps_laboratory_menu, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int laboratoryid = item.getItemId();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user", user);
+
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.laboratory_nav_host);
+        Fragment currentFragment = navHostFragment.getChildFragmentManager().getFragments().get(0);
+
+        switch (laboratoryid){
+            case R.id.laboratory_menu_profile:
+                if (currentFragment instanceof LaboratoryFragment)
+                {
+                    Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryFragment_to_laboratoryProfileFragment, bundle);
+                }
+                else if (currentFragment instanceof LaboratoryProfileFragment)
+                {
+                    break;
+                }
+                else if (currentFragment instanceof LaboratoryTestsFragment)
+                {
+                    Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryTestsFragment_to_laboratoryProfileFragment, bundle);
+                }
+                break;
+
+            case R.id.laboratory_menu_tests:
+                if (currentFragment instanceof LaboratoryFragment)
+                {
+                    Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryFragment_to_laboratoryTestsFragment, bundle);
+                }
+                else if (currentFragment instanceof LaboratoryProfileFragment)
+                {
+                    Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryProfileFragment_to_laboratoryTestsFragment, bundle);
+                }
+                else if (currentFragment instanceof LaboratoryTestsFragment)
+                {
+                    break;
+                }
+                break;
+
+            case R.id.laboratory_menu_logout:
+//                Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
