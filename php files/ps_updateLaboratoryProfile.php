@@ -20,7 +20,7 @@
 	city='$city', 
 	state='$state', 
 	zip='$zip' 
-	WHERE emailid='$email';";
+	WHERE email='$email';";
 	
 	if(mysqli_query($conn, $sql_query)){
 		$error = array("success" => "Profile Updated Successfully");
