@@ -15,12 +15,12 @@ $results = mysqli_query($conn, $sql_query);
 if (mysqli_num_rows($results) > 0) {
 	while ($data = mysqli_fetch_assoc($results)) {
 		$user = array(
-			"id" => $data["laboratoryid"],
+			"laboratoryid" => $data["laboratoryid"],
 			"name" => $data["name"],
-			"email" => $data["emailid"],
+			"emailId" => $data["emailid"],
 			"password" => $data["PASSWORD"],
-			"address line 1" => $data["addressline1"],
-			"address line 2" => $data["addressline2"],
+			"address1" => $data["addressline1"],
+			"address2" => $data["addressline2"],
 			"city" => $data["city"],
 			"state" => $data["state"],
 			"zip" => $data["zip"]

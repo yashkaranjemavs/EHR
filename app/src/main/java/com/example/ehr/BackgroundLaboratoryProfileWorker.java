@@ -141,8 +141,8 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                     this.profileFragment.onLoadFailed(resultObj.getString("error"));
                     return;
                 }
-                String laoratoryid = resultObj.getString("laboratoryid");
-                String emailId = resultObj.getString("emailid");
+                String laoratoryid = resultObj.getString("id");
+                String emailId = resultObj.getString("email");
                 String password = resultObj.getString("password");
                 String name = resultObj.getString("name");
                 String contact = resultObj.getString("contact");
