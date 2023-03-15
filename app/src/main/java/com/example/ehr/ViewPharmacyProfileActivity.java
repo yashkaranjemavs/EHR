@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +32,7 @@ public class ViewPharmacyProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Pharmacy Profile");
 
-        String emailId = (String) getIntent().getSerializableExtra("emailid");
+        String emailid = (String) getIntent().getSerializableExtra("emailid");
 
         nameTextView = (TextView)findViewById(R.id.textViewName);
         emailIdTextView = (TextView)findViewById(R.id.textViewEmail);
@@ -42,25 +44,40 @@ public class ViewPharmacyProfileActivity extends AppCompatActivity {
         zipEditText = (EditText)findViewById(R.id.editTextZip);
 
         BackgroundViewPharmacyProfileWorker backgroundViewPharmacyProfileWorker = new BackgroundViewPharmacyProfileWorker(ViewPharmacyProfileActivity.this);
-        backgroundViewPharmacyProfileWorker.execute("viewPharmacyProfile", emailId);
+        backgroundViewPharmacyProfileWorker.execute("viewPharmacyProfile", emailid);
+
+        Button saveButton = (Button)findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BackgroundViewPharmacyProfileWorker backgroundViewPharmacyProfileWorker2 = new BackgroundViewPharmacyProfileWorker(ViewPharmacyProfileActivity.this);
+                backgroundViewPharmacyProfileWorker2.execute("updatePharmacyProfile", emailid, address1EditText.getText().toString(), address2EditText.getText().toString(), contactEditText.getText().toString(), cityEditText.getText().toString(), stateEditText.getText().toString(), zipEditText.getText().toString());
+            }
+        });
     }
 
-    public void handleUI(PharmacyUserModel pharmacyUserModel){
-        if(pharmacyUserModel!=null) {
-            try {
-                nameTextView.setText(pharmacyUserModel.getName());
-                emailIdTextView.setText(pharmacyUserModel.getEmailid());
-                contactEditText.setText(pharmacyUserModel.getContact());
-                address1EditText.setText(pharmacyUserModel.getAddressline1());
-                address2EditText.setText(pharmacyUserModel.getAddressline2());
-                cityEditText.setText(pharmacyUserModel.getCity());
-                stateEditText.setText(pharmacyUserModel.getState());
-                zipEditText.setText(pharmacyUserModel.getZip());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+    public void handleUI(PharmacyUserModel pharmacyUserModel, String actionType){
+        if (actionType.equalsIgnoreCase("viewPharmacyProfile")) {
+            if(pharmacyUserModel!=null) {
+                try {
+                    nameTextView.setText(pharmacyUserModel.getName());
+                    emailIdTextView.setText(pharmacyUserModel.getEmailid());
+                    contactEditText.setText(pharmacyUserModel.getContact());
+                    address1EditText.setText(pharmacyUserModel.getAddressline1());
+                    address2EditText.setText(pharmacyUserModel.getAddressline2());
+                    cityEditText.setText(pharmacyUserModel.getCity());
+                    stateEditText.setText(pharmacyUserModel.getState());
+                    zipEditText.setText(pharmacyUserModel.getZip());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }else{
+                Toast.makeText(this, "pharmacyUserModel null", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(this, "pharmacyUserModel null", Toast.LENGTH_SHORT).show();
+        }else if(actionType.equalsIgnoreCase("updatePharmacyProfile")){
+            finish();
         }
+
+
     }
 }
