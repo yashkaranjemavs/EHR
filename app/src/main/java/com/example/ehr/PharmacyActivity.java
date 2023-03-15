@@ -17,13 +17,14 @@ import androidx.navigation.ui.NavigationUI;
 
 public class PharmacyActivity extends AppCompatActivity {
     NavController navController;
+    UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy);
 
-        UserModel user = (UserModel) getIntent().getSerializableExtra("user");
+        userModel = (UserModel) getIntent().getSerializableExtra("user");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.pharmacy_toolbar);
         setSupportActionBar(toolbar);
@@ -44,13 +45,13 @@ public class PharmacyActivity extends AppCompatActivity {
     }
 
     public Boolean performViewProfile() {
-        Toast.makeText(this, "View Profile", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(PharmacyActivity.this, ViewPharmacyProfileActivity.class);
+        intent.putExtra("emailid", userModel.getEmailid());
+        startActivity(intent);
         return true;
     }
 
     public Boolean performLogout() {
-//        Intent intent = new Intent(PharmacyActivity.this, LoginActivity.class);
-//        startActivity(intent);
         finish();
         return true;
     }
