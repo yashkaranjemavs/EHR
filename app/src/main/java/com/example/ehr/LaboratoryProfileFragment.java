@@ -125,6 +125,12 @@ public class LaboratoryProfileFragment extends Fragment {
     }*/
 
     public void handleUI(LaboratoryUserModel lab) {
+        updateErrorTextView.setText("");
+        errorTextView.setText("");
+        errorTextView.setVisibility(View.GONE);
+        detailsLinearLayout.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+
         if (lab != null) {
             try {
                 nameTextView.setText(lab.getName());

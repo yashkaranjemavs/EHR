@@ -164,6 +164,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                 this.profileFragment.onUpdate("", lab);
             }*/
         } catch (JSONException e) {
+            e.printStackTrace();
             if (actionType.equals("get_profile")) {
                 this.profileFragment.onLoadFailed("Something went wrong");
             }
