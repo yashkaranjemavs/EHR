@@ -143,7 +143,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                     this.profileFragment.onLoadFailed(resultObj.getString("error"));
                     return;
                 }
-                String laoratoryid = resultObj.getString("id");
+                String laboratoryid = resultObj.getString("id");
                 String emailId = resultObj.getString("email");
                 String password = resultObj.getString("password");
                 String name = resultObj.getString("name");
@@ -153,10 +153,12 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                 String city = resultObj.getString("city");
                 String state = resultObj.getString("state");
                 String zip = resultObj.getString("zip");
-                LaboratoryUserModel lab = new LaboratoryUserModel(laoratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
+                LaboratoryUserModel lab = new LaboratoryUserModel(laboratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
 
                 this.profileFragment.onLoadSuccess(lab);
-            } else if (actionType.equals("update_profile")) {
+            }
+            else if (actionType.equals("update_profile"))
+            {
                 if (resultObj.has("error")) {
                     this.profileFragment.onUpdate(resultObj.getString("error"), lab);
                     return;

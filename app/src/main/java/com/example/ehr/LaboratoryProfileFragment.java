@@ -125,31 +125,6 @@ public class LaboratoryProfileFragment extends Fragment {
         zipTextView.setText(lab.getZip());
     }
 
-/*    public void handleUI(LaboratoryUserModel lab) {
-        updateErrorTextView.setText("");
-        errorTextView.setText("");
-        errorTextView.setVisibility(View.GONE);
-        detailsLinearLayout.setVisibility(View.VISIBLE);
-        progressBar.setVisibility(View.GONE);
-
-        if (lab != null) {
-            try {
-                nameTextView.setText(lab.getName());
-                emailTextView.setText(lab.getEmailId());
-                passwordTextView.setText(lab.getEmailId());
-                contactTextView.setText(lab.getContact());
-                address1TextView.setText(lab.getEmailId());
-                address2TextView.setText(lab.getEmailId());
-                cityTextView.setText(lab.getCity());
-                stateTextView.setText(lab.getState());
-                zipTextView.setText(lab.getZip());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-   *//* else{
-        Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();    }}*//*
-    }*/
     public void onLoadFailed(String errorMessage) {
         progressBar.setVisibility(View.GONE);
         errorTextView.setVisibility(View.VISIBLE);
