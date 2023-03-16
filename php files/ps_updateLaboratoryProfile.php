@@ -16,7 +16,7 @@
 	
 	$sql_query = "UPDATE laboratory SET 
 	PASSWORD='$password', 
-	email='$email',
+	emailid='$email',
 	name='$name',
 	contact='$contact', 
 	addressline1='$address1', 
