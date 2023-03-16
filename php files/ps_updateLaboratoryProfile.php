@@ -1,11 +1,13 @@
 <?php
 	require "conn.php";
 	
-	$email = $_POST["emailid"];
-	$password = $_POST["PASSWORD"];
+	$id = $_POST["laboratoryid"];
+	$name = $_POST["name"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
 	$contact = $_POST["contact"];
-    $address1 = $_POST["addressline1"];
-    $address2 = $_POST["addressline2"];
+    $address1 = $_POST["address1"];
+    $address2 = $_POST["address2"];
 	$city = $_POST["city"];
 	$state = $_POST["state"];
 	$zip = $_POST["zip"];
@@ -13,14 +15,16 @@
 	header("Content-Type: application/json");
 	
 	$sql_query = "UPDATE laboratory SET 
-	password='$password', 
+	PASSWORD='$password', 
+	email='$email',
+	name='$name',
 	contact='$contact', 
-	address1='$address1', 
-	address2='$address2', 
+	addressline1='$address1', 
+	addressline2='$address2', 
 	city='$city', 
 	state='$state', 
 	zip='$zip' 
-	WHERE email='$email';";
+	WHERE laboratoryid='$id';";
 	
 	if(mysqli_query($conn, $sql_query)){
 		$error = array("success" => "Profile Updated Successfully");
