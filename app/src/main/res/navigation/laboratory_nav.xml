@@ -21,8 +21,8 @@
     <fragment
         android:id="@+id/laboratoryTestsFragment"
         android:name="com.example.ehr.LaboratoryTestsFragment"
-        android:label="fragment_laboratory_tests"
-        tools:layout="@layout/ps_fragment_laboratory_tests" >
+        android:label="EHR Lab Tests"
+        tools:layout="@layout/ps_fragment_laboratory_tests">
         <action
             android:id="@+id/action_laboratoryTestsFragment_to_laboratoryFragment"
             app:destination="@id/laboratoryFragment" />
@@ -33,8 +33,8 @@
     <fragment
         android:id="@+id/laboratoryProfileFragment"
         android:name="com.example.ehr.LaboratoryProfileFragment"
-        android:label="ps_fragment_laboratory_profile"
-        tools:layout="@layout/ps_fragment_laboratory_profile" >
+        android:label="EHR Lab Profile"
+        tools:layout="@layout/ps_fragment_laboratory_profile">
         <action
             android:id="@+id/action_laboratoryProfileFragment_to_laboratoryTestsFragment"
             app:destination="@id/laboratoryTestsFragment" />
