@@ -364,7 +364,7 @@
                     android:layout_width="360dp"
                     android:layout_height="48dp"
                     android:background="@drawable/custom_primary_button"
-                    android:text="Update"
+                    android:text="SAVE"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
             </LinearLayout>

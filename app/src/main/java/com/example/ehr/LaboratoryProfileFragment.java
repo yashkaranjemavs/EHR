@@ -133,7 +133,7 @@ public class LaboratoryProfileFragment extends Fragment {
     }
 
     public void onUpdate(String errorMessage, LaboratoryUserModel lab) {
-        Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Data saved successfully", Toast.LENGTH_SHORT).show();
         onLoadSuccess(lab);
         updateErrorTextView.setText(errorMessage);
     }
