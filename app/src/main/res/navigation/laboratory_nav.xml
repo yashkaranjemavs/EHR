@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/laboratoryFragment"
-        android:name="com.example.ehr.LaboratoryFragment"
+        android:name="com.example.ehr.ps_LaboratoryFragment"
         android:label="EHR"
         tools:layout="@layout/ps_fragment_laboratory" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/laboratoryTestsFragment"
-        android:name="com.example.ehr.LaboratoryTestsFragment"
+        android:name="com.example.ehr.ps_LaboratoryTestsFragment"
         android:label="EHR Lab Tests"
         tools:layout="@layout/ps_fragment_laboratory_tests">
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/laboratoryProfileFragment"
-        android:name="com.example.ehr.LaboratoryProfileFragment"
+        android:name="com.example.ehr.ps_LaboratoryProfileFragment"
         android:label="EHR Lab Profile"
         tools:layout="@layout/ps_fragment_laboratory_profile">
         <action

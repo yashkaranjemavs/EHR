@@ -19,12 +19,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, JSONObject> {
-    LaboratoryProfileFragment profileFragment;
+public class ps_BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, JSONObject> {
+    ps_LaboratoryProfileFragment profileFragment;
     String actionType;
-    LaboratoryUserModel lab;
+    ps_LaboratoryUserModel lab;
 
-    BackgroundLaboratoryProfileWorker(LaboratoryProfileFragment profileFragment) {
+    ps_BackgroundLaboratoryProfileWorker(ps_LaboratoryProfileFragment profileFragment) {
         this.profileFragment = profileFragment;
     }
 
@@ -51,7 +51,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                 String urlString = baseUrl + "/ps_updateLaboratoryProfile.php";
                 URL url = new URL(urlString);
 
-                lab = (LaboratoryUserModel) params[1];
+                lab = (ps_LaboratoryUserModel) params[1];
                 String id = lab.getId().trim();
                 String name = lab.getName().trim();
                 String email = lab.getEmailId().trim();
@@ -153,7 +153,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
                 String city = resultObj.getString("city");
                 String state = resultObj.getString("state");
                 String zip = resultObj.getString("zip");
-                LaboratoryUserModel lab = new LaboratoryUserModel(laboratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
+                ps_LaboratoryUserModel lab = new ps_LaboratoryUserModel(laboratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
 
                 this.profileFragment.onLoadSuccess(lab);
             }

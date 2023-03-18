@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LaboratoryProfileFragment extends Fragment {
+public class ps_LaboratoryProfileFragment extends Fragment {
     UserModel user;
     ProgressBar progressBar;
     TextView errorTextView;
@@ -74,8 +74,8 @@ public class LaboratoryProfileFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
 
 
-        BackgroundLaboratoryProfileWorker backgroundWorker = new BackgroundLaboratoryProfileWorker(
-                LaboratoryProfileFragment.this);
+        ps_BackgroundLaboratoryProfileWorker backgroundWorker = new ps_BackgroundLaboratoryProfileWorker(
+                ps_LaboratoryProfileFragment.this);
         backgroundWorker.execute("get_profile", id);
 
 
@@ -96,18 +96,18 @@ public class LaboratoryProfileFragment extends Fragment {
             String state = stateTextView.getText().toString();
             String zip = zipTextView.getText().toString();
 
-            LaboratoryUserModel lab = new LaboratoryUserModel(
+            ps_LaboratoryUserModel lab = new ps_LaboratoryUserModel(
                     id, email, password, name, contact, address1, address2, city, state, zip);
 
-            BackgroundLaboratoryProfileWorker backgroundWorker2 = new BackgroundLaboratoryProfileWorker(
-                    LaboratoryProfileFragment.this);
+            ps_BackgroundLaboratoryProfileWorker backgroundWorker2 = new ps_BackgroundLaboratoryProfileWorker(
+                    ps_LaboratoryProfileFragment.this);
             backgroundWorker2.execute("update_profile", lab);
         });
 
         return view;
     }
 
-    public void onLoadSuccess(LaboratoryUserModel lab) {
+    public void onLoadSuccess(ps_LaboratoryUserModel lab) {
         updateErrorTextView.setText("");
         errorTextView.setText("");
         errorTextView.setVisibility(View.GONE);
@@ -132,7 +132,7 @@ public class LaboratoryProfileFragment extends Fragment {
         errorTextView.setText(errorMessage);
     }
 
-    public void onUpdate(String errorMessage, LaboratoryUserModel lab) {
+    public void onUpdate(String errorMessage, ps_LaboratoryUserModel lab) {
         Toast.makeText(getActivity(), "Data saved successfully", Toast.LENGTH_SHORT).show();
         onLoadSuccess(lab);
         updateErrorTextView.setText(errorMessage);

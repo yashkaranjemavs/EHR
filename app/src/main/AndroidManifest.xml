@@ -24,7 +24,7 @@
             android:label="@string/title_activity_insurance"
             android:theme="@style/Theme.EHR.NoActionBar" />
         <activity
-            android:name=".LaboratoryActivity"
+            android:name=".ps_LaboratoryActivity"
             android:exported="false"
             android:label="@string/title_activity_laboratory"
             android:theme="@style/Theme.EHR.NoActionBar" />

@@ -14,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 
-public class LaboratoryActivity extends AppCompatActivity {
+public class ps_LaboratoryActivity extends AppCompatActivity {
     NavController navController;
     UserModel user;
 
@@ -42,7 +42,7 @@ public class LaboratoryActivity extends AppCompatActivity {
         return true;
     }
 
-    private LaboratoryActivity getActivity() {
+    private ps_LaboratoryActivity getActivity() {
         return this;
     }
 
@@ -58,15 +58,15 @@ public class LaboratoryActivity extends AppCompatActivity {
         switch (laboratoryid){
             case R.id.laboratory_menu_profile:
 //              Navigating from Laboratory Fragment or Laboratory Tests Fragment to Laboratory Profile Fragment Page
-                if (currentFragment instanceof LaboratoryFragment)
+                if (currentFragment instanceof ps_LaboratoryFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryFragment_to_laboratoryProfileFragment, bundle);
                 }
-                else if (currentFragment instanceof LaboratoryProfileFragment)
+                else if (currentFragment instanceof ps_LaboratoryProfileFragment)
                 {
                     break;
                 }
-                else if (currentFragment instanceof LaboratoryTestsFragment)
+                else if (currentFragment instanceof ps_LaboratoryTestsFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryTestsFragment_to_laboratoryProfileFragment, bundle);
                 }
@@ -74,15 +74,15 @@ public class LaboratoryActivity extends AppCompatActivity {
 
 //              Navigating from Laboratory Fragment or Laboratory profile Fragment to Laboratory Tests Fragment Page
             case R.id.laboratory_menu_tests:
-                if (currentFragment instanceof LaboratoryFragment)
+                if (currentFragment instanceof ps_LaboratoryFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryFragment_to_laboratoryTestsFragment, bundle);
                 }
-                else if (currentFragment instanceof LaboratoryProfileFragment)
+                else if (currentFragment instanceof ps_LaboratoryProfileFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryProfileFragment_to_laboratoryTestsFragment, bundle);
                 }
-                else if (currentFragment instanceof LaboratoryTestsFragment)
+                else if (currentFragment instanceof ps_LaboratoryTestsFragment)
                 {
                     break;
                 }
