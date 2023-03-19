@@ -55,15 +55,23 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if(toggleButtonStatus.isChecked()){
+                        doUpdateStatus(medicationid.getText().toString(), COMPLETED);
                         toggleButtonStatus.setTextOn(COMPLETED);
                         status.setText(statusPrefix+COMPLETED);
                     }else{
+                        doUpdateStatus(medicationid.getText().toString(), PENDING);
                         toggleButtonStatus.setTextOff(PENDING);
                         status.setText(statusPrefix+PENDING);
                     }
                 }
             });
         }
+    }
+
+    public void doUpdateStatus(String medicationid, String status){
+        medicationid = medicationid.split("[ ]")[1];
+        BackgroundMedicationDetailWorker backgroundMedicationDetailWorker = new BackgroundMedicationDetailWorker(new PharmacyActivity());
+        backgroundMedicationDetailWorker.execute("updateMedicationStatus", medicationid, status);
     }
 
     @NonNull

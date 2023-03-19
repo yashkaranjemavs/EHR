@@ -55,6 +55,7 @@ public class PharmacyActivity extends AppCompatActivity {
                 }
             }
         });
+        showMedications(userModel.getEmailid(), false);
 
 //        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.pharmacy_nav_host);
 //        if (navHostFragment != null) {
