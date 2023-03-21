@@ -99,32 +99,32 @@ public class InsuranceProfileFragment extends Fragment {
             String state = stateTextView.getText().toString();
             String zip = zipTextView.getText().toString();
 
-            InsuranceCompanyModel insuranceCompanyModel = new InsuranceCompanyModel(
+            InsuranceProfileModel insuranceProfileModel = new InsuranceProfileModel(
                     id, email, password, name, contact, address1, address2, city, state, zip);
 
             BackgroundInsuranceProfileWorker backgroundWorker2 = new BackgroundInsuranceProfileWorker(
                     InsuranceProfileFragment.this);
-            backgroundWorker2.execute("update_profile", insuranceCompanyModel);
+            backgroundWorker2.execute("update_profile", insuranceProfileModel);
         });
 
         return view;
     }
 
-    public void onLoadSuccess(InsuranceCompanyModel insuranceCompany) {
+    public void onLoadSuccess(InsuranceProfileModel insuranceProfile) {
         progressBar.setVisibility(View.GONE);
         detailsLinearLayout.setVisibility(View.VISIBLE);
 
         updateErrorTextView.setText("");
 
-        nameTextView.setText(insuranceCompany.getName());
-        emailTextView.setText(insuranceCompany.getEmailId());
-        passwordTextView.setText(insuranceCompany.getPassword());
-        contactTextView.setText(insuranceCompany.getContact());
-        address1TextView.setText(insuranceCompany.getAddress1());
-        address2TextView.setText(insuranceCompany.getAddress2());
-        cityTextView.setText(insuranceCompany.getCity());
-        stateTextView.setText(insuranceCompany.getState());
-        zipTextView.setText(insuranceCompany.getZip());
+        nameTextView.setText(insuranceProfile.getName());
+        emailTextView.setText(insuranceProfile.getEmailId());
+        passwordTextView.setText(insuranceProfile.getPassword());
+        contactTextView.setText(insuranceProfile.getContact());
+        address1TextView.setText(insuranceProfile.getAddress1());
+        address2TextView.setText(insuranceProfile.getAddress2());
+        cityTextView.setText(insuranceProfile.getCity());
+        stateTextView.setText(insuranceProfile.getState());
+        zipTextView.setText(insuranceProfile.getZip());
     }
 
     public void onLoadFailed(String errorMessage) {
@@ -134,9 +134,9 @@ public class InsuranceProfileFragment extends Fragment {
         errorTextView.setText(errorMessage);
     }
 
-    public void onUpdate(String errorMessage, InsuranceCompanyModel insuranceCompany) {
+    public void onUpdate(String errorMessage, InsuranceProfileModel insuranceProfile) {
         Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
-        onLoadSuccess(insuranceCompany);
+        onLoadSuccess(insuranceProfile);
         updateErrorTextView.setText(errorMessage);
     }
 }

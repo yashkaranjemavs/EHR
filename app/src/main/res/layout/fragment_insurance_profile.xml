@@ -63,7 +63,7 @@
                     android:labelFor="@id/insurance_profile_name"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/name_label"
+                    android:text="@string/insurance_name_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:labelFor="@id/insurance_profile_email"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/email_label"
+                    android:text="@string/insurance_email_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -127,7 +127,7 @@
                     android:labelFor="@id/insurance_profile_password"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/password_label"
+                    android:text="@string/insurance_password_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -159,7 +159,7 @@
                     android:labelFor="@id/insurance_profile_contact"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/contact_label"
+                    android:text="@string/insurance_contact_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -191,7 +191,7 @@
                     android:labelFor="@id/insurance_profile_address1"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/address1_label"
+                    android:text="@string/insurance_address1_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -223,7 +223,7 @@
                     android:labelFor="@id/insurance_profile_address2"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/address2_label"
+                    android:text="@string/insurance_address2_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -255,7 +255,7 @@
                     android:labelFor="@id/insurance_profile_city"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/city_label"
+                    android:text="@string/insurance_city_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -287,7 +287,7 @@
                     android:labelFor="@id/insurance_profile_state"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/state_label"
+                    android:text="@string/insurance_state_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -319,7 +319,7 @@
                     android:labelFor="@id/insurance_profile_zip"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
-                    android:text="@string/zip_label"
+                    android:text="@string/insurance_zip_label"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -366,7 +366,7 @@
                     android:layout_width="360dp"
                     android:layout_height="48dp"
                     android:background="@drawable/custom_primary_button"
-                    android:text="@string/update"
+                    android:text="@string/insurance_update"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
             </LinearLayout>

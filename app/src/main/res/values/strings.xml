@@ -27,14 +27,14 @@
     <string name="insurance_menu_coverage">Coverage</string>
     <string name="insurance_menu_subscribers">Subscribers</string>
     <string name="insurance_menu_logout">Logout</string>
-    <string name="email_label">Email</string>
-    <string name="name_label">Name</string>
-    <string name="contact_label">Contact</string>
-    <string name="address1_label">Address1</string>
-    <string name="address2_label">Address2</string>
-    <string name="state_label">State</string>
-    <string name="city_label">City</string>
-    <string name="zip_label">ZIP</string>
-    <string name="update">Update</string>
-    <string name="password_label">Password</string>
+    <string name="insurance_email_label">Email</string>
+    <string name="insurance_name_label">Name</string>
+    <string name="insurance_contact_label">Contact</string>
+    <string name="insurance_address1_label">Address1</string>
+    <string name="insurance_address2_label">Address2</string>
+    <string name="insurance_state_label">State</string>
+    <string name="insurance_city_label">City</string>
+    <string name="insurance_zip_label">ZIP</string>
+    <string name="insurance_update">Update</string>
+    <string name="insurance_password_label">Password</string>
 </resources>

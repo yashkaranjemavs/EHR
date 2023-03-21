@@ -2,7 +2,7 @@ package com.example.ehr.insurance;
 
 import java.io.Serializable;
 
-public class InsuranceCompanyModel implements Serializable {
+public class InsuranceProfileModel implements Serializable {
     private String id;
     private String emailId;
     private String password;
@@ -14,7 +14,7 @@ public class InsuranceCompanyModel implements Serializable {
     private String state;
     private String zip;
 
-    public InsuranceCompanyModel(
+    public InsuranceProfileModel(
             String id,
             String emailId,
             String password,

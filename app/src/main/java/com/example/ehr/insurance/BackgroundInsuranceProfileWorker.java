@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JSONObject> {
     InsuranceProfileFragment profileFragment;
     String actionType;
-    InsuranceCompanyModel insuranceCompany;
+    InsuranceProfileModel insuranceCompany;
 
     BackgroundInsuranceProfileWorker(InsuranceProfileFragment fragment) {
         this.profileFragment = fragment;
@@ -36,7 +36,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
 
         try {
             if (actionType.equals("get_profile")) {
-                String urlString = baseUrl + "/getInsuranceCompany.php";
+                String urlString = baseUrl + "/getInsuranceProfile.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
@@ -44,10 +44,10 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
 
                 return handleRequest(url, postData);
             } else if (actionType.equals("update_profile")) {
-                String urlString = baseUrl + "/updateInsuranceCompany.php";
+                String urlString = baseUrl + "/updateInsuranceProfile.php";
                 URL url = new URL(urlString);
 
-                insuranceCompany = (InsuranceCompanyModel) params[1];
+                insuranceCompany = (InsuranceProfileModel) params[1];
                 String id = insuranceCompany.getId().trim();
                 String name = insuranceCompany.getName().trim();
                 String email = insuranceCompany.getEmailId().trim();
@@ -151,9 +151,9 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                 String city = resultObj.getString("city");
                 String state = resultObj.getString("state");
                 String zip = resultObj.getString("zip");
-                InsuranceCompanyModel insuranceCompany = new InsuranceCompanyModel(id, emailId, password, name, contact, address1, address2, city, state, zip);
+                InsuranceProfileModel insuranceProfile = new InsuranceProfileModel(id, emailId, password, name, contact, address1, address2, city, state, zip);
 
-                this.profileFragment.onLoadSuccess(insuranceCompany);
+                this.profileFragment.onLoadSuccess(insuranceProfile);
             } else if (actionType.equals("update_profile")) {
                 if (resultObj.has("error")) {
                     this.profileFragment.onUpdate(resultObj.getString("error"), insuranceCompany);
