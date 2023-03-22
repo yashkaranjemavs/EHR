@@ -37,4 +37,12 @@
     <string name="insurance_zip_label">ZIP</string>
     <string name="insurance_update">Update</string>
     <string name="insurance_password_label">Password</string>
+    <string name="insurance_claim_firstName">First Name:</string>
+    <string name="insurance_claim_lastName">Last Name:</string>
+    <string name="insurance_claim_charges">Charges:</string>
+    <string name="insurance_claim_patientPayment">Patient Payment:</string>
+    <string name="insurance_subscriber_expiry">Expiry:</string>
+    <string name="insurance_subscriber_lastName">Last Name:</string>
+    <string name="insurance_subscriber_firstName">First Name:</string>
+    <string name="insurance_claim_pay">Pay</string>
 </resources>

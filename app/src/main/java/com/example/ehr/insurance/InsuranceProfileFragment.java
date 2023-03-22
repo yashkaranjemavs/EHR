@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.ehr.R;
 import com.example.ehr.UserModel;
+import com.example.ehr.insurance.model.InsuranceProfileModel;
+import com.example.ehr.insurance.worker.BackgroundInsuranceProfileWorker;
 
 public class InsuranceProfileFragment extends Fragment {
     UserModel user;
@@ -135,7 +137,11 @@ public class InsuranceProfileFragment extends Fragment {
     }
 
     public void onUpdate(String errorMessage, InsuranceProfileModel insuranceProfile) {
-        Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+        if (errorMessage.equals("")) {
+            Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Failed to update profile", Toast.LENGTH_SHORT).show();
+        }
         onLoadSuccess(insuranceProfile);
         updateErrorTextView.setText(errorMessage);
     }

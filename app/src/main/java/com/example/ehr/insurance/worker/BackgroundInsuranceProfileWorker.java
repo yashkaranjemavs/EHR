@@ -1,36 +1,30 @@
-package com.example.ehr.insurance;
+package com.example.ehr.insurance.worker;
 
 import android.os.AsyncTask;
+
+import com.example.ehr.insurance.InsuranceProfileFragment;
+import com.example.ehr.insurance.model.InsuranceProfileModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
-public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JSONObject> {
+public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, String> {
     InsuranceProfileFragment profileFragment;
     String actionType;
     InsuranceProfileModel insuranceCompany;
 
-    BackgroundInsuranceProfileWorker(InsuranceProfileFragment fragment) {
+    public BackgroundInsuranceProfileWorker(InsuranceProfileFragment fragment) {
         this.profileFragment = fragment;
     }
 
 
     @Override
-    protected JSONObject doInBackground(Object... params) {
+    protected String doInBackground(Object... params) {
         actionType = (String) params[0];
         String baseUrl = "https://kxp9181.uta.cloud";
 
@@ -42,7 +36,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                 String id = (String) params[1];
                 String postData = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
 
-                return handleRequest(url, postData);
+                return WorkerHelper.handlePostRequest(url, postData);
             } else if (actionType.equals("update_profile")) {
                 String urlString = baseUrl + "/updateInsuranceProfile.php";
                 URL url = new URL(urlString);
@@ -71,7 +65,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
                         URLEncoder.encode("state", "UTF-8") + "=" + URLEncoder.encode(state, "UTF-8") + "&" +
                         URLEncoder.encode("zip", "UTF-8") + "=" + URLEncoder.encode(zip, "UTF-8");
 
-                return handleRequest(url, postData);
+                return WorkerHelper.handlePostRequest(url, postData);
             }
         } catch (MalformedURLException | UnsupportedEncodingException ex) {
             ex.printStackTrace();
@@ -85,7 +79,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
     }
 
     @Override
-    protected void onPostExecute(JSONObject resultObj) {
+    protected void onPostExecute(String resultObj) {
         handleResponse(resultObj);
     }
 
@@ -93,49 +87,10 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, JS
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
     }
-
-    private JSONObject handleRequest(URL url, String postData) {
+    private void handleResponse(String resultString) {
         try {
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            JSONObject resultObj = new JSONObject(resultString);
 
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,
-                    StandardCharsets.UTF_8));
-
-
-            bufferedWriter.write(postData);
-            bufferedWriter.close();
-            outputStream.close();
-
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,
-                    StandardCharsets.ISO_8859_1));
-
-            StringBuilder result = new StringBuilder();
-            String line = "";
-            while ((line = bufferedReader.readLine()) != null) {
-                result.append(line);
-            }
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-
-            return new JSONObject(result.toString());
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return null;
-    }
-
-    private void handleResponse(JSONObject resultObj) {
-        try {
             if (actionType.equals("get_profile")) {
                 if (resultObj.has("error")) {
                     this.profileFragment.onLoadFailed(resultObj.getString("error"));

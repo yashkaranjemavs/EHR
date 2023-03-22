@@ -1,4 +1,4 @@
-package com.example.ehr.insurance;
+package com.example.ehr.insurance.model;
 
 import java.io.Serializable;
 
