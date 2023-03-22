@@ -9,7 +9,7 @@ $query = "SELECT m.medicationid, m.medications, m.status, v.patientid, v.patient
 if($onlyPending == 'true'){
 	$query .= " AND m.status = 'Pending'";
 }
-$query .= ";";
+$query .= "order by m.status;";
 
 $result = mysqli_query($conn, $query);
 

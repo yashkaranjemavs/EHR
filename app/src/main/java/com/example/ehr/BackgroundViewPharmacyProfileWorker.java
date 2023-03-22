@@ -43,7 +43,7 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
             }else if(actionType.equalsIgnoreCase("updatePharmacyProfile")){
                 StringBuilder urlString = new StringBuilder("");
                 urlString.append(baseUrl).append("/updatePharmacyProfile.php");
-                return handleUpdateRequest(urlString.toString(), params[1], params[2], params[3], params[4], params[5], params[6], params[7]);
+                return handleUpdateRequest(urlString.toString(), params[1], params[2], params[3], params[4], params[5], params[6], params[7], params[8]);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -85,7 +85,7 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
         }
     }
 
-    private JSONObject handleUpdateRequest(String urlString, String emailid, String addressline1, String addressline2, String contact, String city, String state, String zip) {
+    private JSONObject handleUpdateRequest(String urlString, String emailid, String addressline1, String addressline2, String contact, String city, String state, String zip, String name) {
         try {
             URL url = new URL(urlString);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -101,6 +101,7 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
                     URLEncoder.encode("addressline2", "UTF-8") + "=" + URLEncoder.encode(addressline2, "UTF-8") + "&" +
                     URLEncoder.encode("city", "UTF-8") + "=" + URLEncoder.encode(city, "UTF-8") + "&" +
                     URLEncoder.encode("state", "UTF-8") + "=" + URLEncoder.encode(state, "UTF-8") + "&" +
+                    URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
                     URLEncoder.encode("zip", "UTF-8") + "=" + URLEncoder.encode(zip, "UTF-8");
 
             bufferedWriter.write(post_data);    //send request

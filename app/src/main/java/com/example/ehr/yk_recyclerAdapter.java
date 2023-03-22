@@ -1,5 +1,6 @@
 package com.example.ehr;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,10 +59,12 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
                         doUpdateStatus(medicationid.getText().toString(), COMPLETED);
                         toggleButtonStatus.setTextOn(COMPLETED);
                         status.setText(statusPrefix+COMPLETED);
+                        toggleButtonStatus.setTextColor(Color.parseColor("#00ff00"));
                     }else{
                         doUpdateStatus(medicationid.getText().toString(), PENDING);
                         toggleButtonStatus.setTextOff(PENDING);
                         status.setText(statusPrefix+PENDING);
+                        toggleButtonStatus.setTextColor(Color.parseColor("#ff0000"));
                     }
                 }
             });
@@ -104,8 +107,10 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
         holder.patientName.setText(holder.patientName.getText().toString().concat(patientFirstname.concat(" ").concat(patientLastname)));
         if (status.equalsIgnoreCase(COMPLETED)){
             holder.toggleButtonStatus.setText(COMPLETED);
+            holder.toggleButtonStatus.setTextColor(Color.parseColor("#00ff00"));
         }else if(status.equalsIgnoreCase(PENDING)) {
             holder.toggleButtonStatus.setText(PENDING);
+            holder.toggleButtonStatus.setTextColor(Color.parseColor("#ff0000"));
         }else{
             holder.toggleButtonStatus.setText("Invalid Status");
         }

@@ -8,10 +8,11 @@
 	$city = $_POST["city"];
 	$state = $_POST["state"];
 	$zip = $_POST["zip"];
+	$name = $_POST["name"];
 
 	header("Content-Type: application/json");
 	
-	$sql_query = "UPDATE pharmacy SET contact='$contact', addressline1='$addressline1', addressline2='$addressline2', city='$city', state='$state', zip='$zip' WHERE emailid='$emailid';";
+	$sql_query = "UPDATE pharmacy SET contact='$contact', addressline1='$addressline1', addressline2='$addressline2', city='$city', state='$state', zip='$zip', name='$name' WHERE emailid='$emailid';";
 	
 	if(mysqli_query($conn, $sql_query)){
 		$error = array("success" => "Profile Updated Successfully");

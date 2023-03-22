@@ -14,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ViewPharmacyProfileActivity extends AppCompatActivity {
-    TextView nameTextView;
+    EditText nameEditText;
     TextView emailIdTextView;
     EditText contactEditText;
     EditText address1EditText;
@@ -30,11 +30,11 @@ public class ViewPharmacyProfileActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.view_pharmacy_profile_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Pharmacy Profile");
+        getSupportActionBar().setTitle("Pharmacy");
 
         String emailid = (String) getIntent().getSerializableExtra("emailid");
 
-        nameTextView = (TextView)findViewById(R.id.textViewName);
+        nameEditText = (EditText)findViewById(R.id.editTextName);
         emailIdTextView = (TextView)findViewById(R.id.textViewEmail);
         address1EditText = (EditText)findViewById(R.id.editTextMultiLineAdd1);
         contactEditText = (EditText)findViewById(R.id.editTextContact);
@@ -51,7 +51,7 @@ public class ViewPharmacyProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 BackgroundViewPharmacyProfileWorker backgroundViewPharmacyProfileWorker2 = new BackgroundViewPharmacyProfileWorker(ViewPharmacyProfileActivity.this);
-                backgroundViewPharmacyProfileWorker2.execute("updatePharmacyProfile", emailid, address1EditText.getText().toString(), address2EditText.getText().toString(), contactEditText.getText().toString(), cityEditText.getText().toString(), stateEditText.getText().toString(), zipEditText.getText().toString());
+                backgroundViewPharmacyProfileWorker2.execute("updatePharmacyProfile", emailid, address1EditText.getText().toString(), address2EditText.getText().toString(), contactEditText.getText().toString(), cityEditText.getText().toString(), stateEditText.getText().toString(), zipEditText.getText().toString(), nameEditText.getText().toString());
             }
         });
     }
@@ -60,7 +60,7 @@ public class ViewPharmacyProfileActivity extends AppCompatActivity {
         if (actionType.equalsIgnoreCase("viewPharmacyProfile")) {
             if(pharmacyUserModel!=null) {
                 try {
-                    nameTextView.setText(pharmacyUserModel.getName());
+                    nameEditText.setText(pharmacyUserModel.getName());
                     emailIdTextView.setText(pharmacyUserModel.getEmailid());
                     contactEditText.setText(pharmacyUserModel.getContact());
                     address1EditText.setText(pharmacyUserModel.getAddressline1());
@@ -77,7 +77,5 @@ public class ViewPharmacyProfileActivity extends AppCompatActivity {
         }else if(actionType.equalsIgnoreCase("updatePharmacyProfile")){
             finish();
         }
-
-
     }
 }
