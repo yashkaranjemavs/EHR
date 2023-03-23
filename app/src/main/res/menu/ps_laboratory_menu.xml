@@ -10,19 +10,16 @@
         <menu>
             <item
                 android:id="@+id/laboratory_menu_profile"
-                android:icon="@drawable/icon_person"
                 android:actionLayout="@layout/activity_laboratory"
                 android:title="Profile" />
 
             <item
                 android:id="@+id/laboratory_menu_tests"
-                android:icon="@drawable/ps_lab_menu_tests_icon"
                 android:actionLayout="@layout/activity_laboratory"
                 android:title="Tests" />
 
             <item
                 android:id="@+id/laboratory_menu_logout"
-                android:icon="@drawable/ps_lab_menu_logout_icon"
                 android:actionLayout="@layout/activity_laboratory"
                 android:title="Logout" />
         </menu>

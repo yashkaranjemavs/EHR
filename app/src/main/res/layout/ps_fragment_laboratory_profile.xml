@@ -367,6 +367,24 @@
                     android:text="SAVE"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
+                <!-- Added sample layout to make the save button visible due to scroll view-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="12dp">
+
+                    <TextView
+                        android:id="@+id/sample"
+                        android:layout_width="wrap_content"
+                        android:paddingTop="80dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/error"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
             </LinearLayout>
         </LinearLayout>
 
