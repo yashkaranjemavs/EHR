@@ -2,31 +2,38 @@ package com.example.ehr.insurance.model;
 
 import java.io.Serializable;
 
-public class InsuranceClaimModel implements Serializable {
+
+public class InsuranceCoverageModel implements Serializable {
     private String patientId;
-    private String firstName;
-    private String lastName;
-    private String charges;
-    private String patientPayment;
-    private String insuranceCoverage;
+
     private String visitId;
 
-    public InsuranceClaimModel(
+    private String firstName;
+
+    private String lastName;
+
+    private String charges;
+
+    private String patientPayment;
+
+    private String insuranceCoverage;
+
+    public InsuranceCoverageModel(
             String patientId,
+            String visitId,
             String firstName,
             String lastName,
             String charges,
             String patientPayment,
-            String insuranceCoverage,
-            String visitId
+            String insuranceCoverage
     ) {
         this.patientId = patientId;
+        this.visitId = visitId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.charges = charges;
         this.patientPayment = patientPayment;
         this.insuranceCoverage = insuranceCoverage;
-        this.visitId = visitId;
 
     }
 
@@ -34,9 +41,13 @@ public class InsuranceClaimModel implements Serializable {
         return patientId;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setPatientId(String patientId) { this.patientId = patientId;}
+
+    public String getVisitId() {
+        return visitId;
     }
+
+    public void setVisitIdId(String visitId) { this.visitId = visitId;}
 
     public String getFirstName() {
         return firstName;
@@ -62,22 +73,11 @@ public class InsuranceClaimModel implements Serializable {
         this.charges = charges;
     }
 
-    public String getPatientPayment() {
-        return patientPayment;
-    }
+    public String getPatientPayment() { return patientPayment; }
 
-    public void setPatientPayment(String patientPayment) {
-        this.patientPayment = patientPayment;
-    }
+    public void setPatientPayment(String patientPayment) {this.patientPayment=patientPayment;}
 
-    public String getVisitId() {
-        return visitId;
-    }
+    public String getInsuranceCoverage() {return  insuranceCoverage; }
 
-    public void setVisitId(String visitId) {
-        this.visitId = visitId;
-    }
-
-    public String getInsuranceCoverage() {return insuranceCoverage;}
-    public void setInsuranceCoverage(String insuranceCoverage) {this.insuranceCoverage = insuranceCoverage;}
+    public void setInsuranceCoverage(String insuranceCoverage) { this.insuranceCoverage = insuranceCoverage;}
 }

@@ -45,4 +45,9 @@
     <string name="insurance_subscriber_lastName">Last Name:</string>
     <string name="insurance_subscriber_firstName">First Name:</string>
     <string name="insurance_claim_pay">Pay</string>
+    <string name="insurance_coverage_charges">Charges:</string>
+    <string name="insurance_coverage_lastName">LastName:</string>
+    <string name="insurance_coverage_firstName">First Name:</string>
+    <string name="insurance_coverage_patientPayment">Patient Payment:</string>
+    <string name="insurance_coverage_insuranceCoverage">Insurance Coverage:</string>
 </resources>

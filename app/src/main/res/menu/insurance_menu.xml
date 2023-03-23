@@ -10,25 +10,21 @@
         <menu>
             <item
                 android:id="@+id/insurance_menu_profile"
-                android:icon="@drawable/icon_person"
                 android:actionLayout="@layout/activity_insurance"
                 android:title="@string/insurance_menu_profile" />
 
             <item
                 android:id="@+id/insurance_menu_coverage"
-                android:icon="@drawable/icon_shield"
                 android:actionLayout="@layout/activity_insurance"
                 android:title="@string/insurance_menu_coverage" />
 
             <item
                 android:id="@+id/insurance_menu_subscribers"
-                android:icon="@drawable/icon_groups"
                 android:actionLayout="@layout/activity_insurance"
                 android:title="@string/insurance_menu_subscribers" />
 
             <item
                 android:id="@+id/insurance_menu_logout"
-                android:icon="@drawable/icon_logout"
                 android:actionLayout="@layout/activity_insurance"
                 android:title="@string/insurance_menu_logout" />
         </menu>
