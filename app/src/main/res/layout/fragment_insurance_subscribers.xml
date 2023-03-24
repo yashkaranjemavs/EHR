@@ -13,7 +13,7 @@
         android:gravity="center">
 
         <ProgressBar
-            android:id="@+id/insurance_claim_progress"
+            android:id="@+id/insurance_subscriber_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -26,6 +26,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/insurance_claim_recyclerView" />
+        android:id="@+id/insurance_subscriber_recyclerView" />
 
 </RelativeLayout>

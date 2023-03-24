@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="0dp"
+                android:paddingEnd="6dp"
+                android:text="@string/insurance_subscriber_firstName"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/insurance_subscriber_firstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="0dp"
+                android:paddingEnd="6dp"
+                android:text="@string/insurance_subscriber_lastName"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/insurance_subscriber_lastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            tools:ignore="UselessParent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="0dp"
+                android:paddingEnd="6dp"
+                android:text="@string/insurance_subscriber_expiry"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/insurance_subscriber_expiry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/light_gray"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

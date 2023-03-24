@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/insurance_menu"
+        android:orderInCategory="100"
+        android:icon="@drawable/icon_menu"
+        app:showAsAction="always"
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/insurance_menu_profile"
+                android:actionLayout="@layout/activity_insurance"
+                android:title="@string/insurance_menu_profile" />
+
+            <item
+                android:id="@+id/insurance_menu_coverage"
+                android:actionLayout="@layout/activity_insurance"
+                android:title="@string/insurance_menu_coverage" />
+
+            <item
+                android:id="@+id/insurance_menu_subscribers"
+                android:actionLayout="@layout/activity_insurance"
+                android:title="@string/insurance_menu_subscribers" />
+
+            <item
+                android:id="@+id/insurance_menu_logout"
+                android:actionLayout="@layout/activity_insurance"
+                android:title="@string/insurance_menu_logout" />
+        </menu>
+    </item>
+</menu>

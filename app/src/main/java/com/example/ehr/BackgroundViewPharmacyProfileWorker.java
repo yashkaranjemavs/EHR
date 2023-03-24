@@ -32,7 +32,7 @@ public class BackgroundViewPharmacyProfileWorker extends AsyncTask<String, Void,
     @Override
     protected JSONObject doInBackground(String... params) {
         actionType = params[0];
-        String baseUrl = "https://yxk8995.uta.cloud";
+        String baseUrl = BaseUrl.baseUrl;
 
         try {
             if (actionType.equalsIgnoreCase("viewPharmacyProfile")) {
