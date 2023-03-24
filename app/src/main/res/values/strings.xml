@@ -54,4 +54,5 @@
     <string name="insurance_coverage_firstName">First Name:</string>
     <string name="insurance_coverage_patientPayment">Patient Payment:</string>
     <string name="insurance_coverage_insuranceCoverage">Insurance Coverage:</string>
+    <string name="insurance_menu_home">Home</string>
 </resources>

@@ -22,6 +22,7 @@ import com.example.ehr.UserModel;
 public class InsuranceActivity extends AppCompatActivity {
     NavController navController;
     UserModel user;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class InsuranceActivity extends AppCompatActivity {
 
         user = (UserModel) getIntent().getSerializableExtra("user");
 
-        Toolbar toolbar = findViewById(R.id.insurance_toolbar);
+        toolbar = findViewById(R.id.insurance_toolbar);
         setSupportActionBar(toolbar);
         toolbar.inflateMenu(R.menu.insurance_menu);
 
@@ -58,6 +59,20 @@ public class InsuranceActivity extends AppCompatActivity {
         Fragment currentFragment = navHostFragment.getChildFragmentManager().getFragments().get(0);
 
         switch (id){
+            case R.id.insurance_menu_home:
+                if (currentFragment instanceof InsuranceFragment) {
+                   break;
+                } else if (currentFragment instanceof InsuranceProfileFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceProfileFragment_to_insuranceFragment, bundle);
+                } else if (currentFragment instanceof InsuranceCoverageFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceCoverageFragment_to_insuranceFragment, bundle);
+                } else if (currentFragment instanceof InsuranceSubscribersFragment) {
+                    Navigation.findNavController(findViewById(R.id.insurance_nav_host))
+                            .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceFragment, bundle);
+                }
+                break;
             case R.id.insurance_menu_profile:
                 if (currentFragment instanceof InsuranceFragment) {
                     Navigation.findNavController(findViewById(R.id.insurance_nav_host)).
@@ -71,6 +86,7 @@ public class InsuranceActivity extends AppCompatActivity {
                     Navigation.findNavController(findViewById(R.id.insurance_nav_host))
                             .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceProfileFragment, bundle);
                 }
+                toolbar.setNavigationIcon(null);
                 break;
             case R.id.insurance_menu_coverage:
                 if (currentFragment instanceof InsuranceFragment) {
@@ -85,6 +101,7 @@ public class InsuranceActivity extends AppCompatActivity {
                     Navigation.findNavController(findViewById(R.id.insurance_nav_host))
                             .navigate(R.id.action_insuranceSubscribersFragment_to_insuranceCoverageFragment, bundle);
                 }
+                toolbar.setNavigationIcon(null);
                 break;
             case R.id.insurance_menu_subscribers:
                 if (currentFragment instanceof InsuranceFragment) {
@@ -99,6 +116,7 @@ public class InsuranceActivity extends AppCompatActivity {
                 } else if (currentFragment instanceof InsuranceSubscribersFragment) {
                     break;
                 }
+                toolbar.setNavigationIcon(null);
                 break;
             case R.id.insurance_menu_logout:
                 Intent intent = new Intent(this, LoginActivity.class);

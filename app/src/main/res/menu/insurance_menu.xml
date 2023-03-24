@@ -9,6 +9,11 @@
         android:title="">
         <menu>
             <item
+                android:id="@+id/insurance_menu_home"
+                android:actionLayout="@layout/activity_insurance"
+                android:title="@string/insurance_menu_home" />
+
+            <item
                 android:id="@+id/insurance_menu_profile"
                 android:actionLayout="@layout/activity_insurance"
                 android:title="@string/insurance_menu_profile" />

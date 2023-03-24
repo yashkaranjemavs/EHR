@@ -38,6 +38,11 @@
             app:destination="@id/insuranceCoverageFragment"
             app:popUpTo="@id/insuranceProfileFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceProfileFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment"
+            app:popUpTo="@id/insuranceFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/insuranceCoverageFragment"
@@ -54,6 +59,11 @@
             app:destination="@id/insuranceProfileFragment"
             app:popUpTo="@id/insuranceCoverageFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceCoverageFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment"
+            app:popUpTo="@id/insuranceFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/insuranceSubscribersFragment"
@@ -69,6 +79,11 @@
             android:id="@+id/action_insuranceSubscribersFragment_to_insuranceCoverageFragment"
             app:destination="@id/insuranceCoverageFragment"
             app:popUpTo="@id/insuranceSubscribersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceSubscribersFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment"
+            app:popUpTo="@id/insuranceFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>
