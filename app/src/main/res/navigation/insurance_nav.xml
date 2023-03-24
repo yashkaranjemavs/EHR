@@ -42,8 +42,8 @@
     <fragment
         android:id="@+id/insuranceCoverageFragment"
         android:name="com.example.ehr.insurance.InsuranceCoverageFragment"
-        android:label="Insurance Coverage"
-        tools:layout="@layout/fragment_insurance_coverage" >
+        android:label="Coverage"
+        tools:layout="@layout/fragment_insurance_coverage">
         <action
             android:id="@+id/action_insuranceCoverageFragment_to_insuranceSubscribersFragment"
             app:destination="@id/insuranceSubscribersFragment"
@@ -58,8 +58,8 @@
     <fragment
         android:id="@+id/insuranceSubscribersFragment"
         android:name="com.example.ehr.insurance.InsuranceSubscribersFragment"
-        android:label="Insurance Subscribers"
-        tools:layout="@layout/fragment_insurance_subscribers" >
+        android:label="Subscribers"
+        tools:layout="@layout/fragment_insurance_subscribers">
         <action
             android:id="@+id/action_insuranceSubscribersFragment_to_insuranceProfileFragment"
             app:destination="@id/insuranceProfileFragment"
