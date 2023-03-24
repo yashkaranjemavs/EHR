@@ -2,6 +2,7 @@ package com.example.ehr.insurance.worker;
 
 import android.os.AsyncTask;
 
+import com.example.ehr.BaseUrl;
 import com.example.ehr.insurance.InsuranceCoverageFragment;
 import com.example.ehr.insurance.InsuranceSubscribersFragment;
 import com.example.ehr.insurance.model.InsuranceCoverageModel;
@@ -28,7 +29,7 @@ public class BackgroundInsuranceCoverageWorker extends AsyncTask<Object, Void, S
     @Override
     protected String doInBackground(Object... params) {
         actionType = (String) params[0];
-        String baseUrl = "https://kxp9181.uta.cloud";
+        String baseUrl = BaseUrl.baseUrl;
 
         try {
             if (actionType.equals("get_coverages")) {

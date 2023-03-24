@@ -2,6 +2,7 @@ package com.example.ehr.insurance.worker;
 
 import android.os.AsyncTask;
 
+import com.example.ehr.BaseUrl;
 import com.example.ehr.insurance.InsuranceProfileFragment;
 import com.example.ehr.insurance.model.InsuranceProfileModel;
 
@@ -26,7 +27,7 @@ public class BackgroundInsuranceProfileWorker extends AsyncTask<Object, Void, St
     @Override
     protected String doInBackground(Object... params) {
         actionType = (String) params[0];
-        String baseUrl = "https://kxp9181.uta.cloud";
+        String baseUrl = BaseUrl.baseUrl;
 
         try {
             if (actionType.equals("get_profile")) {

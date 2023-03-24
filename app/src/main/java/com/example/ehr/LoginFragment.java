@@ -72,7 +72,6 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
                 backgroundWorker.execute("login", emailText, passwordText, userTypeText);
             }
         });
-
         return scrollView;
     }
 

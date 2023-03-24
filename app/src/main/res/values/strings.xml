@@ -23,6 +23,10 @@
     <string name="title_activity_patient">Patient</string>
     <string name="title_activity_pharmacy">Pharmacy</string>
     <string name="title_activity_provider">Provider</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <string name="insurance_menu_profile">Profile</string>
     <string name="insurance_menu_coverage">Coverage</string>
     <string name="insurance_menu_subscribers">Subscribers</string>
