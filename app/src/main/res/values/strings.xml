@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">EHR</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="new_patient">New Patient?</string>
+    <string name="register_here">Register here</string>
+    <string-array name="user_type_options">
+        <item>Select User</item>
+        <item>Admin</item>
+        <item>Patient</item>
+        <item>Provider</item>
+        <item>Laboratory</item>
+        <item>Pharmacy</item>
+        <item>Insurance Company</item>
+    </string-array>
+    <string name="send_reset_link">Send Reset Link</string>
+    <string name="sign_in">Sign In</string>
+    <string name="title_activity_admin">Admin</string>
+    <string name="title_activity_insurance">Insurance</string>
+    <string name="title_activity_laboratory">Laboratory</string>
+    <string name="title_activity_patient">Patient</string>
+    <string name="title_activity_pharmacy">Pharmacy</string>
+    <string name="title_activity_provider">Provider</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
