@@ -26,6 +26,7 @@
         android:textAlignment="center"
         android:textOff="All Medications"
         android:textSize="20dp"
+        android:background="#ffffff"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

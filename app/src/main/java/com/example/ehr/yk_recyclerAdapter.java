@@ -87,39 +87,52 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
     @Override
     public void onBindViewHolder(@NonNull yk_recyclerAdapter.MyViewHolder holder, int position) {
         String medicationid = null, status = null, patientFirstname = null, patientLastname = null, medications=null, patientid=null, providernotes=null, patientnotes=null, patientcontact=null, patientemailid=null;
-        try {
-            medicationid = (String) listOfRecords.get(position).get("medicationid");
-            status = (String) listOfRecords.get(position).get("status");
-            patientFirstname = (String) listOfRecords.get(position).get("patientFirstname");
-            patientLastname = (String) listOfRecords.get(position).get("patientLastname");
-            medications = (String) listOfRecords.get(position).get("medications");
-            patientid = (String) listOfRecords.get(position).get("patientid");
-            patientnotes = (String) listOfRecords.get(position).get("patientnotes");
-            providernotes = (String) listOfRecords.get(position).get("providernotes");
-            patientemailid = (String) listOfRecords.get(position).get("patientemailid");
-            patientcontact = (String) listOfRecords.get(position).get("patientcontact");
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
+        if(!listOfRecords.get(0).has("error")){
+            try {
+                medicationid = (String) listOfRecords.get(position).get("medicationid");
+                status = (String) listOfRecords.get(position).get("status");
+                patientFirstname = (String) listOfRecords.get(position).get("patientFirstname");
+                patientLastname = (String) listOfRecords.get(position).get("patientLastname");
+                medications = (String) listOfRecords.get(position).get("medications");
+                patientid = (String) listOfRecords.get(position).get("patientid");
+                patientnotes = (String) listOfRecords.get(position).get("patientnotes");
+                providernotes = (String) listOfRecords.get(position).get("providernotes");
+                patientemailid = (String) listOfRecords.get(position).get("patientemailid");
+                patientcontact = (String) listOfRecords.get(position).get("patientcontact");
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
 
-        holder.medicationid.setText(holder.medicationid.getText().toString().concat(medicationid));
-        holder.status.setText(holder.status.getText().toString().concat(status));
-        holder.patientName.setText(holder.patientName.getText().toString().concat(patientFirstname.concat(" ").concat(patientLastname)));
-        if (status.equalsIgnoreCase(COMPLETED)){
-            holder.toggleButtonStatus.setText(COMPLETED);
-            holder.toggleButtonStatus.setTextColor(Color.parseColor("#00ff00"));
-        }else if(status.equalsIgnoreCase(PENDING)) {
-            holder.toggleButtonStatus.setText(PENDING);
-            holder.toggleButtonStatus.setTextColor(Color.parseColor("#ff0000"));
+            holder.medicationid.setText(holder.medicationid.getText().toString().concat(medicationid));
+            holder.status.setText(holder.status.getText().toString().concat(status));
+            holder.patientName.setText(holder.patientName.getText().toString().concat(patientFirstname.concat(" ").concat(patientLastname)));
+            if (status.equalsIgnoreCase(COMPLETED)){
+                holder.toggleButtonStatus.setText(COMPLETED);
+                holder.toggleButtonStatus.setTextColor(Color.parseColor("#00ff00"));
+            }else if(status.equalsIgnoreCase(PENDING)) {
+                holder.toggleButtonStatus.setText(PENDING);
+                holder.toggleButtonStatus.setTextColor(Color.parseColor("#ff0000"));
+            }else{
+                holder.toggleButtonStatus.setText("Invalid Status");
+            }
+            holder.medications.setText(holder.medications.getText().toString().concat(medications));
+            holder.patientid.setText(holder.patientid.getText().toString().concat(patientid));
+            holder.patientNotes.setText(holder.patientNotes.getText().toString().concat(patientnotes));
+            holder.providerNotes.setText(holder.providerNotes.getText().toString().concat(providernotes));
+            holder.patientEmailid.setText(holder.patientEmailid.getText().toString().concat(patientemailid));
+            holder.patientContact.setText(holder.patientContact.getText().toString().concat(patientcontact));
         }else{
-            holder.toggleButtonStatus.setText("Invalid Status");
+            holder.medicationid.setText("");
+            holder.status.setText("");
+            holder.patientName.setText("");
+            holder.toggleButtonStatus.setText("");
+            holder.medications.setText("");
+            holder.patientid.setText("");
+            holder.patientNotes.setText("");
+            holder.providerNotes.setText("");
+            holder.patientEmailid.setText("");
+            holder.patientContact.setText("");
         }
-        holder.medications.setText(holder.medications.getText().toString().concat(medications));
-        holder.patientid.setText(holder.patientid.getText().toString().concat(patientid));
-        holder.patientNotes.setText(holder.patientNotes.getText().toString().concat(patientnotes));
-        holder.providerNotes.setText(holder.providerNotes.getText().toString().concat(providernotes));
-        holder.patientEmailid.setText(holder.patientEmailid.getText().toString().concat(patientemailid));
-        holder.patientContact.setText(holder.patientContact.getText().toString().concat(patientcontact));
     }
 
     @Override
