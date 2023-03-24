@@ -50,7 +50,9 @@ public class ps_LaboratoryTestsFragment extends Fragment
 
     public void onLoadSuccess(List<ps_LaboratoryTestsModel> testsModels) {
 
-        laboratoryTestRecyclerView.setAdapter(new ps_LaboratoryTestsAdapter(testsModels));
+        laboratoryTestRecyclerView.setAdapter(new ps_LaboratoryTestsAdapter(testsModels,ps_LaboratoryTestsFragment.this));
+
+        //insuranceClaimRecyclerView.setAdapter(new InsuranceClaimAdapter(insuranceClaim, InsuranceFragment.this));
     }
 
     public void onLoadFailed(String errorMessage) {

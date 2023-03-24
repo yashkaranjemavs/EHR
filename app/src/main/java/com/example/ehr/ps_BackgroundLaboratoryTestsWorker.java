@@ -117,8 +117,9 @@ String actionType;
                     String testname = testfields.getString("testname");
                     String firstname = testfields.getString("firstname");
                     String lastname = testfields.getString("lastname");
+                    String testreport = testfields.getString("testreport");
 
-                    ps_LaboratoryTestsModel test = new ps_LaboratoryTestsModel(testname, firstname, lastname);
+                    ps_LaboratoryTestsModel test = new ps_LaboratoryTestsModel(testname, firstname, lastname, testreport);
                     testsList.add(test);
                 }
 
