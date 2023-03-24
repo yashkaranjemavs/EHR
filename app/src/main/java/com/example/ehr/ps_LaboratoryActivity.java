@@ -99,5 +99,9 @@ public class ps_LaboratoryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public UserModel getUser() {
+        return user;
+    }
+
 
 }
