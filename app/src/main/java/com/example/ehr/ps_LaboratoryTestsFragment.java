@@ -14,14 +14,11 @@ import java.util.List;
 
 public class ps_LaboratoryTestsFragment extends Fragment
 {
-
     UserModel user;
     RecyclerView laboratoryTestRecyclerView;
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -35,24 +32,22 @@ public class ps_LaboratoryTestsFragment extends Fragment
         laboratoryTestRecyclerView = view.findViewById(R.id.laboratory_test_recyclerview);
         laboratoryTestRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+
         if (getArguments() == null) {
             return view;
         }
         user = ((ps_LaboratoryActivity) requireActivity()).getUser();
         String id = user.getUserid();
 
-        ps_BackgroundLaboratoryTestsWorker backgroundWorker = new ps_BackgroundLaboratoryTestsWorker(
+        ps_BackgroundLaboratoryAllTestsWorker backgroundWorker = new ps_BackgroundLaboratoryAllTestsWorker(
                 ps_LaboratoryTestsFragment.this);
         backgroundWorker.execute("get_tests", id);
 
         return view;
     }
 
-    public void onLoadSuccess(List<ps_LaboratoryTestsModel> testsModels) {
-
+    public void onLoadSuccess(List<ps_LaboratoryAllTestsModel> testsModels) {
         laboratoryTestRecyclerView.setAdapter(new ps_LaboratoryTestsAdapter(testsModels,ps_LaboratoryTestsFragment.this));
-
-        //insuranceClaimRecyclerView.setAdapter(new InsuranceClaimAdapter(insuranceClaim, InsuranceFragment.this));
     }
 
     public void onLoadFailed(String errorMessage) {

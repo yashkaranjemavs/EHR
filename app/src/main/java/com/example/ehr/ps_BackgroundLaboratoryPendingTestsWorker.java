@@ -1,0 +1,138 @@
+package com.example.ehr;
+
+import android.os.AsyncTask;
+
+import com.example.ehr.ps_LaboratoryFragment;
+import com.example.ehr.ps_LaboratoryPendingTestsModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Void, String> {
+    ps_LaboratoryFragment testFragment;
+    String actionType;
+
+    public ps_BackgroundLaboratoryPendingTestsWorker(ps_LaboratoryFragment testFragment) {
+        this.testFragment = testFragment;
+    }
+
+    @Override
+    protected String doInBackground(Object... params) {
+        actionType = (String) params[0];
+        String baseUrl = "https://pxs9233.uta.cloud";
+
+        try {
+            //Viewing Laboratory Profile
+            if (actionType.equals("get_test")) {
+                String urlString = baseUrl + "/ps_getLaboratoryTests1.php";
+                URL url = new URL(urlString);
+
+                String id = (String) params[1];
+                String postData = URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+
+                return handlePostRequest(url, postData);
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public static String handlePostRequest(URL url, String postData) {
+        try {
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+
+            OutputStream outputStream = httpURLConnection.getOutputStream();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,
+                    StandardCharsets.UTF_8));
+
+
+            bufferedWriter.write(postData);
+            bufferedWriter.close();
+            outputStream.close();
+
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,
+                    StandardCharsets.ISO_8859_1));
+
+            StringBuilder result = new StringBuilder();
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                result.append(line);
+            }
+            bufferedReader.close();
+            inputStream.close();
+            httpURLConnection.disconnect();
+
+            return result.toString();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    protected void onPreExecute() {
+    }
+
+    @Override
+    protected void onPostExecute(String resultString) {
+        handleResponse(resultString);
+    }
+
+
+    private void handleResponse(String resultString) {
+        try {
+            if (actionType.equals("get_test")) {
+                JSONArray resultArr = new JSONArray(resultString);
+
+                List<ps_LaboratoryPendingTestsModel> testList = new ArrayList<>();
+
+                for (int i = 0; i < resultArr.length(); i++) {
+                    JSONObject testfields = (JSONObject) resultArr.get(i);
+
+                    String testname = testfields.getString("testname");
+                    String firstname = testfields.getString("firstname");
+                    String lastname = testfields.getString("lastname");
+                    String testreport = testfields.getString("testreport");
+                    String tdate = testfields.getString("tdate");
+
+                    ps_LaboratoryPendingTestsModel test = new ps_LaboratoryPendingTestsModel(testname, firstname, lastname, testreport,tdate);
+                    testList.add(test);
+                }
+
+                this.testFragment.onLoadSuccess(testList);
+            }
+        } catch (JSONException e) {
+
+            this.testFragment.onLoadFailed("Something went wrong");
+        }
+
+    }
+}

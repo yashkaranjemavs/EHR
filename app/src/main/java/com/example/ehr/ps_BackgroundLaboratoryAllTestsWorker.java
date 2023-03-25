@@ -2,6 +2,9 @@ package com.example.ehr;
 
 import android.os.AsyncTask;
 
+import com.example.ehr.ps_LaboratoryTestsFragment;
+import com.example.ehr.ps_LaboratoryAllTestsModel;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +25,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ps_BackgroundLaboratoryTestsWorker  extends AsyncTask<Object, Void, String> {
+public class ps_BackgroundLaboratoryAllTestsWorker extends AsyncTask<Object, Void, String> {
 ps_LaboratoryTestsFragment testsFragment;
 String actionType;
 
-    public ps_BackgroundLaboratoryTestsWorker(ps_LaboratoryTestsFragment testsFragment) {
+    public ps_BackgroundLaboratoryAllTestsWorker(ps_LaboratoryTestsFragment testsFragment) {
         this.testsFragment = testsFragment;
     }
 
@@ -109,17 +112,19 @@ String actionType;
             if (actionType.equals("get_tests")) {
                 JSONArray resultArr = new JSONArray(resultString);
 
-                List<ps_LaboratoryTestsModel> testsList = new ArrayList<>();
+                List<ps_LaboratoryAllTestsModel> testsList = new ArrayList<>();
 
                 for (int i = 0; i < resultArr.length(); i++) {
-                    JSONObject testfields = (JSONObject) resultArr.get(i);
+                    JSONObject alltestfields = (JSONObject) resultArr.get(i);
 
-                    String testname = testfields.getString("testname");
-                    String firstname = testfields.getString("firstname");
-                    String lastname = testfields.getString("lastname");
-                    String testreport = testfields.getString("testreport");
+                    String testname = alltestfields.getString("testname");
+                    String firstname = alltestfields.getString("firstname");
+                    String lastname = alltestfields.getString("lastname");
+                    String testreport = alltestfields.getString("testreport");
+                    String tdate = alltestfields.getString("tdate");
+                    String status = alltestfields.getString("status");
 
-                    ps_LaboratoryTestsModel test = new ps_LaboratoryTestsModel(testname, firstname, lastname, testreport);
+                    ps_LaboratoryAllTestsModel test = new ps_LaboratoryAllTestsModel(testname, firstname, lastname, testreport,tdate,status);
                     testsList.add(test);
                 }
 

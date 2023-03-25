@@ -28,4 +28,5 @@
         app:layout_constraintTop_toBottomOf="@+id/laboratory_toolbar"
         app:navGraph="@navigation/laboratory_nav" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>

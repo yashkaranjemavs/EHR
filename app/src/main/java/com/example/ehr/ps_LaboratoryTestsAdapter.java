@@ -12,10 +12,10 @@ import java.util.List;
 public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_LaboratoryTestsViewHolder> {
 
 
-    List<ps_LaboratoryTestsModel> testsList;
+    List<ps_LaboratoryAllTestsModel> testsList;
     ps_LaboratoryTestsFragment testsFragment;
 
-    public ps_LaboratoryTestsAdapter(List<ps_LaboratoryTestsModel> testsList, ps_LaboratoryTestsFragment testsFragment) {
+    public ps_LaboratoryTestsAdapter(List<ps_LaboratoryAllTestsModel> testsList, ps_LaboratoryTestsFragment testsFragment) {
         this.testsList = testsList;
         this.testsFragment = testsFragment;
     }
@@ -23,7 +23,7 @@ public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_Laborator
 
     @Override
     public int getItemViewType(final int position) {
-        return R.layout.ps_laboratory_test_view;
+        return R.layout.ps_laboratory_all_test_view;
     }
 
 
@@ -36,16 +36,20 @@ public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_Laborator
 
     @Override
     public void onBindViewHolder(@NonNull ps_LaboratoryTestsViewHolder holder, int position) {
-        ps_LaboratoryTestsModel testsModel = testsList.get(position);
+        ps_LaboratoryAllTestsModel testsModel = testsList.get(position);
         String testname = testsModel.getTestname();
         String firstname = testsModel.getFirstname();
         String lastname = testsModel.getLastname();
         String testreport = testsModel.getTestreport();
+        String tdate = testsModel.getTestdate();
+        String status = testsModel.getStatus();
 
         holder.testname.setText(testname);
         holder.firstname.setText(firstname);
         holder.lastname.setText(lastname);
         holder.testreport.setText(testreport);
+        holder.tdate.setText(tdate);
+        holder.status.setText(status);
 
     }
     @Override

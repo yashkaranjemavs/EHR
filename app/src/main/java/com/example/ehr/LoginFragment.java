@@ -17,8 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 
-
-
 public class LoginFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     TextView email;
     TextView password;

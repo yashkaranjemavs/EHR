@@ -2,6 +2,9 @@ package com.example.ehr;
 
 import android.os.AsyncTask;
 
+import com.example.ehr.ps_LaboratoryProfileFragment;
+import com.example.ehr.ps_LaboratoryUserModel;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +27,7 @@ public class ps_BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void
     String actionType;
     ps_LaboratoryUserModel lab;
 
-    ps_BackgroundLaboratoryProfileWorker(ps_LaboratoryProfileFragment profileFragment) {
+    public ps_BackgroundLaboratoryProfileWorker(ps_LaboratoryProfileFragment profileFragment) {
         this.profileFragment = profileFragment;
     }
 

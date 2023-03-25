@@ -2,17 +2,21 @@ package com.example.ehr;
 
 import java.io.Serializable;
 
-public class ps_LaboratoryTestsModel  implements Serializable {
+public class ps_LaboratoryAllTestsModel implements Serializable {
     String testname;
     String firstname;
     String lastname;
     String testreport;
+    String tdate;
+    String status;
 
-    public ps_LaboratoryTestsModel(String testname, String firstname, String lastname, String testreport) {
+    public ps_LaboratoryAllTestsModel(String testname, String firstname, String lastname, String testreport, String tdate,String status) {
         this.testname = testname;
         this.firstname = firstname;
         this.lastname = lastname;
         this.testreport= testreport;
+        this.tdate= tdate;
+        this.status= status;
     }
 
     public String getTestname() {
@@ -45,5 +49,20 @@ public class ps_LaboratoryTestsModel  implements Serializable {
 
     public void setTestreport(String testreport) {
         this.testreport = testreport;
+    }
+
+    public String getTestdate() {
+        return tdate;
+    }
+
+    public void setTestdate(String tdate) {
+        this.tdate = tdate;
+    }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
