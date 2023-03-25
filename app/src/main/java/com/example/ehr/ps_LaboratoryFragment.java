@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -47,9 +48,26 @@ public class ps_LaboratoryFragment extends Fragment {
         laboratoryRecyclerview.setAdapter(new ps_LaboratoryAdapter(testModels,ps_LaboratoryFragment.this));
     }
 
-    public void onLoadFailed(String errorMessage) {
-        System.out.println("Failed to Load");
+    public void onAddtestClicked(ps_LaboratoryPendingTestsModel testsModel) {
+
+        ps_BackgroundLaboratoryPendingTestsWorker backgroundWorker = new ps_BackgroundLaboratoryPendingTestsWorker(ps_LaboratoryFragment.this);
+        backgroundWorker.execute("add_test", testsModel);
     }
 
+    public void onUpdate(String errorMessage) {
+        if (errorMessage.equals("")) {
+            Toast.makeText(getActivity(), "Test Added successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Failed to add test report", Toast.LENGTH_SHORT).show();
+        }
+
+        ps_BackgroundLaboratoryPendingTestsWorker backgroundWorker = new ps_BackgroundLaboratoryPendingTestsWorker(ps_LaboratoryFragment.this);
+        backgroundWorker.execute("get_test", user.getUserid());
+    }
+
+
+    public void onFailed(String errorMessage) {
+        Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+    }
 
 }

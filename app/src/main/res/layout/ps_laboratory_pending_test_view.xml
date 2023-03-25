@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -30,6 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:paddingStart="0dp"
                     android:paddingEnd="6dp"
                     android:text="Test Name"
@@ -56,6 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:paddingStart="0dp"
                     android:paddingEnd="6dp"
                     android:text="First Name"
@@ -83,6 +85,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:paddingStart="0dp"
                     android:paddingEnd="6dp"
                     android:text="Last Name"
@@ -116,13 +119,14 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/laboratory_test_report"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="6dp"
                     android:paddingEnd="0dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -154,9 +158,8 @@
             </LinearLayout>
 
 
-
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/laboratory_test_view_button"
+                android:id="@+id/laboratory_pending_test_view_button"
                 android:layout_width="114dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="20dp"

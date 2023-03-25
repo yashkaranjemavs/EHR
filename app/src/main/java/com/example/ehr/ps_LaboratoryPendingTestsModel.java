@@ -8,15 +8,22 @@ public class ps_LaboratoryPendingTestsModel implements Serializable {
     String firstname;
     String lastname;
     String testreport;
-    String tdate;
+    String laboratoryid;
+    String visitid;
+
+    //String tdate;
 
 
-    public ps_LaboratoryPendingTestsModel(String testname, String firstname, String lastname, String testreport, String tdate) {
+    public ps_LaboratoryPendingTestsModel(String testname, String firstname, String lastname, String testreport, String laboratoryid, String visitid) {
         this.testname = testname;
         this.firstname = firstname;
         this.lastname = lastname;
         this.testreport= testreport;
-        this.tdate= tdate;
+        this.laboratoryid = laboratoryid;
+        this.visitid = visitid;
+
+
+        //this.tdate= tdate;
 
     }
 
@@ -52,13 +59,27 @@ public class ps_LaboratoryPendingTestsModel implements Serializable {
         this.testreport = testreport;
     }
 
-    public String getTestdate() {
+   /* public String getTestdate() {
         return tdate;
     }
 
     public void setTestdate(String tdate) {
         this.tdate = tdate;
+    }*/
+
+    public String getLaboratoryid() {
+        return laboratoryid;
     }
 
+    public void setLaboratoryid(String laboratoryid) {
+        this.laboratoryid = laboratoryid;
+    }
 
+    public String getVisitid() {
+        return visitid;
+    }
+
+    public void setVisitid(String visitid) {
+        this.visitid = visitid;
+    }
 }

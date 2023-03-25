@@ -28,6 +28,7 @@ import java.util.List;
 public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Void, String> {
     ps_LaboratoryFragment testFragment;
     String actionType;
+    ps_LaboratoryPendingTestsModel testsModel;
 
     public ps_BackgroundLaboratoryPendingTestsWorker(ps_LaboratoryFragment testFragment) {
         this.testFragment = testFragment;
@@ -46,6 +47,22 @@ public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object,
 
                 String id = (String) params[1];
                 String postData = URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+
+                return handlePostRequest(url, postData);
+            }
+
+            else if (actionType.equals("add_test")) {
+                String urlString = baseUrl + "/ps_updateLaboratoryTests.php";
+                URL url = new URL(urlString);
+
+                testsModel = (ps_LaboratoryPendingTestsModel) params[1];
+                String testreport = testsModel.getTestreport();
+                String visitid = testsModel.getVisitid();
+                String laboratoryid = testsModel.getLaboratoryid();
+
+                String postData = URLEncoder.encode("testreport", "UTF-8") + "=" + URLEncoder.encode(testreport, "UTF-8") + "&" +
+              URLEncoder.encode("visitid", "UTF-8") + "=" + URLEncoder.encode(visitid, "UTF-8") + "&" +
+                        URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(laboratoryid, "UTF-8");
 
                 return handlePostRequest(url, postData);
             }
@@ -121,17 +138,28 @@ public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object,
                     String firstname = testfields.getString("firstname");
                     String lastname = testfields.getString("lastname");
                     String testreport = testfields.getString("testreport");
-                    String tdate = testfields.getString("tdate");
+                    String laboratoryid = testfields.getString("laboratoryid");
+                    String visitid = testfields.getString("visitid");
 
-                    ps_LaboratoryPendingTestsModel test = new ps_LaboratoryPendingTestsModel(testname, firstname, lastname, testreport,tdate);
+                    ps_LaboratoryPendingTestsModel test = new ps_LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid);
                     testList.add(test);
                 }
 
                 this.testFragment.onLoadSuccess(testList);
             }
+                else if (actionType.equals("add_test")) {
+                    JSONObject resultObj = new JSONObject(resultString);
+
+                    if (resultObj.has("error")) {
+                        this.testFragment.onUpdate(resultObj.getString("error"));
+                        return;
+                    }
+
+                    this.testFragment.onUpdate("");
+            }
         } catch (JSONException e) {
 
-            this.testFragment.onLoadFailed("Something went wrong");
+            this.testFragment.onFailed("Something went wrong");
         }
 
     }

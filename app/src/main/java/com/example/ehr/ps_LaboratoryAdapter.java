@@ -3,6 +3,8 @@ package com.example.ehr;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,13 +44,29 @@ public class ps_LaboratoryAdapter extends RecyclerView.Adapter<ps_LaboratoryView
         String firstname = testModel.getFirstname();
         String lastname = testModel.getLastname();
         String testreport = testModel.getTestreport();
-        String tdate = testModel.getTestdate();
+        //String tdate = testModel.getTestdate();
 
         holder.testname.setText(testname);
         holder.firstname.setText(firstname);
         holder.lastname.setText(lastname);
         holder.testreport.setText(testreport);
-        holder.tdate.setText(tdate);
+        //holder.tdate.setText(tdate);
+        holder.Addtest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View editLayout = LayoutInflater.from(view.getContext()).inflate(R.layout.ps_laboratory_pending_test_view,null);
+                EditText Testreport = editLayout.findViewById(R.id.laboratory_test_report);
+                Testreport.setText(testModel.getTestreport());
+
+                String testreport = Testreport.getText().toString();
+                String visitid = testModel.getVisitid().toString();
+                String laboratoryid = testModel.getLaboratoryid().toString();
+
+                testModel.setTestreport(testreport);
+                testFragment.onAddtestClicked(testModel);
+
+            }
+        });
 
     }
     @Override
