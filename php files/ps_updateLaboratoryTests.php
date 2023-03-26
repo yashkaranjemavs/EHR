@@ -4,11 +4,13 @@
 	$visitid = $_POST["visitid"];
     $laboratoryid = $_POST["laboratoryid"];
 	$testreport = $_POST["testreport"];
+	$tdate = date('Y-m-d');
 
 	header("Content-Type: application/json");
 	
 	$sql_query = "UPDATE labtests SET 
-	testreport ='$testreport', 
+	testreport ='$testreport',
+	tdate='$tdate',
 	status='Complete'
 	WHERE visitid='$visitid' and laboratoryid='$laboratoryid';";
 	

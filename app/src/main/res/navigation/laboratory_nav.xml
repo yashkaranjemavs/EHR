@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/laboratoryFragment"
         android:name="com.example.ehr.ps_LaboratoryFragment"
-        android:label="EHR"
+        android:label="EHR Laboratory"
         tools:layout="@layout/ps_fragment_laboratory" >
         <action
             android:id="@+id/action_laboratoryFragment_to_laboratoryProfileFragment"
