@@ -2,9 +2,6 @@ package com.example.ehr;
 
 import android.os.AsyncTask;
 
-import com.example.ehr.ps_LaboratoryTestsFragment;
-import com.example.ehr.ps_LaboratoryAllTestsModel;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,12 +22,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ps_BackgroundLaboratoryAllTestsWorker extends AsyncTask<Object, Void, String> {
-ps_LaboratoryTestsFragment testsFragment;
-String actionType;
+public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Void, String> {
+    LaboratoryFragment testFragment;
+    String actionType;
+    LaboratoryPendingTestsModel testsModel;
 
-    public ps_BackgroundLaboratoryAllTestsWorker(ps_LaboratoryTestsFragment testsFragment) {
-        this.testsFragment = testsFragment;
+    public BackgroundLaboratoryPendingTestsWorker(LaboratoryFragment testFragment) {
+        this.testFragment = testFragment;
     }
 
     @Override
@@ -40,12 +38,30 @@ String actionType;
 
         try {
             //Viewing Laboratory Profile
-            if (actionType.equals("get_tests")) {
-                String urlString = baseUrl + "/ps_getLaboratoryAllTests.php";
+            if (actionType.equals("get_test")) {
+                String urlString = baseUrl + "/ps_getLaboratoryPendingTests.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
                 String postData = URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+
+                return handlePostRequest(url, postData);
+            }
+
+            else if (actionType.equals("add_test")) {
+                String urlString = baseUrl + "/ps_updateLaboratoryTests.php";
+                URL url = new URL(urlString);
+
+                testsModel = (LaboratoryPendingTestsModel) params[1];
+                String testreport = testsModel.getTestreport();
+                String visitid = testsModel.getVisitid();
+                String testid = testsModel.getTestid();
+                String laboratoryid = testsModel.getLaboratoryid();
+
+                String postData = URLEncoder.encode("testreport", "UTF-8") + "=" + URLEncoder.encode(testreport, "UTF-8") + "&" +
+              URLEncoder.encode("visitid", "UTF-8") + "=" + URLEncoder.encode(visitid, "UTF-8") + "&" +
+              URLEncoder.encode("testid", "UTF-8") + "=" + URLEncoder.encode(testid, "UTF-8") + "&" +
+                        URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(laboratoryid, "UTF-8");
 
                 return handlePostRequest(url, postData);
             }
@@ -97,7 +113,7 @@ String actionType;
         return null;
     }
 
-   @Override
+    @Override
     protected void onPreExecute() {
     }
 
@@ -109,32 +125,42 @@ String actionType;
 
     private void handleResponse(String resultString) {
         try {
-            if (actionType.equals("get_tests")) {
+            if (actionType.equals("get_test")) {
                 JSONArray resultArr = new JSONArray(resultString);
 
-                List<ps_LaboratoryAllTestsModel> testsList = new ArrayList<>();
+                List<LaboratoryPendingTestsModel> testList = new ArrayList<>();
 
                 for (int i = 0; i < resultArr.length(); i++) {
-                    JSONObject alltestfields = (JSONObject) resultArr.get(i);
+                    JSONObject testfields = (JSONObject) resultArr.get(i);
 
-                    String testname = alltestfields.getString("testname");
-                    String testid = alltestfields.getString("testid");
-                    String firstname = alltestfields.getString("firstname");
-                    String lastname = alltestfields.getString("lastname");
-                    String testreport = alltestfields.getString("testreport");
-                    String tdate = alltestfields.getString("tdate");
-                    String status = alltestfields.getString("status");
+                    String testname = testfields.getString("testname");
+                    String firstname = testfields.getString("firstname");
+                    String lastname = testfields.getString("lastname");
+                    String testreport = testfields.getString("testreport");
+                    String laboratoryid = testfields.getString("laboratoryid");
+                    String visitid = testfields.getString("visitid");
+                    String testid = testfields.getString("testid");
 
-                    ps_LaboratoryAllTestsModel test = new ps_LaboratoryAllTestsModel(testname, testid, firstname, lastname, testreport,tdate,status);
-                    testsList.add(test);
+                    LaboratoryPendingTestsModel test = new LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid, testid);
+                    testList.add(test);
                 }
 
-                this.testsFragment.onLoadSuccess(testsList);
+                this.testFragment.onLoadSuccess(testList);
+            }
+                else if (actionType.equals("add_test")) {
+                    JSONObject resultObj = new JSONObject(resultString);
+
+                    if (resultObj.has("error")) {
+                        this.testFragment.onUpdate(resultObj.getString("error"));
+                        return;
+                    }
+
+                    this.testFragment.onUpdate("");
             }
         } catch (JSONException e) {
 
-                this.testsFragment.onLoadFailed("Something went wrong");
-            }
-
+            this.testFragment.onFailed("Something went wrong");
         }
+
+    }
 }

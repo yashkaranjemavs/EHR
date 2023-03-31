@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_LaboratoryTestsViewHolder> {
+public class LaboratoryTestsAdapter extends RecyclerView.Adapter<LaboratoryTestsViewHolder> {
 
 
-    List<ps_LaboratoryAllTestsModel> testsList;
-    ps_LaboratoryTestsFragment testsFragment;
+    List<LaboratoryAllTestsModel> testsList;
+    LaboratoryTestsFragment testsFragment;
 
-    public ps_LaboratoryTestsAdapter(List<ps_LaboratoryAllTestsModel> testsList, ps_LaboratoryTestsFragment testsFragment) {
+    public LaboratoryTestsAdapter(List<LaboratoryAllTestsModel> testsList, LaboratoryTestsFragment testsFragment) {
         this.testsList = testsList;
         this.testsFragment = testsFragment;
     }
@@ -23,20 +23,20 @@ public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_Laborator
 
     @Override
     public int getItemViewType(final int position) {
-        return R.layout.ps_laboratory_all_test_view;
+        return R.layout.laboratory_all_test_view;
     }
 
 
     @NonNull
     @Override
-    public ps_LaboratoryTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaboratoryTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new ps_LaboratoryTestsViewHolder(view);
+        return new LaboratoryTestsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ps_LaboratoryTestsViewHolder holder, int position) {
-        ps_LaboratoryAllTestsModel testsModel = testsList.get(position);
+    public void onBindViewHolder(@NonNull LaboratoryTestsViewHolder holder, int position) {
+        LaboratoryAllTestsModel testsModel = testsList.get(position);
         String testname = testsModel.getTestname();
         String testid = testsModel.getTestid();
         String firstname = testsModel.getFirstname();

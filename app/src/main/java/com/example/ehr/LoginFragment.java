@@ -116,7 +116,7 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
                 startActivity(intent);
                 break;
             case "Laboratory":
-                intent = new Intent(getActivity(), ps_LaboratoryActivity.class);
+                intent = new Intent(getActivity(), LaboratoryActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("user", user);
                 startActivity(intent);

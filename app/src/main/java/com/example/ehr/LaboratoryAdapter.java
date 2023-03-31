@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 
-public class ps_LaboratoryAdapter extends RecyclerView.Adapter<ps_LaboratoryViewHolder> {
+public class LaboratoryAdapter extends RecyclerView.Adapter<LaboratoryViewHolder> {
 
 
-    List<ps_LaboratoryPendingTestsModel> testList;
-    ps_LaboratoryFragment testFragment;
+    List<LaboratoryPendingTestsModel> testList;
+    LaboratoryFragment testFragment;
 
-    public ps_LaboratoryAdapter(List<ps_LaboratoryPendingTestsModel> testList, ps_LaboratoryFragment testFragment) {
+    public LaboratoryAdapter(List<LaboratoryPendingTestsModel> testList, LaboratoryFragment testFragment) {
         this.testList = testList;
         this.testFragment = testFragment;
     }
@@ -26,20 +25,20 @@ public class ps_LaboratoryAdapter extends RecyclerView.Adapter<ps_LaboratoryView
 
     @Override
     public int getItemViewType(final int position) {
-        return R.layout.ps_laboratory_pending_test_view;
+        return R.layout.laboratory_pending_test_view;
     }
 
 
     @NonNull
     @Override
-    public ps_LaboratoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaboratoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new ps_LaboratoryViewHolder(view);
+        return new LaboratoryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ps_LaboratoryViewHolder holder, int position) {
-        ps_LaboratoryPendingTestsModel testModel = testList.get(position);
+    public void onBindViewHolder(@NonNull LaboratoryViewHolder holder, int position) {
+        LaboratoryPendingTestsModel testModel = testList.get(position);
         String testname = testModel.getTestname();
         String firstname = testModel.getFirstname();
         String lastname = testModel.getLastname();
@@ -55,7 +54,7 @@ public class ps_LaboratoryAdapter extends RecyclerView.Adapter<ps_LaboratoryView
         holder.Addtest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                View editLayout = LayoutInflater.from(view.getContext()).inflate(R.layout.ps_laboratory_pending_test_view,null);
+                View editLayout = LayoutInflater.from(view.getContext()).inflate(R.layout.laboratory_pending_test_view,null);
                 EditText Testreport = editLayout.findViewById(R.id.laboratory_test_report);
                 Testreport.setText(testModel.getTestreport());
 

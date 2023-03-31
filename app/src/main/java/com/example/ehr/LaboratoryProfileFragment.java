@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ps_LaboratoryProfileFragment extends Fragment {
+public class LaboratoryProfileFragment extends Fragment {
     UserModel user;
     ProgressBar progressBar;
     TextView errorTextView;
@@ -41,7 +41,7 @@ public class ps_LaboratoryProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ps_fragment_laboratory_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_laboratory_profile, container, false);
 
         errorTextView = view.findViewById(R.id.laboratory_profile_error);
         progressBar = view.findViewById(R.id.laboratory_profile_progress);
@@ -74,8 +74,8 @@ public class ps_LaboratoryProfileFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
 
 
-        ps_BackgroundLaboratoryProfileWorker backgroundWorker = new ps_BackgroundLaboratoryProfileWorker(
-                ps_LaboratoryProfileFragment.this);
+        BackgroundLaboratoryProfileWorker backgroundWorker = new BackgroundLaboratoryProfileWorker(
+                LaboratoryProfileFragment.this);
         backgroundWorker.execute("get_profile", id);
 
 
@@ -96,18 +96,18 @@ public class ps_LaboratoryProfileFragment extends Fragment {
             String state = stateTextView.getText().toString();
             String zip = zipTextView.getText().toString();
 
-            ps_LaboratoryUserModel lab = new ps_LaboratoryUserModel(
+            LaboratoryUserModel lab = new LaboratoryUserModel(
                     id, email, password, name, contact, address1, address2, city, state, zip);
 
-            ps_BackgroundLaboratoryProfileWorker backgroundWorker2 = new ps_BackgroundLaboratoryProfileWorker(
-                    ps_LaboratoryProfileFragment.this);
+            BackgroundLaboratoryProfileWorker backgroundWorker2 = new BackgroundLaboratoryProfileWorker(
+                    LaboratoryProfileFragment.this);
             backgroundWorker2.execute("update_profile", lab);
         });
 
         return view;
     }
 
-    public void onLoadSuccess(ps_LaboratoryUserModel lab) {
+    public void onLoadSuccess(LaboratoryUserModel lab) {
         updateErrorTextView.setText("");
         errorTextView.setText("");
         errorTextView.setVisibility(View.GONE);
@@ -132,7 +132,7 @@ public class ps_LaboratoryProfileFragment extends Fragment {
         errorTextView.setText(errorMessage);
     }
 
-    public void onUpdate(String errorMessage, ps_LaboratoryUserModel lab) {
+    public void onUpdate(String errorMessage, LaboratoryUserModel lab) {
         Toast.makeText(getActivity(), "Data saved successfully", Toast.LENGTH_SHORT).show();
         onLoadSuccess(lab);
         updateErrorTextView.setText(errorMessage);

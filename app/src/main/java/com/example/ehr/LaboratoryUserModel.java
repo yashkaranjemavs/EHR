@@ -2,7 +2,7 @@ package com.example.ehr;
 
 import java.io.Serializable;
 
-public class ps_LaboratoryUserModel implements Serializable {
+public class LaboratoryUserModel implements Serializable {
     private String laboratoryid;
     private String emailId;
     private String password;
@@ -14,7 +14,7 @@ public class ps_LaboratoryUserModel implements Serializable {
     private String state;
     private String zip;
 
-    public ps_LaboratoryUserModel(
+    public LaboratoryUserModel(
             String laboratoryid,
             String emailId,
             String password,

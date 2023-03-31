@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class ps_LaboratoryTestsFragment extends Fragment
+public class LaboratoryTestsFragment extends Fragment
 {
     UserModel user;
     RecyclerView laboratoryTestRecyclerView;
@@ -25,7 +25,7 @@ public class ps_LaboratoryTestsFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.ps_fragment_laboratory_tests, container, false);
+        View view = inflater.inflate(R.layout.fragment_laboratory_tests, container, false);
 
 
 
@@ -36,18 +36,18 @@ public class ps_LaboratoryTestsFragment extends Fragment
         if (getArguments() == null) {
             return view;
         }
-        user = ((ps_LaboratoryActivity) requireActivity()).getUser();
+        user = ((LaboratoryActivity) requireActivity()).getUser();
         String id = user.getUserid();
 
-        ps_BackgroundLaboratoryAllTestsWorker backgroundWorker = new ps_BackgroundLaboratoryAllTestsWorker(
-                ps_LaboratoryTestsFragment.this);
+        BackgroundLaboratoryAllTestsWorker backgroundWorker = new BackgroundLaboratoryAllTestsWorker(
+                LaboratoryTestsFragment.this);
         backgroundWorker.execute("get_tests", id);
 
         return view;
     }
 
-    public void onLoadSuccess(List<ps_LaboratoryAllTestsModel> testsModels) {
-        laboratoryTestRecyclerView.setAdapter(new ps_LaboratoryTestsAdapter(testsModels,ps_LaboratoryTestsFragment.this));
+    public void onLoadSuccess(List<LaboratoryAllTestsModel> testsModels) {
+        laboratoryTestRecyclerView.setAdapter(new LaboratoryTestsAdapter(testsModels, LaboratoryTestsFragment.this));
     }
 
     public void onLoadFailed(String errorMessage) {

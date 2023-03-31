@@ -14,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 
-public class ps_LaboratoryActivity extends AppCompatActivity {
+public class LaboratoryActivity extends AppCompatActivity {
     NavController navController;
     UserModel user;
 
@@ -27,7 +27,7 @@ public class ps_LaboratoryActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.laboratory_toolbar);
         setSupportActionBar(toolbar);
-        toolbar.inflateMenu(R.menu.ps_laboratory_menu);
+        toolbar.inflateMenu(R.menu.laboratory_menu);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.laboratory_nav_host);
         if (navHostFragment != null) {
@@ -38,11 +38,11 @@ public class ps_LaboratoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.ps_laboratory_menu, menu);
+        getMenuInflater().inflate(R.menu.laboratory_menu, menu);
         return true;
     }
 
-    private ps_LaboratoryActivity getActivity() {
+    private LaboratoryActivity getActivity() {
         return this;
     }
 
@@ -58,15 +58,15 @@ public class ps_LaboratoryActivity extends AppCompatActivity {
         switch (laboratoryid){
             case R.id.laboratory_menu_profile:
 //              Navigating from Laboratory Fragment or Laboratory Tests Fragment to Laboratory Profile Fragment Page
-                if (currentFragment instanceof ps_LaboratoryFragment)
+                if (currentFragment instanceof LaboratoryFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryFragment_to_laboratoryProfileFragment, bundle);
                 }
-                else if (currentFragment instanceof ps_LaboratoryProfileFragment)
+                else if (currentFragment instanceof LaboratoryProfileFragment)
                 {
                     break;
                 }
-                else if (currentFragment instanceof ps_LaboratoryTestsFragment)
+                else if (currentFragment instanceof LaboratoryTestsFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryTestsFragment_to_laboratoryProfileFragment, bundle);
                 }
@@ -74,15 +74,15 @@ public class ps_LaboratoryActivity extends AppCompatActivity {
 
 //              Navigating from Laboratory Fragment or Laboratory profile Fragment to Laboratory Tests Fragment Page
             case R.id.laboratory_menu_tests:
-                if (currentFragment instanceof ps_LaboratoryFragment)
+                if (currentFragment instanceof LaboratoryFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryFragment_to_laboratoryTestsFragment, bundle);
                 }
-                else if (currentFragment instanceof ps_LaboratoryProfileFragment)
+                else if (currentFragment instanceof LaboratoryProfileFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryProfileFragment_to_laboratoryTestsFragment, bundle);
                 }
-                else if (currentFragment instanceof ps_LaboratoryTestsFragment)
+                else if (currentFragment instanceof LaboratoryTestsFragment)
                 {
                     break;
                 }

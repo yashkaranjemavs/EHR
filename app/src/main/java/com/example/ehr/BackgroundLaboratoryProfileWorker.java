@@ -2,9 +2,6 @@ package com.example.ehr;
 
 import android.os.AsyncTask;
 
-import com.example.ehr.ps_LaboratoryProfileFragment;
-import com.example.ehr.ps_LaboratoryUserModel;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,12 +19,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class ps_BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, JSONObject> {
-    ps_LaboratoryProfileFragment profileFragment;
+public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, JSONObject> {
+    LaboratoryProfileFragment profileFragment;
     String actionType;
-    ps_LaboratoryUserModel lab;
+    LaboratoryUserModel lab;
 
-    public ps_BackgroundLaboratoryProfileWorker(ps_LaboratoryProfileFragment profileFragment) {
+    public BackgroundLaboratoryProfileWorker(LaboratoryProfileFragment profileFragment) {
         this.profileFragment = profileFragment;
     }
 
@@ -54,7 +51,7 @@ public class ps_BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void
                 String urlString = baseUrl + "/ps_updateLaboratoryProfile.php";
                 URL url = new URL(urlString);
 
-                lab = (ps_LaboratoryUserModel) params[1];
+                lab = (LaboratoryUserModel) params[1];
                 String id = lab.getId().trim();
                 String name = lab.getName().trim();
                 String email = lab.getEmailId().trim();
@@ -156,7 +153,7 @@ public class ps_BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void
                 String city = resultObj.getString("city");
                 String state = resultObj.getString("state");
                 String zip = resultObj.getString("zip");
-                ps_LaboratoryUserModel lab = new ps_LaboratoryUserModel(laboratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
+                LaboratoryUserModel lab = new LaboratoryUserModel(laboratoryid, emailId, password, name, contact, address1, address2, city, state, zip);
 
                 this.profileFragment.onLoadSuccess(lab);
             }
