@@ -44,13 +44,14 @@ public class ps_LaboratoryAdapter extends RecyclerView.Adapter<ps_LaboratoryView
         String firstname = testModel.getFirstname();
         String lastname = testModel.getLastname();
         String testreport = testModel.getTestreport();
-        //String tdate = testModel.getTestdate();
+        String testid = testModel.getTestid();
 
         holder.testname.setText(testname);
         holder.firstname.setText(firstname);
         holder.lastname.setText(lastname);
         holder.testreport.setText(testreport);
-        //holder.tdate.setText(tdate);
+        holder.testid.setText(testid);
+
         holder.Addtest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

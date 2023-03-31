@@ -7,11 +7,13 @@ public class ps_LaboratoryAllTestsModel implements Serializable {
     String firstname;
     String lastname;
     String testreport;
+    String testid;
     String tdate;
     String status;
 
-    public ps_LaboratoryAllTestsModel(String testname, String firstname, String lastname, String testreport, String tdate,String status) {
+    public ps_LaboratoryAllTestsModel(String testname, String testid, String firstname, String lastname, String testreport, String tdate,String status) {
         this.testname = testname;
+        this.testid = testid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.testreport= testreport;
@@ -64,5 +66,13 @@ public class ps_LaboratoryAllTestsModel implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTestid() {
+        return testid;
+    }
+
+    public void setTestid(String testid) {
+        this.testid = testid;
     }
 }

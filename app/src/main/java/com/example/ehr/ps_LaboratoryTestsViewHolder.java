@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class ps_LaboratoryTestsViewHolder extends  RecyclerView.ViewHolder {
-    TextView testname, firstname,lastname, testreport, tdate,status;
+    TextView testname, firstname,lastname, testid, testreport, tdate,status;
 
     public ps_LaboratoryTestsViewHolder(@NonNull View view) {
         super(view);
         testname = view.findViewById(R.id.laboratory_test_name);
+        testid = view.findViewById(R.id.laboratory_test_id);
         firstname = view.findViewById(R.id.laboratory_first_name);
         lastname = view.findViewById(R.id.laboratory_last_name);
         testreport = view.findViewById(R.id.laboratory_test_report);

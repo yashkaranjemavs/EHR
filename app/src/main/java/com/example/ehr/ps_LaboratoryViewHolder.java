@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class ps_LaboratoryViewHolder extends  RecyclerView.ViewHolder {
-    TextView testname, firstname,lastname;
+    TextView testname, firstname,lastname,testid;
     EditText testreport;
 
     AppCompatButton Addtest;
@@ -21,7 +21,7 @@ public class ps_LaboratoryViewHolder extends  RecyclerView.ViewHolder {
         firstname = view.findViewById(R.id.laboratory_first_name);
         lastname = view.findViewById(R.id.laboratory_last_name);
         testreport = view.findViewById(R.id.laboratory_test_report);
-        //tdate = view.findViewById(R.id.laboratory_test_date);
+        testid = view.findViewById(R.id.laboratory_test_id);
 
         Addtest =view.findViewById(R.id.laboratory_pending_test_view_button);
 

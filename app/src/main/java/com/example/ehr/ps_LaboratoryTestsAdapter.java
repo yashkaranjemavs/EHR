@@ -38,6 +38,7 @@ public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_Laborator
     public void onBindViewHolder(@NonNull ps_LaboratoryTestsViewHolder holder, int position) {
         ps_LaboratoryAllTestsModel testsModel = testsList.get(position);
         String testname = testsModel.getTestname();
+        String testid = testsModel.getTestid();
         String firstname = testsModel.getFirstname();
         String lastname = testsModel.getLastname();
         String testreport = testsModel.getTestreport();
@@ -45,6 +46,7 @@ public class ps_LaboratoryTestsAdapter extends RecyclerView.Adapter<ps_Laborator
         String status = testsModel.getStatus();
 
         holder.testname.setText(testname);
+        holder.testid.setText(testid);
         holder.firstname.setText(firstname);
         holder.lastname.setText(lastname);
         holder.testreport.setText(testreport);

@@ -1,8 +1,9 @@
 <?php
 	require "conn.php";
-	
+date_default_timezone_set("America/Chicago");
 	$visitid = $_POST["visitid"];
     $laboratoryid = $_POST["laboratoryid"];
+    $testid = $_POST["testid"];
 	$testreport = $_POST["testreport"];
 	$tdate = date('Y-m-d');
 
@@ -12,7 +13,7 @@
 	testreport ='$testreport',
 	tdate='$tdate',
 	status='Complete'
-	WHERE visitid='$visitid' and laboratoryid='$laboratoryid';";
+	WHERE testid='$testid';";
 	
 	if(mysqli_query($conn, $sql_query)){
 		$error = array("success" => "Test Updated Successfully");

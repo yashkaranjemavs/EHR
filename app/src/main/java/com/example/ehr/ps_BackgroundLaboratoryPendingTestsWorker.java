@@ -42,7 +42,7 @@ public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object,
         try {
             //Viewing Laboratory Profile
             if (actionType.equals("get_test")) {
-                String urlString = baseUrl + "/ps_getLaboratoryTests1.php";
+                String urlString = baseUrl + "/ps_getLaboratoryPendingTests.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
@@ -58,10 +58,12 @@ public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object,
                 testsModel = (ps_LaboratoryPendingTestsModel) params[1];
                 String testreport = testsModel.getTestreport();
                 String visitid = testsModel.getVisitid();
+                String testid = testsModel.getTestid();
                 String laboratoryid = testsModel.getLaboratoryid();
 
                 String postData = URLEncoder.encode("testreport", "UTF-8") + "=" + URLEncoder.encode(testreport, "UTF-8") + "&" +
               URLEncoder.encode("visitid", "UTF-8") + "=" + URLEncoder.encode(visitid, "UTF-8") + "&" +
+              URLEncoder.encode("testid", "UTF-8") + "=" + URLEncoder.encode(testid, "UTF-8") + "&" +
                         URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(laboratoryid, "UTF-8");
 
                 return handlePostRequest(url, postData);
@@ -140,8 +142,9 @@ public class ps_BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object,
                     String testreport = testfields.getString("testreport");
                     String laboratoryid = testfields.getString("laboratoryid");
                     String visitid = testfields.getString("visitid");
+                    String testid = testfields.getString("testid");
 
-                    ps_LaboratoryPendingTestsModel test = new ps_LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid);
+                    ps_LaboratoryPendingTestsModel test = new ps_LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid, testid);
                     testList.add(test);
                 }
 

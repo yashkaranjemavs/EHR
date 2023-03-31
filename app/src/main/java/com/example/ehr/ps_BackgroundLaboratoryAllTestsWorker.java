@@ -41,7 +41,7 @@ String actionType;
         try {
             //Viewing Laboratory Profile
             if (actionType.equals("get_tests")) {
-                String urlString = baseUrl + "/ps_getLaboratoryTests2.php";
+                String urlString = baseUrl + "/ps_getLaboratoryAllTests.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
@@ -118,13 +118,14 @@ String actionType;
                     JSONObject alltestfields = (JSONObject) resultArr.get(i);
 
                     String testname = alltestfields.getString("testname");
+                    String testid = alltestfields.getString("testid");
                     String firstname = alltestfields.getString("firstname");
                     String lastname = alltestfields.getString("lastname");
                     String testreport = alltestfields.getString("testreport");
                     String tdate = alltestfields.getString("tdate");
                     String status = alltestfields.getString("status");
 
-                    ps_LaboratoryAllTestsModel test = new ps_LaboratoryAllTestsModel(testname, firstname, lastname, testreport,tdate,status);
+                    ps_LaboratoryAllTestsModel test = new ps_LaboratoryAllTestsModel(testname, testid, firstname, lastname, testreport,tdate,status);
                     testsList.add(test);
                 }
 

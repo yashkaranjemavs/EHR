@@ -5,7 +5,7 @@ $laboratoryid = $_POST["laboratoryid"];
 
 header("Content-Type: application/json");
 
-$sql_query = "select LT.testname,P.firstname,P.lastname,LT.testreport,LT.laboratoryid,LT.visitid FROM labtests LT JOIN visits V on LT.visitid = V.visitid JOIN patient P ON P.patientid=V.patientid WHERE laboratoryid = $laboratoryid and LT.status ='Pending';";
+$sql_query = "select LT.testname,P.firstname,P.lastname,LT.testreport,LT.laboratoryid,LT.visitid, LT.testid FROM labtests LT JOIN visits V on LT.visitid = V.visitid JOIN patient P ON P.patientid=V.patientid WHERE laboratoryid = $laboratoryid and LT.status ='Pending';";
 
 $results = mysqli_query($conn, $sql_query);
 
@@ -16,7 +16,8 @@ while ($data = mysqli_fetch_assoc($results)) {$test = ["testname" => $data["test
 			"lastname" => $data["lastname"],
 			"testreport" => $data["testreport"],
 			"laboratoryid" => $data["laboratoryid"],
-			"visitid" => $data["visitid"]];
+			"visitid" => $data["visitid"],
+			"testid" => $data ["testid"]];
 array_push($testsList, $test);
 }
 echo json_encode($testsList);
