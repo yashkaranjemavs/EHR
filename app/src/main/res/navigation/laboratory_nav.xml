@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/laboratory_nav"
-    android:label="EHR"
     app:startDestination="@id/laboratoryFragment">
 
     <fragment
         android:id="@+id/laboratoryFragment"
         android:name="com.example.ehr.LaboratoryFragment"
-        android:label="EHR Laboratory"
-        tools:layout="@layout/fragment_laboratory" >
+        android:label="Laboratory"
+        tools:layout="@layout/fragment_laboratory">
         <action
             android:id="@+id/action_laboratoryFragment_to_laboratoryProfileFragment"
             app:destination="@id/laboratoryProfileFragment" />
