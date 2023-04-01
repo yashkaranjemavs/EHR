@@ -39,8 +39,8 @@ public class LaboratoryTestsAdapter extends RecyclerView.Adapter<LaboratoryTests
         LaboratoryAllTestsModel testsModel = testsList.get(position);
         String testname = testsModel.getTestname();
         String testid = testsModel.getTestid();
-        String firstname = testsModel.getFirstname();
-        String lastname = testsModel.getLastname();
+        String firstname = testsModel.getFirstname().concat(" ").concat(testsModel.getLastname());
+        //String lastname = testsModel.getLastname();
         String testreport = testsModel.getTestreport();
         String tdate = testsModel.getTestdate();
         String status = testsModel.getStatus();
@@ -48,7 +48,7 @@ public class LaboratoryTestsAdapter extends RecyclerView.Adapter<LaboratoryTests
         holder.testname.setText(testname);
         holder.testid.setText(testid);
         holder.firstname.setText(firstname);
-        holder.lastname.setText(lastname);
+        //holder.lastname.setText(lastname);
         holder.testreport.setText(testreport);
         holder.tdate.setText(tdate);
         holder.status.setText(status);

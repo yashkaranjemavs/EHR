@@ -19,7 +19,7 @@ public class LaboratoryViewHolder extends  RecyclerView.ViewHolder {
         super(view);
         testname = view.findViewById(R.id.laboratory_test_name);
         firstname = view.findViewById(R.id.laboratory_first_name);
-        lastname = view.findViewById(R.id.laboratory_last_name);
+        //lastname = view.findViewById(R.id.laboratory_last_name);
         testreport = view.findViewById(R.id.laboratory_test_report);
         testid = view.findViewById(R.id.laboratory_test_id);
 
