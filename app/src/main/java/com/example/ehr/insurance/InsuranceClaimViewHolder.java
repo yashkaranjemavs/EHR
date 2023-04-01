@@ -10,13 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ehr.R;
 
 public class InsuranceClaimViewHolder extends RecyclerView.ViewHolder {
-    TextView firstNameView, lastNameView, chargesView, patientPaymentView;
+    TextView nameView, chargesView, patientPaymentView;
     AppCompatButton payButton;
 
     public InsuranceClaimViewHolder(@NonNull View itemView) {
         super(itemView);
-        firstNameView = itemView.findViewById(R.id.insurance_claim_firstName);
-        lastNameView = itemView.findViewById(R.id.insurance_claim_lastName);
+        nameView = itemView.findViewById(R.id.insurance_claim_name);
         chargesView = itemView.findViewById(R.id.insurance_claim_charges);
         patientPaymentView = itemView.findViewById(R.id.insurance_claim_patientPayment);
 

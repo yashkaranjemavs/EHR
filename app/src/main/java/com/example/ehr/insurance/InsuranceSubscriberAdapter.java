@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ehr.R;
+import com.example.ehr.insurance.model.InsuranceCoverageModel;
 import com.example.ehr.insurance.model.InsuranceSubscriberModel;
 
 import java.util.List;
@@ -33,9 +34,13 @@ public class InsuranceSubscriberAdapter extends RecyclerView.Adapter<InsuranceSu
 
     @Override
     public void onBindViewHolder(@NonNull InsuranceSubscriberViewHolder holder, int position) {
-        holder.firstNameView.setText(this.insuranceSubscribers.get(position).getFirstName());
-        holder.lastNameView.setText(this.insuranceSubscribers.get(position).getLastName());
-        holder.expiryView.setText(this.insuranceSubscribers.get(position).getExpiry());
+        InsuranceSubscriberModel insuranceSubscriberModel = this.insuranceSubscribers.get(position);
+        String firstName = insuranceSubscriberModel.getFirstName();
+        String lastName = insuranceSubscriberModel.getLastName();
+        String expiry = insuranceSubscriberModel.getExpiry();
+
+        holder.nameView.setText(firstName.concat(" ").concat(lastName));
+        holder.expiryView.setText(expiry);
     }
 
     @Override
