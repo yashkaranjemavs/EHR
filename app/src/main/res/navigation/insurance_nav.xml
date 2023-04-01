@@ -7,7 +7,83 @@
 
     <fragment
         android:id="@+id/insuranceFragment"
-        android:name="com.example.ehr.InsuranceFragment"
+        android:name="com.example.ehr.insurance.InsuranceFragment"
         android:label="Insurance"
-        tools:layout="@layout/fragment_insurance" />
+        tools:layout="@layout/fragment_insurance" >
+        <action
+            android:id="@+id/action_insuranceFragment_to_insuranceProfileFragment"
+            app:destination="@id/insuranceProfileFragment" />
+        <action
+            android:id="@+id/action_insuranceFragment_to_insuranceCoverageFragment"
+            app:destination="@id/insuranceCoverageFragment" />
+        <action
+            android:id="@+id/action_insuranceFragment_to_insuranceSubscribersFragment"
+            app:destination="@id/insuranceSubscribersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceProfileFragment"
+        android:name="com.example.ehr.insurance.InsuranceProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_insurance_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.example.ehr.UserModel" />
+        <action
+            android:id="@+id/action_insuranceProfileFragment_to_insuranceSubscribersFragment"
+            app:destination="@id/insuranceSubscribersFragment"
+            app:popUpTo="@id/insuranceProfileFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceProfileFragment_to_insuranceCoverageFragment"
+            app:destination="@id/insuranceCoverageFragment"
+            app:popUpTo="@id/insuranceProfileFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceProfileFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment"
+            app:popUpTo="@id/insuranceFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceCoverageFragment"
+        android:name="com.example.ehr.insurance.InsuranceCoverageFragment"
+        android:label="Coverage"
+        tools:layout="@layout/fragment_insurance_coverage">
+        <action
+            android:id="@+id/action_insuranceCoverageFragment_to_insuranceSubscribersFragment"
+            app:destination="@id/insuranceSubscribersFragment"
+            app:popUpTo="@id/insuranceCoverageFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceCoverageFragment_to_insuranceProfileFragment"
+            app:destination="@id/insuranceProfileFragment"
+            app:popUpTo="@id/insuranceCoverageFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceCoverageFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment"
+            app:popUpTo="@id/insuranceFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceSubscribersFragment"
+        android:name="com.example.ehr.insurance.InsuranceSubscribersFragment"
+        android:label="Subscribers"
+        tools:layout="@layout/fragment_insurance_subscribers">
+        <action
+            android:id="@+id/action_insuranceSubscribersFragment_to_insuranceProfileFragment"
+            app:destination="@id/insuranceProfileFragment"
+            app:popUpTo="@id/insuranceSubscribersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceSubscribersFragment_to_insuranceCoverageFragment"
+            app:destination="@id/insuranceCoverageFragment"
+            app:popUpTo="@id/insuranceSubscribersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_insuranceSubscribersFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment"
+            app:popUpTo="@id/insuranceFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

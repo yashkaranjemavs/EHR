@@ -23,7 +23,6 @@ public class UserModel implements Serializable {
 
     private String userid;
 
-
     public String getRole() {
         return role;
     }
@@ -37,6 +36,11 @@ public class UserModel implements Serializable {
     public UserModel(String emailid, String userid, String role) {
         this.emailid = emailid;
         this.userid = userid;
+        this.role = role;
+    }
+
+    public UserModel(String emailid, String role) {
+        this.emailid = emailid;
         this.role = role;
     }
 }

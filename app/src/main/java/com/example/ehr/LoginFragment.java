@@ -16,6 +16,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.ehr.insurance.InsuranceActivity;
+
 
 
 
