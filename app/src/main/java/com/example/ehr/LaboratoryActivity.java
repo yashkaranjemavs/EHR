@@ -17,6 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 public class LaboratoryActivity extends AppCompatActivity {
     NavController navController;
     UserModel user;
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class LaboratoryActivity extends AppCompatActivity {
 
         user = (UserModel) getIntent().getSerializableExtra("user");
 
-        Toolbar toolbar = findViewById(R.id.laboratory_toolbar);
+        toolbar = findViewById(R.id.laboratory_toolbar);
         setSupportActionBar(toolbar);
         toolbar.inflateMenu(R.menu.laboratory_menu);
 
@@ -56,6 +58,24 @@ public class LaboratoryActivity extends AppCompatActivity {
         Fragment currentFragment = navHostFragment.getChildFragmentManager().getFragments().get(0);
 
         switch (laboratoryid){
+
+            case R.id.laboratory_menu_home:
+//              Navigating from Laboratory Profile Fragment or Laboratory Tests Fragment to Laboratory Fragment Home Page
+                if (currentFragment instanceof LaboratoryFragment)
+                {
+                    break;
+                }
+                else if (currentFragment instanceof LaboratoryProfileFragment)
+                {
+                    Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryProfileFragment_to_laboratoryFragment, bundle);
+                }
+                else if (currentFragment instanceof LaboratoryTestsFragment)
+                {
+                    Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryTestsFragment_to_laboratoryFragment, bundle);
+                }
+                toolbar.setNavigationIcon(null);
+                break;
+
             case R.id.laboratory_menu_profile:
 //              Navigating from Laboratory Fragment or Laboratory Tests Fragment to Laboratory Profile Fragment Page
                 if (currentFragment instanceof LaboratoryFragment)
@@ -70,6 +90,7 @@ public class LaboratoryActivity extends AppCompatActivity {
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryTestsFragment_to_laboratoryProfileFragment, bundle);
                 }
+                toolbar.setNavigationIcon(null);
                 break;
 
 //              Navigating from Laboratory Fragment or Laboratory profile Fragment to Laboratory Tests Fragment Page
@@ -86,7 +107,9 @@ public class LaboratoryActivity extends AppCompatActivity {
                 {
                     break;
                 }
+                toolbar.setNavigationIcon(null);
                 break;
+
 
             case R.id.laboratory_menu_logout:
 //              Navigating from Laboratory Fragment to Login Activity

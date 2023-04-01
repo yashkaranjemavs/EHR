@@ -9,6 +9,11 @@
         android:title="">
         <menu>
             <item
+                android:id="@+id/laboratory_menu_home"
+                android:actionLayout="@layout/activity_laboratory"
+                android:title="Home" />
+
+            <item
                 android:id="@+id/laboratory_menu_profile"
                 android:actionLayout="@layout/activity_laboratory"
                 android:title="Profile" />
