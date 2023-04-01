@@ -45,7 +45,14 @@ public class LaboratoryFragment extends Fragment {
 
 
     public void onLoadSuccess(List<LaboratoryPendingTestsModel> testModels) {
-        laboratoryRecyclerview.setAdapter(new LaboratoryAdapter(testModels, LaboratoryFragment.this));
+        laboratoryRecyclerview.setAdapter(new LaboratoryAdapter(testModels, LaboratoryFragment.this, new LaboratoryAdapter.TextChangeCallback()
+        {
+            @Override
+            public void textChangedAt(int position, LaboratoryPendingTestsModel text) {
+                testModels.set(position, text);
+            }
+        }));
+
     }
 
     public void onAddtestClicked(LaboratoryPendingTestsModel testsModel) {
