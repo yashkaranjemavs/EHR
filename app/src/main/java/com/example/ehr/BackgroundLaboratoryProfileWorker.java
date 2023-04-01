@@ -32,7 +32,7 @@ public class BackgroundLaboratoryProfileWorker extends AsyncTask<Object, Void, J
     @Override
     protected JSONObject doInBackground(Object... params) {
         actionType = (String) params[0];
-        String baseUrl = "https://pxs9233.uta.cloud";
+        String baseUrl = BaseUrl.baseUrl;
 
         try {
             //Viewing Laboratory Profile

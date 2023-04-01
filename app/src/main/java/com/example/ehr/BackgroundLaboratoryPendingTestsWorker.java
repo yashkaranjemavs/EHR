@@ -34,7 +34,7 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
     @Override
     protected String doInBackground(Object... params) {
         actionType = (String) params[0];
-        String baseUrl = "https://pxs9233.uta.cloud";
+        String baseUrl = BaseUrl.baseUrl;
 
         try {
             //Viewing Laboratory Profile
