@@ -88,4 +88,9 @@ public class LaboratoryPendingTestsModel implements Serializable {
     public void setTestid(String testid) {
         this.testid = testid;
     }
+
+    public void set(int position, String testreport) {
+        this.testreport = testreport;
+
+    }
 }
