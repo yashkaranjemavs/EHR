@@ -384,7 +384,7 @@
                 <TextView
                     android:id="@+id/insurance_profile_update_button2"
                     android:layout_width="360dp"
-                    android:layout_height="48dp"
+                    android:layout_height="120dp"
                     android:text="" />
             </LinearLayout>
         </LinearLayout>

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ehr.R;
 import com.example.ehr.insurance.model.InsuranceClaimModel;
-import com.example.ehr.insurance.worker.BackgroundInsuranceClaimWorker;
 
 import java.util.List;
 
@@ -45,10 +44,9 @@ public class InsuranceClaimAdapter extends RecyclerView.Adapter<InsuranceClaimVi
         String charges = insuranceClaim.getCharges();
         String patientPayment = insuranceClaim.getPatientPayment();
 
-        holder.firstNameView.setText(firstName);
-        holder.lastNameView.setText(lastName);
-        holder.chargesView.setText("$"+charges);
-        holder.patientPaymentView.setText("$"+patientPayment);
+        holder.nameView.setText(firstName.concat(" ").concat(lastName));
+        holder.chargesView.setText("$".concat(charges));
+        holder.patientPaymentView.setText("$".concat(patientPayment));
 
         holder.payButton.setOnClickListener(view -> {
             int balance = Integer.parseInt(charges) - Integer.parseInt(patientPayment);

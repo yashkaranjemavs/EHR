@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ehr.R;
 
 public class InsuranceCoverageViewHolder extends RecyclerView.ViewHolder {
-    TextView firstNameView, lastNameView, chargesView, patientPaymentView, insuranceCoverageView;
+    TextView nameView, chargesView, patientPaymentView, insuranceCoverageView;
 
     public InsuranceCoverageViewHolder(@NonNull View itemView) {
         super(itemView);
-        firstNameView = itemView.findViewById(R.id.insurance_coverage_firstName);
-        lastNameView = itemView.findViewById(R.id.insurance_coverage_lastName);
+        nameView = itemView.findViewById(R.id.insurance_coverage_name);
         chargesView = itemView.findViewById(R.id.insurance_coverage_charges);
         patientPaymentView = itemView.findViewById(R.id.insurance_coverage_patientPayment);
         insuranceCoverageView = itemView.findViewById(R.id.insurance_coverage_insuranceCoverage);
