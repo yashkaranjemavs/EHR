@@ -19,6 +19,8 @@ import androidx.navigation.Navigation;
 import com.example.ehr.insurance.InsuranceActivity;
 
 
+
+
 public class LoginFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     TextView email;
     TextView password;
