@@ -11,6 +11,7 @@
         android:id="@+id/sign_in_text"
         android:layout_width="360dp"
         android:layout_height="70dp"
+        android:layout_marginTop="96dp"
         android:text="@string/sign_in"
         android:textSize="40sp"
         android:gravity="center"

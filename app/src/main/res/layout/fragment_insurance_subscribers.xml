@@ -26,6 +26,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/insurance_subscriber_recyclerView" />
+        android:id="@+id/insurance_subscriber_recyclerView"
+        android:paddingBottom="120dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="insideOverlay"/>
 
 </RelativeLayout>

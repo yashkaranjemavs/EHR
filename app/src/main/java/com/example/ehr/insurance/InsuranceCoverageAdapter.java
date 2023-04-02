@@ -8,9 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ehr.R;
-import com.example.ehr.insurance.model.InsuranceClaimModel;
 import com.example.ehr.insurance.model.InsuranceCoverageModel;
-import com.example.ehr.insurance.model.InsuranceSubscriberModel;
 
 import java.util.List;
 
@@ -42,11 +40,10 @@ public class InsuranceCoverageAdapter extends RecyclerView.Adapter<InsuranceCove
         String patientPayment = insuranceCoverageModel.getPatientPayment();
         String insuranceCoverage = insuranceCoverageModel.getInsuranceCoverage();
 
-        holder.firstNameView.setText(firstName);
-        holder.lastNameView.setText(lastName);
-        holder.chargesView.setText("$"+charges);
-        holder.patientPaymentView.setText("$"+patientPayment);
-        holder.insuranceCoverageView.setText("$"+insuranceCoverage);
+        holder.nameView.setText(firstName.concat(" ").concat(lastName));
+        holder.chargesView.setText("$".concat(charges));
+        holder.patientPaymentView.setText("$".concat(patientPayment));
+        holder.insuranceCoverageView.setText("$".concat(insuranceCoverage));
 
     }
 
