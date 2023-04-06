@@ -3,4 +3,7 @@
     <style name="SpinnerTheme" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/custom_spinner</item>
     </style>
+    <style name="InsuranceSpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/custom_insurance_spinner</item>
+    </style>
 </resources>

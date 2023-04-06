@@ -32,5 +32,19 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_login_to_patientRegisterFragment"
+            app:destination="@id/patientRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientRegisterFragment"
+        android:name="com.example.ehr.RegisterFragment"
+        android:label="Patient Registration"
+        tools:layout="@layout/fragment_register" >
+    <action
+        android:id="@+id/action_patientRegisterFragment_to_login"
+        app:destination="@id/login"
+        app:popUpTo="@id/login"
+        app:popUpToInclusive="true" />
     </fragment>
 </navigation>

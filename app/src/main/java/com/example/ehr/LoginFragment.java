@@ -25,6 +25,7 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
     TextView email;
     TextView password;
     TextView forgotPassword;
+    TextView registerHere;
     TextView errorText;
     Spinner role;
     AppCompatButton loginBtn;
@@ -43,6 +44,7 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
         email = scrollView.findViewById(R.id.email);
         password = scrollView.findViewById(R.id.password);
         forgotPassword = scrollView.findViewById(R.id.forgot_password);
+        registerHere = scrollView.findViewById(R.id.register);
         errorText = scrollView.findViewById(R.id.error_text);
         loginBtn = scrollView.findViewById(R.id.login_button);
         role = scrollView.findViewById(R.id.userType);
@@ -60,6 +62,15 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
 
                 bundle.putString("email", emailEditText.getText().toString());
                 Navigation.findNavController(view).navigate(R.id.action_login_to_forgotPassword, bundle);
+            }
+        });
+
+        registerHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+
+                Navigation.findNavController(view).navigate(R.id.action_login_to_patientRegisterFragment, bundle);
             }
         });
 

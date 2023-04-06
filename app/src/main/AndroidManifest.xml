@@ -14,7 +14,22 @@
         android:theme="@style/Theme.EHR"
         tools:targetApi="31">
         <activity
-            android:name=".ViewPharmacyProfileActivity"
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BackgroundViewPatientWorker"
+            android:exported="false" />
+        <activity
+            android:name=".sr_PatientInsuranceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sr_PatientChargesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sr_PatientAppointmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sr_PatientProfileActivity"
             android:exported="false" />
         <activity
             android:name=".AdminActivity"

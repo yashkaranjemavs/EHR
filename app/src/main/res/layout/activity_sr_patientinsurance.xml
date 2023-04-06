@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sr_PatientInsuranceActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/patient_toolbar"
+        android:background="@color/primary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/baseline_menu_24"
+        app:layout_constraintBottom_toTopOf="@+id/patient_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/patient_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="70dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/patientInsuranceContent">
+        <TextView
+            android:id="@+id/patient_insurance_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Insurance Name: "
+            android:inputType="textPersonName"
+            android:textColorHint="@color/dark_gray" />
+
+
+        <TextView
+            android:id="@+id/patient_insurance_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Email: "
+            android:inputType="textPersonName"
+            android:textColorHint="@color/dark_gray"/>
+
+
+        <TextView
+            android:id="@+id/patient_insurance_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Contact: "
+            android:inputType="textPersonName"
+            android:textColorHint="@color/dark_gray" />
+
+        <TextView
+            android:id="@+id/patient_insurance_expiry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Expiry: "
+            android:inputType="textPersonName"
+            android:textColorHint="@color/dark_gray"/>
+
+
+        <TextView
+            android:id="@+id/patient_insurance_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Status: "
+            android:inputType="textPersonName"
+            android:textColorHint="@color/dark_gray"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:id="@+id/patientInsuranceDisableButton"
+            android:textColor="@color/white"
+            android:text="Disable"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="70dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/patientInsuranceContent"
+        android:id="@+id/patientAddInsuranceForm">
+
+        <Spinner
+            android:id="@+id/patient_insurance_name_spinner"
+            style="@style/InsuranceSpinnerTheme"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:drawableStart="@drawable/icon_arrow_down"
+            android:paddingStart="8dp"
+            android:paddingEnd="36dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:id="@+id/patientAddInsuranceButton"
+            android:textColor="@color/white"
+            android:text="Add Insurance"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

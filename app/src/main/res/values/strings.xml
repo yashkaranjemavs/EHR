@@ -65,4 +65,6 @@
     <string name="laboratory_profile_zip">ZIP</string>
     <string name="laboratory_profile_update">Update</string>
     <string name="laboratory_profile_password">Password</string>
+    <string-array name="insurance_names">
+    </string-array>
 </resources>

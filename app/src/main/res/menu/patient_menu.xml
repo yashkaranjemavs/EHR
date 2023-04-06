@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/itemprofile"
+    android:title="Profile" />
+    <item android:id="@+id/itemhome"
+        android:title="Home" />
+    <item android:id="@+id/itemappointments"
+        android:title="Appointments" />
+    <item android:id="@+id/iteminsurance"
+        android:title="Insurance" />
+    <item android:id="@+id/itemlogout"
+        android:title="Logout" />
+</menu>
