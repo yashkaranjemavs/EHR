@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -16,15 +16,19 @@
         tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/login_nav_host"
+        android:id="@+id/register_nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_toolbar"
         app:navGraph="@navigation/login_nav" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
