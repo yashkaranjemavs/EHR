@@ -33,18 +33,18 @@ public class BackgroundViewAppointmentDetailsWorker extends AsyncTask<String, Vo
     @Override
     protected String doInBackground(String...params) {
         actionType = params[0];
-        String baseUrl = "https://sxr4177.uta.cloud/";
+        String baseUrl = BaseUrl.baseUrl;
         try {
             if (actionType.equalsIgnoreCase("showAppointmentDetails")) {
                 String patientid = params[1];
-                String urlString = baseUrl + "getAppointmentDetails.php?patientid=" + patientid;
+                String urlString = baseUrl + "/getAppointmentDetails.php?patientid=" + patientid;
 
                 URL url = new URL(urlString);
 
                 return handleRequest(url, "GET", null);
             } else if (actionType.equalsIgnoreCase("cancelAppointment")) {
                 String visitid = params[1];
-                String urlString = baseUrl + "cancelAppointment.php";
+                String urlString = baseUrl + "/cancelAppointment.php";
 
                 URL url = new URL(urlString);
 

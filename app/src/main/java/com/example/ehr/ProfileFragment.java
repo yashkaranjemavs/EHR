@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 
 public class ProfileFragment extends Fragment {
-    private static final String baseUrl = "https://sxr4177.uta.cloud/getPatient.php";
+    private static final  String baseUrl = BaseUrl.baseUrl + "/getPatient.php";
 
     // private static final String ARG_PARAM1 = "param1";
     //private static final String ARG_PARAM2 = "param2";

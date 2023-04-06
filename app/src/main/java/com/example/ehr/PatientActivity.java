@@ -149,8 +149,7 @@ public class PatientActivity extends AppCompatActivity {
     }
 
     private void bookAppointment() {
-
-        String baseURL="https://sxr4177.uta.cloud/bookAppointment.php";
+        String baseURL = BaseUrl.baseUrl + "/bookAppointment.php";
 
         class dbprocess extends AsyncTask<String, Void, JSONObject>
         {

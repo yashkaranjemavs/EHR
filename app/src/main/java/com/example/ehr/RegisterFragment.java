@@ -158,7 +158,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
 
     public void registerPatient(PatientUserModel patient) {
 
-        String baseURL = "https://sxr4177.uta.cloud/patientRegistration.php";
+        String baseURL = BaseUrl.baseUrl + "/patientRegistration.php";
         class dbprocess extends AsyncTask<String, Void, JSONObject> {
             @Override
             protected void onPostExecute(JSONObject resultObj) {

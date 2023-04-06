@@ -9,5 +9,36 @@
         android:id="@+id/laboratoryFragment"
         android:name="com.example.ehr.LaboratoryFragment"
         android:label="Laboratory"
-        tools:layout="@layout/fragment_laboratory" />
+        tools:layout="@layout/fragment_laboratory">
+        <action
+            android:id="@+id/action_laboratoryFragment_to_laboratoryProfileFragment"
+            app:destination="@id/laboratoryProfileFragment" />
+        <action
+            android:id="@+id/action_laboratoryFragment_to_laboratoryTestsFragment"
+            app:destination="@id/laboratoryTestsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/laboratoryTestsFragment"
+        android:name="com.example.ehr.LaboratoryTestsFragment"
+        android:label="Laboratory Tests"
+        tools:layout="@layout/fragment_laboratory_tests">
+        <action
+            android:id="@+id/action_laboratoryTestsFragment_to_laboratoryFragment"
+            app:destination="@id/laboratoryFragment" />
+        <action
+            android:id="@+id/action_laboratoryTestsFragment_to_laboratoryProfileFragment"
+            app:destination="@id/laboratoryProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/laboratoryProfileFragment"
+        android:name="com.example.ehr.LaboratoryProfileFragment"
+        android:label="Laboratory Profile"
+        tools:layout="@layout/fragment_laboratory_profile">
+        <action
+            android:id="@+id/action_laboratoryProfileFragment_to_laboratoryTestsFragment"
+            app:destination="@id/laboratoryTestsFragment" />
+        <action
+            android:id="@+id/action_laboratoryProfileFragment_to_laboratoryFragment"
+            app:destination="@id/laboratoryFragment" />
+    </fragment>
 </navigation>

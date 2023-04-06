@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PatientFragment">
 
-    <!--<TextView
+    <TextView
         android:id="@+id/patient_head"
         android:layout_width="360dp"
         android:layout_height="70dp"
@@ -15,12 +15,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /> -->
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/framelayout"/> -->
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

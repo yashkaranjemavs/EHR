@@ -37,7 +37,7 @@
             android:label="@string/title_activity_admin"
             android:theme="@style/Theme.EHR.NoActionBar" />
         <activity
-            android:name=".InsuranceActivity"
+            android:name=".insurance.InsuranceActivity"
             android:exported="false"
             android:label="@string/title_activity_insurance"
             android:theme="@style/Theme.EHR.NoActionBar" />

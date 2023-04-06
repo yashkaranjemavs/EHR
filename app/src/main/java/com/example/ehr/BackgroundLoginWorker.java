@@ -30,7 +30,7 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... params) {
         actionType = params[0];
-        String baseUrl = "https://sxr4177.uta.cloud";
+        String baseUrl = BaseUrl.baseUrl;
 
         try {
             if (actionType.equals("login")) {
@@ -41,13 +41,11 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
                 String role = params[3];
 
                 URL url = new URL(urlString);
-
                 return handleLoginRequest(url, email, password, role);
             }
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
         }
-
         return null;
     }
 
@@ -107,7 +105,6 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return null;
     }
 
@@ -123,8 +120,8 @@ public class BackgroundLoginWorker extends AsyncTask<String, Void, JSONObject> {
             UserModel user = new UserModel(emailid,userid, role);
 
             this.loginFragment.onLoginSuccess(user);
-        } catch (JSONException e) {
-            this.loginFragment.onLoginFailed("Something went wrong");
+        } catch (Exception e) {
+            this.loginFragment.onLoginFailed("Something went wrong while retrieving response");
         }
     }
 }

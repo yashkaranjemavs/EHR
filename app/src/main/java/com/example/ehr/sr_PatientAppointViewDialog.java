@@ -88,18 +88,18 @@ public class sr_PatientAppointViewDialog extends Dialog implements
         @Override
         protected String doInBackground(String... params) {
             actionType = params[0];
-            String baseUrl = "https://sxr4177.uta.cloud/";
+            String baseUrl = BaseUrl.baseUrl;
             try {
                 if (actionType.equalsIgnoreCase("getAppointmentDetails")) {
                     String visitId = params[1];
-                    String urlString = baseUrl + "sr_getAppointmentDetailsByVisitId.php?visitid=" + visitId;
+                    String urlString = baseUrl + "/sr_getAppointmentDetailsByVisitId.php?visitid=" + visitId;
 
                     URL url = new URL(urlString);
 
                     return handleRequest(url, "GET", null);
                 } else if (actionType.equalsIgnoreCase("pay")) {
                     String visitId = params[1];
-                    String urlString = baseUrl + "sr_payPatientCharges.php";
+                    String urlString = baseUrl + "/sr_payPatientCharges.php";
 
                     URL url = new URL(urlString);
 

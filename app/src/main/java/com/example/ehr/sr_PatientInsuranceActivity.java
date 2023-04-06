@@ -161,25 +161,25 @@ public class sr_PatientInsuranceActivity extends AppCompatActivity implements Ad
         @Override
         protected String doInBackground(String... params) {
             actionType = params[0];
-            String baseUrl = "https://sxr4177.uta.cloud/";
+            String baseUrl = BaseUrl.baseUrl;
             try {
                 if (actionType.equalsIgnoreCase("getActiveInsurance")) {
                     String patientid = params[1];
-                    String urlString = baseUrl + "sr_getPatientInsurance.php?patientid=" + patientid;
+                    String urlString = baseUrl + "/sr_getPatientInsurance.php?patientid=" + patientid;
 
                     URL url = new URL(urlString);
 
                     return handleRequest(url, "GET", null);
                 } else if (actionType.equalsIgnoreCase("disableInsurance")) {
                     String patientid = params[1];
-                    String urlString = baseUrl + "sr_disableInsurance.php";
+                    String urlString = baseUrl + "/sr_disableInsurance.php";
 
                     URL url = new URL(urlString);
 
                     String post_data = URLEncoder.encode("patientid", "UTF-8") + "=" + URLEncoder.encode(patientid, "UTF-8");
                     return handleRequest(url, "POST", post_data);
                 } else if (actionType.equalsIgnoreCase("getInsuranceNames")) {
-                    String urlString = baseUrl + "sr_getInsuranceNames.php";
+                    String urlString = baseUrl + "/sr_getInsuranceNames.php";
                     URL url = new URL(urlString);
 
                     return handleRequest(url, "GET", null);
@@ -191,7 +191,7 @@ public class sr_PatientInsuranceActivity extends AppCompatActivity implements Ad
                     calendar.add(Calendar.YEAR, 1);
                     String expiry = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
 
-                    String urlString = baseUrl + "sr_addInsurance.php";
+                    String urlString = baseUrl + "/sr_addInsurance.php";
                     URL url = new URL(urlString);
 
                     String post_data = URLEncoder.encode("patientid", "UTF-8") + "=" + URLEncoder.encode(patientid, "UTF-8") + "&" +
