@@ -15,107 +15,191 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:id="@+id/textViewEmailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="text"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/view_pharmacy_profile_toolbar">
 
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:hint="Email"
-        android:text="Email"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_pharmacy_profile_toolbar" />
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="360dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="Email"
+            android:text="Email"
+            android:textSize="20dp" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/editTextContact"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:id="@+id/editTextNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:ems="10"
-        android:hint="Contact"
-        android:inputType="phone"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailLayout">
 
-    <EditText
-        android:id="@+id/editTextMultiLineAdd2"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Address2"
-        android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMultiLineAdd1" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/editTextMultiLineAdd1"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:id="@+id/editTextContactLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Address1"
-        android:inputType="textMultiLine"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameLayout">
 
-    <EditText
-        android:id="@+id/editTextCity"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:ems="10"
-        android:hint="City"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMultiLineAdd2" />
-
-    <EditText
-        android:id="@+id/editTextState"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:ems="10"
-        android:hint="State"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
-
-    <EditText
-        android:id="@+id/editTextZip"
-        android:layout_width="361dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:ems="10"
-        android:hint="Zip"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextState" />
+        <EditText
+            android:id="@+id/editTextContact"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Contact"
+            android:inputType="phone" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="360dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Address"
         android:text="Address:"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContact" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextContactLayout" />
+
+    <LinearLayout
+        android:id="@+id/editTextMultiLineAdd1Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <EditText
+            android:id="@+id/editTextMultiLineAdd1"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Address1"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editTextMultiLineAdd2Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMultiLineAdd1Layout">
+
+        <EditText
+            android:id="@+id/editTextMultiLineAdd2"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Address2"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editTextCityLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMultiLineAdd2Layout">
+
+        <EditText
+            android:id="@+id/editTextCity"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:ems="10"
+            android:hint="City"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editTextStateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCityLayout">
+
+        <EditText
+            android:id="@+id/editTextState"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:ems="10"
+            android:hint="State"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editTextZipLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextStateLayout">
+
+        <EditText
+            android:id="@+id/editTextZip"
+            android:layout_width="361dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:ems="10"
+            android:hint="Zip"
+            android:inputType="number" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/saveButton"
@@ -126,7 +210,9 @@
         android:layout_marginEnd="20dp"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextZip" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextZipLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
