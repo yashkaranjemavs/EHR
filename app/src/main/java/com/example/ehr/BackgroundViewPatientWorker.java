@@ -34,7 +34,7 @@ public class BackgroundViewPatientWorker extends AsyncTask<Object, Void, JSONObj
      @Override
      protected JSONObject doInBackground(Object... params) {
           actionType = (String) params[0];
-          String baseUrl = "https://sxr4177.uta.cloud";
+          String baseUrl = BaseUrl.baseUrl;
 
           try {
                if (actionType.equalsIgnoreCase("patientProfile")) {
