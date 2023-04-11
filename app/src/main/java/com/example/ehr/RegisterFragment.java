@@ -2,18 +2,25 @@ package com.example.ehr;
 
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -36,7 +43,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     EditText firstname;
     EditText lastname;
     EditText emailid;
-    EditText gender;
+    Spinner gender;
     TextView dob;
     EditText contact;
     EditText addressline1;
@@ -50,6 +57,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     AppCompatButton registerBtn;
     TextView signIn;
     View scrollView;
+    String selectedGender;
 
 
     @Override
@@ -61,10 +69,12 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         scrollView = inflater.inflate(R.layout.fragment_register, container, false);
 
+        Toolbar toolbar = requireActivity().findViewById(R.id.login_toolbar);
+        toolbar.setNavigationIcon(null);
+
         firstname = scrollView.findViewById(R.id.patient_register_firstname);
         lastname = scrollView.findViewById(R.id.patient_register_lastname);
         emailid = scrollView.findViewById(R.id.patient_register_email);
-        gender = scrollView.findViewById(R.id.patient_register_gender);
         dob = scrollView.findViewById(R.id.patient_register_dob);
         contact = scrollView.findViewById(R.id.patient_register_contact);
         addressline1 = scrollView.findViewById(R.id.patient_register_address1);
@@ -75,11 +85,17 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
         password = scrollView.findViewById(R.id.patient_register_password);
         confirmPassword = scrollView.findViewById(R.id.patient_register_confirm_password);
 
+        gender = scrollView.findViewById(R.id.patient_register_gender);
+        gender.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireActivity().getBaseContext(), R.array.gender_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+
         errorText = scrollView.findViewById(R.id.patient_register_error_text);
 
         signIn = scrollView.findViewById(R.id.patient_register_signin_button);
         registerBtn = scrollView.findViewById(R.id.patient_register_button);
-
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +118,6 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
                 String firstnameText = firstname.getText().toString();
                 String lastnameText = lastname.getText().toString();
                 String emailidText = emailid.getText().toString();
-                String genderText = gender.getText().toString();
                 String dobText = dob.getText().toString();
                 String contactText = contact.getText().toString();
                 String addressline1Text = addressline1.getText().toString();
@@ -117,7 +132,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
 
                 PatientUserModel patient = new PatientUserModel(
                         null, emailidText, passwordText, confirmPasswordText, firstnameText, lastnameText,
-                        genderText, dobText, contactText, addressline1Text, addressline2Text, cityText, stateText, zipText);
+                        selectedGender, dobText, contactText, addressline1Text, addressline2Text, cityText, stateText, zipText);
                 if (isInputsValid(patient)) {
                     registerPatient(patient);
                 }
@@ -127,8 +142,17 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        if (position == 0) {
+            TextView hint = (TextView) adapterView.getChildAt(0);
+            if (hint != null) {
+                hint.setTextColor(Color.parseColor("#909CB4"));
+                hint.setTextSize(19);
+            }
+            selectedGender = "";
+        } else {
+            selectedGender = adapterView.getItemAtPosition(position).toString();
+        }
     }
 
     @Override
@@ -139,7 +163,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     public void onRegisterSuccess() {
         firstname.setText("");
         lastname.setText("");
-        gender.setText("");
+        gender.setSelection(0);
         dob.setText("");
         emailid.setText("");
         password.setText("");

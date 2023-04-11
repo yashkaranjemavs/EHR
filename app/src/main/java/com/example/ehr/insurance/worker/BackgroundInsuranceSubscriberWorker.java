@@ -20,6 +20,7 @@ public class BackgroundInsuranceSubscriberWorker extends AsyncTask<Object, Void,
     InsuranceSubscribersFragment insuranceSubscribersFragment;
 
     String actionType;
+
     public BackgroundInsuranceSubscriberWorker(InsuranceSubscribersFragment fragment) {
         this.insuranceSubscribersFragment = fragment;
     }
@@ -66,23 +67,32 @@ public class BackgroundInsuranceSubscriberWorker extends AsyncTask<Object, Void,
 
                 List<InsuranceSubscriberModel> subscribers = new ArrayList<>();
 
-                for (int i=0; i<resultArr.length(); i++) {
+                for (int i = 0; i < resultArr.length(); i++) {
                     JSONObject claimObj = (JSONObject) resultArr.get(i);
                     String patientId = claimObj.getString("patientId");
                     String firstName = claimObj.getString("firstName");
                     String lastName = claimObj.getString("lastName");
+                    String gender = claimObj.getString("gender");
+                    String dob = claimObj.getString("dob");
+                    String emailId = claimObj.getString("emailId");
+                    String contact = claimObj.getString("contact");
+                    String address1 = claimObj.getString("address1");
+                    String address2 = claimObj.getString("address2");
+                    String city = claimObj.getString("city");
+                    String state = claimObj.getString("state");
+                    String zip = claimObj.getString("zip");
                     String expiry = claimObj.getString("expiry");
 
-                    InsuranceSubscriberModel subscriber = new InsuranceSubscriberModel(patientId,firstName, lastName, expiry);
+                    InsuranceSubscriberModel subscriber = new InsuranceSubscriberModel(
+                            patientId, firstName, lastName, gender, dob, emailId, contact,
+                            address1, address2, city, state, zip, expiry);
                     subscribers.add(subscriber);
                 }
 
                 this.insuranceSubscribersFragment.onLoadSuccess(subscribers);
             }
         } catch (JSONException e) {
-            if (actionType.equals("update_claim")) {
-                this.insuranceSubscribersFragment.onLoadFailed("Something went wrong");
-            }
+            this.insuranceSubscribersFragment.onLoadFailed("Something went wrong");
         }
     }
 

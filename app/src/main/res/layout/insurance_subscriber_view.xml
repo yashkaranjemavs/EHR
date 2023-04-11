@@ -62,6 +62,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            tools:ignore="UselessParent">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/insurance_subscriber_view_button"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+                android:layout_height="32dp"
+                android:background="@drawable/custom_primary_button"
+                android:text="@string/insurance_subscriber_view"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="8dp"
             android:background="@color/light_gray"/>

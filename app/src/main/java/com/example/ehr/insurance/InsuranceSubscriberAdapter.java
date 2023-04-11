@@ -1,8 +1,10 @@
 package com.example.ehr.insurance;
 
+import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ehr.R;
 import com.example.ehr.insurance.model.InsuranceCoverageModel;
 import com.example.ehr.insurance.model.InsuranceSubscriberModel;
+import com.example.ehr.sr_PatientAppointViewDialog;
 
 import java.util.List;
 
@@ -41,6 +44,17 @@ public class InsuranceSubscriberAdapter extends RecyclerView.Adapter<InsuranceSu
 
         holder.nameView.setText(firstName.concat(" ").concat(lastName));
         holder.expiryView.setText(expiry);
+
+        holder.viewButton.setOnClickListener(view -> {
+            InsuranceSubscriberDialog dialog = new InsuranceSubscriberDialog(view.getContext(), insuranceSubscriberModel);
+            dialog.show();
+
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(dialog.getWindow().getAttributes());
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.getWindow().setAttributes(layoutParams);
+        });
     }
 
     @Override
