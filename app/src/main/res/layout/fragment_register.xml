@@ -98,19 +98,16 @@
                 android:paddingEnd="12dp"
                 android:textColorHint="@color/dark_gray" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/patient_register_gender"
+                style="@style/InsuranceSpinnerTheme"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:background="@drawable/custom_edit_text"
+                android:drawableStart="@drawable/icon_arrow_down"
                 android:drawablePadding="8dp"
-                android:hint="Gender"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textColorHint="@color/dark_gray" />
+                android:paddingStart="4dp"
+                android:paddingEnd="12dp" />
 
             <TextView
                 android:id="@+id/patient_register_dob"

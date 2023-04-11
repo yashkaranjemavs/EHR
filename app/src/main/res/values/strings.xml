@@ -81,4 +81,9 @@
     <string name="insurance_subscriber_dialog_close">Close</string>
     <string-array name="insurance_names">
     </string-array>
+    <string-array name="gender_options">
+        <item>Select Gender</item>
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 </resources>
