@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.ehr.R;
 import com.example.ehr.UserModel;
@@ -61,6 +62,6 @@ public void onLoadSuccess(List<InsuranceSubscriberModel> insuranceSubscriber) {
 }
 
     public void onLoadFailed(String errorMessage) {
-        System.out.println("onLoadFailed");
+        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
     }
 }

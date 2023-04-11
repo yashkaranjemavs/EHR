@@ -38,8 +38,6 @@ public class InsuranceCoverageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        setHasOptionsMenu(true);
-
         View view = inflater.inflate(R.layout.fragment_insurance_coverage, container, false);
 
         user = ((InsuranceActivity) requireActivity()).getUser();
