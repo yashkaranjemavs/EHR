@@ -105,7 +105,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/laboratory_pending_test_view_test_button"
+                android:id="@+id/laboratory_landing_view_test_button"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
                 android:layout_marginStart="20dp"

@@ -3,8 +3,11 @@ package com.example.ehr;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -40,13 +43,22 @@ public class LaboratoryLandingTestsAdapter extends RecyclerView.Adapter<Laborato
         String testname = testsModel.getTestname();
         String testid = testsModel.getTestid();
         String firstname = testsModel.getFirstname().concat(" ").concat(testsModel.getLastname());
-        //String lastname = testsModel.getLastname();
 
         holder.testname.setText(testname);
         holder.testid.setText(testid);
         holder.firstname.setText(firstname);
-       // holder.lastname.setText(lastname);
 
+        holder.Viewtest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+             AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    LaboratoryPendingTestsFragment laboratoryPendingTestsFragment = new LaboratoryPendingTestsFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.laboratory_landing_recyclerview,laboratoryPendingTestsFragment).addToBackStack(null).commit();
+
+
+            }
+        });
 
     }
     @Override
