@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class LaboratoryTestsAdapter extends RecyclerView.Adapter<LaboratoryTestsViewHolder> {
+public class LaboratoryAllTestsAdapter extends RecyclerView.Adapter<LaboratoryAllTestsViewHolder> {
 
 
     List<LaboratoryAllTestsModel> testsList;
-    LaboratoryTestsFragment testsFragment;
+    LaboratoryAllTestsFragment testsFragment;
 
-    public LaboratoryTestsAdapter(List<LaboratoryAllTestsModel> testsList, LaboratoryTestsFragment testsFragment) {
+    public LaboratoryAllTestsAdapter(List<LaboratoryAllTestsModel> testsList, LaboratoryAllTestsFragment testsFragment) {
         this.testsList = testsList;
         this.testsFragment = testsFragment;
     }
@@ -29,13 +29,13 @@ public class LaboratoryTestsAdapter extends RecyclerView.Adapter<LaboratoryTests
 
     @NonNull
     @Override
-    public LaboratoryTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaboratoryAllTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new LaboratoryTestsViewHolder(view);
+        return new LaboratoryAllTestsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LaboratoryTestsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LaboratoryAllTestsViewHolder holder, int position) {
         LaboratoryAllTestsModel testsModel = testsList.get(position);
         String testname = testsModel.getTestname();
         String testid = testsModel.getTestid();

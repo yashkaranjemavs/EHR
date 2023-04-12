@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class LaboratoryTestsFragment extends Fragment
+public class LaboratoryLandingTestsFragment extends Fragment
 {
     UserModel user;
     RecyclerView laboratoryTestRecyclerView;
@@ -25,29 +25,29 @@ public class LaboratoryTestsFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_laboratory_tests, container, false);
+        View view = inflater.inflate(R.layout.fragment_laboratory_landing_tests, container, false);
 
 
 
-        laboratoryTestRecyclerView = view.findViewById(R.id.laboratory_test_recyclerview);
+        laboratoryTestRecyclerView = view.findViewById(R.id.laboratory_landing_recyclerview);
         laboratoryTestRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 
-        if (getArguments() == null) {
+      /*  if (getArguments() == null) {
             return view;
-        }
+        }*/
         user = ((LaboratoryActivity) requireActivity()).getUser();
         String id = user.getUserid();
 
-        BackgroundLaboratoryAllTestsWorker backgroundWorker = new BackgroundLaboratoryAllTestsWorker(
-                LaboratoryTestsFragment.this);
-        backgroundWorker.execute("get_tests", id);
+        BackgroundLaboratoryLandingTestsWorker backgroundWorker = new BackgroundLaboratoryLandingTestsWorker(
+                LaboratoryLandingTestsFragment.this);
+        backgroundWorker.execute("get_landing_tests", id);
 
         return view;
     }
 
-    public void onLoadSuccess(List<LaboratoryAllTestsModel> testsModels) {
-        laboratoryTestRecyclerView.setAdapter(new LaboratoryTestsAdapter(testsModels, LaboratoryTestsFragment.this));
+    public void onLoadSuccess(List<LaboratoryLandingTestsModel> testsModels) {
+        laboratoryTestRecyclerView.setAdapter(new LaboratoryLandingTestsAdapter(testsModels, LaboratoryLandingTestsFragment.this));
     }
 
     public void onLoadFailed(String errorMessage) {

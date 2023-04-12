@@ -22,11 +22,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BackgroundLaboratoryAllTestsWorker extends AsyncTask<Object, Void, String> {
-LaboratoryAllTestsFragment testsFragment;
-String actionType;
+public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Void, String> {
+    LaboratoryLandingTestsFragment testsFragment;
+    String actionType;
 
-    public BackgroundLaboratoryAllTestsWorker(LaboratoryAllTestsFragment testsFragment) {
+    public BackgroundLaboratoryLandingTestsWorker(LaboratoryLandingTestsFragment testsFragment) {
         this.testsFragment = testsFragment;
     }
 
@@ -37,8 +37,8 @@ String actionType;
 
         try {
             //Viewing Laboratory Tests
-            if (actionType.equals("get_tests")) {
-                String urlString = baseUrl + "/ps_getLaboratoryAllTests.php";
+            if (actionType.equals("get_landing_tests")) {
+                String urlString = baseUrl + "/ps_getLaboratorylandingTests.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
@@ -94,7 +94,7 @@ String actionType;
         return null;
     }
 
-   @Override
+    @Override
     protected void onPreExecute() {
     }
 
@@ -106,10 +106,10 @@ String actionType;
 
     private void handleResponse(String resultString) {
         try {
-            if (actionType.equals("get_tests")) {
+            if (actionType.equals("get_landing_tests")) {
                 JSONArray resultArr = new JSONArray(resultString);
 
-                List<LaboratoryAllTestsModel> testsList = new ArrayList<>();
+                List<LaboratoryLandingTestsModel> testsList = new ArrayList<>();
 
                 for (int i = 0; i < resultArr.length(); i++) {
                     JSONObject alltestfields = (JSONObject) resultArr.get(i);
@@ -118,11 +118,8 @@ String actionType;
                     String testid = alltestfields.getString("testid");
                     String firstname = alltestfields.getString("firstname");
                     String lastname = alltestfields.getString("lastname");
-                    String testreport = alltestfields.getString("testreport");
-                    String tdate = alltestfields.getString("tdate");
-                    String status = alltestfields.getString("status");
 
-                    LaboratoryAllTestsModel test = new LaboratoryAllTestsModel(testname, testid, firstname, lastname, testreport,tdate,status);
+                    LaboratoryLandingTestsModel test = new LaboratoryLandingTestsModel(testname, testid, firstname, lastname);
                     testsList.add(test);
                 }
 
@@ -130,8 +127,8 @@ String actionType;
             }
         } catch (JSONException e) {
 
-                this.testsFragment.onLoadFailed("Something went wrong");
-            }
-
+            this.testsFragment.onLoadFailed("Something went wrong");
         }
+
+    }
 }

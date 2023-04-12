@@ -1,14 +1,11 @@
 package com.example.ehr;
 
-import static android.text.TextUtils.concat;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 
-public class LaboratoryAdapter extends RecyclerView.Adapter<LaboratoryViewHolder> {
+public class LaboratoryPendingTestsAdapter extends RecyclerView.Adapter<LaboratoryPendingTestsViewHolder> {
 
 
     List<LaboratoryPendingTestsModel> testList;
-    LaboratoryFragment testFragment;
+    LaboratoryPendingTestsFragment testFragment;
     TextChangeCallback callback;
 
-    public LaboratoryAdapter(List<LaboratoryPendingTestsModel> testList, LaboratoryFragment testFragment, TextChangeCallback callback) {
+    public LaboratoryPendingTestsAdapter(List<LaboratoryPendingTestsModel> testList, LaboratoryPendingTestsFragment testFragment, TextChangeCallback callback) {
         this.testList = testList;
         this.testFragment = testFragment;
         this.callback = callback;
@@ -38,24 +35,28 @@ public class LaboratoryAdapter extends RecyclerView.Adapter<LaboratoryViewHolder
 
     @NonNull
     @Override
-    public LaboratoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaboratoryPendingTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new LaboratoryViewHolder(view);
+        return new LaboratoryPendingTestsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LaboratoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LaboratoryPendingTestsViewHolder holder, int position) {
         LaboratoryPendingTestsModel testModel = testList.get(position);
         String testname = testModel.getTestname();
         String firstname = testModel.getFirstname().concat(" ").concat(testModel.getLastname());
-        //String lastname = testModel.getLastname();
         String testreport = testModel.getTestreport();
         String testid = testModel.getTestid();
+        String visitid = testModel.getVisitid();
+        String laboratoryid = testModel.getLaboratoryid();
+        String tdate = testModel.getTdate();
 
         holder.testname.setText(testname);
         holder.firstname.setText(firstname);
-        //holder.lastname.setText(lastname);
         holder.testid.setText(testid);
+        holder.visitid.setText(visitid);
+        holder.laboratoryid.setText(laboratoryid);
+        holder.tdate.setText(tdate);
         holder.testreport.setText(testreport);
         holder.testreport.addTextChangedListener(new TextWatcher() {
             @Override

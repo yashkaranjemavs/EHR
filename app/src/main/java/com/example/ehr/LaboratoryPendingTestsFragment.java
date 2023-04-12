@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class LaboratoryFragment extends Fragment {
+public class LaboratoryPendingTestsFragment extends Fragment {
 
     UserModel user;
-    RecyclerView laboratoryRecyclerview;
+    RecyclerView laboratoryPendingRecyclerview;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,17 +27,17 @@ public class LaboratoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_laboratory, container, false);
+        View view = inflater.inflate(R.layout.fragment_laboratory_pending_tests, container, false);
 
-        laboratoryRecyclerview = view.findViewById(R.id.laboratory_recyclerview);
-        laboratoryRecyclerview.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        laboratoryPendingRecyclerview = view.findViewById(R.id.laboratory_pending_recyclerview);
+        laboratoryPendingRecyclerview.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 
         user = ((LaboratoryActivity) requireActivity()).getUser();
         String id = user.getUserid();
 
         BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(
-                LaboratoryFragment.this);
+                LaboratoryPendingTestsFragment.this);
         backgroundWorker.execute("get_test", id);
 
         return view;
@@ -45,7 +45,7 @@ public class LaboratoryFragment extends Fragment {
 
 
     public void onLoadSuccess(List<LaboratoryPendingTestsModel> testModels) {
-        laboratoryRecyclerview.setAdapter(new LaboratoryAdapter(testModels, LaboratoryFragment.this, new LaboratoryAdapter.TextChangeCallback()
+        laboratoryPendingRecyclerview.setAdapter(new LaboratoryPendingTestsAdapter(testModels, LaboratoryPendingTestsFragment.this, new LaboratoryPendingTestsAdapter.TextChangeCallback()
         {
             @Override
             public void textChangedAt(int position, LaboratoryPendingTestsModel text) {
@@ -57,7 +57,7 @@ public class LaboratoryFragment extends Fragment {
 
     public void onAddtestClicked(LaboratoryPendingTestsModel testsModel) {
 
-        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryFragment.this);
+        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment.this);
         backgroundWorker.execute("add_test", testsModel);
     }
 
@@ -68,7 +68,7 @@ public class LaboratoryFragment extends Fragment {
             Toast.makeText(getActivity(), "Failed to add test report", Toast.LENGTH_SHORT).show();
         }
 
-        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryFragment.this);
+        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment.this);
         backgroundWorker.execute("get_test", user.getUserid());
     }
 

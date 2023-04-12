@@ -3,31 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/laboratory_nav"
-    app:startDestination="@id/laboratoryFragment">
+    app:startDestination="@id/laboratoryLandingTestsFragment">
 
     <fragment
-        android:id="@+id/laboratoryFragment"
-        android:name="com.example.ehr.LaboratoryFragment"
+        android:id="@+id/laboratoryLandingTestsFragment"
+        android:name="com.example.ehr.LaboratoryLandingTestsFragment"
         android:label="Laboratory"
-        tools:layout="@layout/fragment_laboratory">
+        tools:layout="@layout/fragment_laboratory_landing_tests" >
         <action
-            android:id="@+id/action_laboratoryFragment_to_laboratoryProfileFragment"
+            android:id="@+id/action_laboratoryLandingTestsFragment_to_laboratoryProfileFragment"
             app:destination="@id/laboratoryProfileFragment" />
         <action
-            android:id="@+id/action_laboratoryFragment_to_laboratoryTestsFragment"
-            app:destination="@id/laboratoryTestsFragment" />
+            android:id="@+id/action_laboratoryLandingTestsFragment_to_laboratoryAllTestsFragment"
+            app:destination="@id/laboratoryAllTestsFragment" />
     </fragment>
+
+
     <fragment
-        android:id="@+id/laboratoryTestsFragment"
-        android:name="com.example.ehr.LaboratoryTestsFragment"
+        android:id="@+id/laboratoryPendingTestsFragment"
+        android:name="com.example.ehr.LaboratoryPendingTestsFragment"
+        android:label="Laboratory Test Details"
+        tools:layout="@layout/fragment_laboratory_pending_tests">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/laboratoryAllTestsFragment"
+        android:name="com.example.ehr.LaboratoryAllTestsFragment"
         android:label="Laboratory Tests"
-        tools:layout="@layout/fragment_laboratory_tests">
-        <action
-            android:id="@+id/action_laboratoryTestsFragment_to_laboratoryFragment"
-            app:destination="@id/laboratoryFragment" />
+        tools:layout="@layout/fragment_laboratory_all_tests">
         <action
             android:id="@+id/action_laboratoryTestsFragment_to_laboratoryProfileFragment"
             app:destination="@id/laboratoryProfileFragment" />
+        <action
+            android:id="@+id/action_laboratoryAllTestsFragment_to_laboratoryLandingTestsFragment"
+            app:destination="@id/laboratoryLandingTestsFragment" />
     </fragment>
     <fragment
         android:id="@+id/laboratoryProfileFragment"
@@ -36,9 +46,10 @@
         tools:layout="@layout/fragment_laboratory_profile">
         <action
             android:id="@+id/action_laboratoryProfileFragment_to_laboratoryTestsFragment"
-            app:destination="@id/laboratoryTestsFragment" />
+            app:destination="@id/laboratoryAllTestsFragment" />
         <action
-            android:id="@+id/action_laboratoryProfileFragment_to_laboratoryFragment"
-            app:destination="@id/laboratoryFragment" />
+            android:id="@+id/action_laboratoryProfileFragment_to_laboratoryLandingTestsFragment"
+            app:destination="@id/laboratoryLandingTestsFragment" />
     </fragment>
+
 </navigation>

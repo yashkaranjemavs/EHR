@@ -7,18 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class LaboratoryTestsViewHolder extends  RecyclerView.ViewHolder {
-    TextView testname, firstname,lastname, testid, testreport, tdate,status;
+public class LaboratoryLandingTestsViewHolder extends  RecyclerView.ViewHolder {
+    TextView testname, firstname, testid;
 
-    public LaboratoryTestsViewHolder(@NonNull View view) {
+    public LaboratoryLandingTestsViewHolder(@NonNull View view) {
         super(view);
         testname = view.findViewById(R.id.laboratory_test_name);
         testid = view.findViewById(R.id.laboratory_test_id);
         firstname = view.findViewById(R.id.laboratory_first_name);
         //lastname = view.findViewById(R.id.laboratory_last_name);
-        testreport = view.findViewById(R.id.laboratory_test_report);
-        tdate = view.findViewById(R.id.laboratory_test_date);
-        status = view.findViewById(R.id.laboratory_test_status);
+
 
     }
 }

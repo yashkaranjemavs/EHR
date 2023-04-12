@@ -10,11 +10,11 @@ public class LaboratoryPendingTestsModel implements Serializable {
     String testreport;
     String laboratoryid;
     String visitid;
-
     String testid;
+    String tdate;
 
 
-    public LaboratoryPendingTestsModel(String testname, String firstname, String lastname, String testreport, String laboratoryid, String visitid, String testid) {
+    public LaboratoryPendingTestsModel(String testname, String firstname, String lastname, String testreport, String laboratoryid, String visitid, String testid,String tdate) {
         this.testname = testname;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -22,7 +22,7 @@ public class LaboratoryPendingTestsModel implements Serializable {
         this.laboratoryid = laboratoryid;
         this.visitid = visitid;
         this.testid = testid;
-
+        this.tdate = tdate;
     }
 
     public String getTestname() {
@@ -57,14 +57,6 @@ public class LaboratoryPendingTestsModel implements Serializable {
         this.testreport = testreport;
     }
 
-   /* public String getTestdate() {
-        return tdate;
-    }
-
-    public void setTestdate(String tdate) {
-        this.tdate = tdate;
-    }*/
-
     public String getLaboratoryid() {
         return laboratoryid;
     }
@@ -89,8 +81,18 @@ public class LaboratoryPendingTestsModel implements Serializable {
         this.testid = testid;
     }
 
+    public String getTdate() {
+        return tdate;
+    }
+
+    public void setTdate(String tdate) {
+        this.tdate = tdate;
+    }
+
     public void set(int position, String testreport) {
         this.testreport = testreport;
+
+
 
     }
 }

@@ -23,11 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Void, String> {
-    LaboratoryFragment testFragment;
+    LaboratoryPendingTestsFragment testFragment;
     String actionType;
     LaboratoryPendingTestsModel testsModel;
 
-    public BackgroundLaboratoryPendingTestsWorker(LaboratoryFragment testFragment) {
+    public BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment testFragment) {
         this.testFragment = testFragment;
     }
 
@@ -140,8 +140,9 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
                     String laboratoryid = testfields.getString("laboratoryid");
                     String visitid = testfields.getString("visitid");
                     String testid = testfields.getString("testid");
+                    String tdate = testfields.getString("tdate");
 
-                    LaboratoryPendingTestsModel test = new LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid, testid);
+                    LaboratoryPendingTestsModel test = new LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid, testid,tdate);
                     testList.add(test);
                 }
 
