@@ -11,12 +11,12 @@ import androidx.appcompat.widget.AppCompatButton;
 
 
 
-public class LaboratoryPendingTestDialog extends Dialog {
+public class LaboratoryTestDetailsDialog extends Dialog {
     private LaboratoryLandingTestsModel laboratoryLandingTestsModel;
 
     private TextView laboratoryidTextView,testidTextView,visitidTextView,testnameTextView,testdateTextView,nameTextView;
 private EditText testreportTextView;
-    public LaboratoryPendingTestDialog(Context ctx, LaboratoryLandingTestsModel laboratoryLandingTestsModel) {
+    public LaboratoryTestDetailsDialog(Context ctx, LaboratoryLandingTestsModel laboratoryLandingTestsModel) {
         super(ctx);
 
         this.laboratoryLandingTestsModel = laboratoryLandingTestsModel;
@@ -26,7 +26,7 @@ private EditText testreportTextView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.laboratory_pendingtest_dialog);
+        setContentView(R.layout.laboratory_test_details_dialog);
 
         nameTextView = findViewById(R.id.laboratory_first_name);
         laboratoryidTextView = findViewById(R.id.laboratory_id);

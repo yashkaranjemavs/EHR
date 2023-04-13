@@ -1,6 +1,5 @@
 package com.example.ehr;
 
-import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +47,7 @@ public class LaboratoryLandingTestsAdapter extends RecyclerView.Adapter<Laborato
         holder.firstname.setText(firstname);
 
         holder.Viewtest.setOnClickListener(view -> {
-            LaboratoryPendingTestDialog dialog = new LaboratoryPendingTestDialog(view.getContext(), testsModel);
+            LaboratoryTestDetailsDialog dialog = new LaboratoryTestDetailsDialog(view.getContext(), testsModel);
             dialog.show();
 
             WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
@@ -61,7 +60,7 @@ public class LaboratoryLandingTestsAdapter extends RecyclerView.Adapter<Laborato
 
 
         holder.Viewpatient.setOnClickListener(view -> {
-            LaboratoryTestDialog dialog = new LaboratoryTestDialog(view.getContext(), testsModel);
+            LaboratoryPatientDetailsDialog dialog = new LaboratoryPatientDetailsDialog(view.getContext(), testsModel);
             dialog.show();
 
             WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();

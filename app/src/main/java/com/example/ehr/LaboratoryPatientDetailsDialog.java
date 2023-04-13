@@ -8,13 +8,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
-public class LaboratoryTestDialog extends Dialog {
+public class LaboratoryPatientDetailsDialog extends Dialog {
     private LaboratoryLandingTestsModel laboratoryLandingTestsModel;
 
     private TextView nameTextView, genderTextView, dobTextView, emailidTextView, contactTextView,
             address1TextView, address2TextView, cityTextView, stateTextView, zipTextView,patientidTextView;
 
-    public LaboratoryTestDialog(Context ctx, LaboratoryLandingTestsModel laboratoryLandingTestsModel) {
+    public LaboratoryPatientDetailsDialog(Context ctx, LaboratoryLandingTestsModel laboratoryLandingTestsModel) {
         super(ctx);
 
         this.laboratoryLandingTestsModel = laboratoryLandingTestsModel;
@@ -24,7 +24,7 @@ public class LaboratoryTestDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.laboratory_test_dialog);
+        setContentView(R.layout.laboratory_patient_details_dialog);
 
         nameTextView = findViewById(R.id.laboratory_patient_dialog_name);
         genderTextView = findViewById(R.id.laboratory_patient_dialog_gender);
