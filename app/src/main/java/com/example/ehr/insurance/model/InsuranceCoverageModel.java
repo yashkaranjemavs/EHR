@@ -18,6 +18,8 @@ public class InsuranceCoverageModel implements Serializable {
 
     private String insuranceCoverage;
 
+    private String status;
+
     public InsuranceCoverageModel(
             String patientId,
             String visitId,
@@ -25,8 +27,8 @@ public class InsuranceCoverageModel implements Serializable {
             String lastName,
             String charges,
             String patientPayment,
-            String insuranceCoverage
-    ) {
+            String insuranceCoverage,
+            String status) {
         this.patientId = patientId;
         this.visitId = visitId;
         this.firstName = firstName;
@@ -34,7 +36,7 @@ public class InsuranceCoverageModel implements Serializable {
         this.charges = charges;
         this.patientPayment = patientPayment;
         this.insuranceCoverage = insuranceCoverage;
-
+        this.status = status;
     }
 
     public String getPatientId() {
@@ -80,4 +82,12 @@ public class InsuranceCoverageModel implements Serializable {
     public String getInsuranceCoverage() {return  insuranceCoverage; }
 
     public void setInsuranceCoverage(String insuranceCoverage) { this.insuranceCoverage = insuranceCoverage;}
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
