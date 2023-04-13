@@ -3,6 +3,7 @@ package com.example.ehr.insurance;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,15 +37,21 @@ public class InsuranceCoverageAdapter extends RecyclerView.Adapter<InsuranceCove
         InsuranceCoverageModel insuranceCoverageModel = insuranceCoverages.get(position);
         String firstName = insuranceCoverageModel.getFirstName();
         String lastName = insuranceCoverageModel.getLastName();
-        String charges = insuranceCoverageModel.getCharges();
-        String patientPayment = insuranceCoverageModel.getPatientPayment();
         String insuranceCoverage = insuranceCoverageModel.getInsuranceCoverage();
 
         holder.nameView.setText(firstName.concat(" ").concat(lastName));
-        holder.chargesView.setText("$".concat(charges));
-        holder.patientPaymentView.setText("$".concat(patientPayment));
         holder.insuranceCoverageView.setText("$".concat(insuranceCoverage));
 
+        holder.viewButton.setOnClickListener(view -> {
+            InsuranceCoverageDialog dialog = new InsuranceCoverageDialog(view.getContext(), insuranceCoverageModel);
+            dialog.show();
+
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(dialog.getWindow().getAttributes());
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.getWindow().setAttributes(layoutParams);
+        });
     }
 
     @Override

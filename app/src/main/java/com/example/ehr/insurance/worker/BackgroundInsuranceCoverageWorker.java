@@ -4,9 +4,7 @@ import android.os.AsyncTask;
 
 import com.example.ehr.BaseUrl;
 import com.example.ehr.insurance.InsuranceCoverageFragment;
-import com.example.ehr.insurance.InsuranceSubscribersFragment;
 import com.example.ehr.insurance.model.InsuranceCoverageModel;
-import com.example.ehr.insurance.model.InsuranceSubscriberModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,16 +67,17 @@ public class BackgroundInsuranceCoverageWorker extends AsyncTask<Object, Void, S
                 List<InsuranceCoverageModel> coverages = new ArrayList<>();
 
                 for (int i=0; i<resultArr.length(); i++) {
-                    JSONObject claimObj = (JSONObject) resultArr.get(i);
-                    String patientId = claimObj.getString("patientId");
-                    String visitId = claimObj.getString("visitId");
-                    String firstName = claimObj.getString("firstName");
-                    String lastName = claimObj.getString("lastName");
-                    String charges = claimObj.getString("charges");
-                    String patientPayment = claimObj.getString("patientPayment");
-                    String insuranceCoverage = claimObj.getString("insuranceCoverage");
+                    JSONObject coverageObj = (JSONObject) resultArr.get(i);
+                    String patientId = coverageObj.getString("patientId");
+                    String visitId = coverageObj.getString("visitId");
+                    String firstName = coverageObj.getString("firstName");
+                    String lastName = coverageObj.getString("lastName");
+                    String charges = coverageObj.getString("charges");
+                    String patientPayment = coverageObj.getString("patientPayment");
+                    String insuranceCoverage = coverageObj.getString("insuranceCoverage");
+                    String status = coverageObj.getString("status");
 
-                    InsuranceCoverageModel coverage = new InsuranceCoverageModel(patientId,visitId,firstName, lastName, charges,patientPayment,insuranceCoverage);
+                    InsuranceCoverageModel coverage = new InsuranceCoverageModel(patientId,visitId,firstName, lastName, charges,patientPayment,insuranceCoverage, status);
                     coverages.add(coverage);
                 }
 
