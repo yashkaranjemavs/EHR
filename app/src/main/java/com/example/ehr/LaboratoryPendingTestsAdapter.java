@@ -10,33 +10,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class LaboratoryLandingTestsAdapter extends RecyclerView.Adapter<LaboratoryLandingTestsViewHolder> {
+public class LaboratoryPendingTestsAdapter extends RecyclerView.Adapter<LaboratoryPendingTestsViewHolder> {
 
 
-    List<LaboratoryLandingTestsModel> testsList;
-//    LaboratoryLandingTestsFragment testsFragment;
+    List<LaboratoryPendingTestsModel> testsList;
+    LaboratoryPendingTestsFragment testsFragment;
 
-    public LaboratoryLandingTestsAdapter(List<LaboratoryLandingTestsModel> testsList) {
+    public LaboratoryPendingTestsAdapter(List<LaboratoryPendingTestsModel> testsList, LaboratoryPendingTestsFragment testsFragment) {
         this.testsList = testsList;
+        this.testsFragment = testsFragment;
     }
 
 
     @Override
     public int getItemViewType(final int position) {
-        return R.layout.laboratory_landing_test_view;
+        return R.layout.laboratory_pending_test_view;
     }
 
 
     @NonNull
     @Override
-    public LaboratoryLandingTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaboratoryPendingTestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new LaboratoryLandingTestsViewHolder(view);
+        return new LaboratoryPendingTestsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LaboratoryLandingTestsViewHolder holder, int position) {
-        LaboratoryLandingTestsModel testsModel = testsList.get(position);
+    public void onBindViewHolder(@NonNull LaboratoryPendingTestsViewHolder holder, int position) {
+        LaboratoryPendingTestsModel testsModel = testsList.get(position);
 
         String testid = testsModel.getTestid();
         String testname = testsModel.getTestname();
@@ -47,7 +48,7 @@ public class LaboratoryLandingTestsAdapter extends RecyclerView.Adapter<Laborato
         holder.firstname.setText(firstname);
 
         holder.Viewtest.setOnClickListener(view -> {
-            LaboratoryTestDetailsDialog dialog = new LaboratoryTestDetailsDialog(view.getContext(), testsModel);
+            LaboratoryTestDetailsDialog dialog = new LaboratoryTestDetailsDialog(view.getContext(), testsModel, testsFragment);
             dialog.show();
 
             WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();

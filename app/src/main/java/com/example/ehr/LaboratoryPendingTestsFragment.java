@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class LaboratoryLandingTestsFragment extends Fragment
+public class LaboratoryPendingTestsFragment extends Fragment
 {
     UserModel user;
-    RecyclerView laboratoryLandingTestRecyclerView;
+    RecyclerView laboratoryPendingTestRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,27 +26,27 @@ public class LaboratoryLandingTestsFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_laboratory_landing_tests, container, false);
-        laboratoryLandingTestRecyclerView = view.findViewById(R.id.laboratory_landing_recyclerview);
-        laboratoryLandingTestRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        View view = inflater.inflate(R.layout.fragment_laboratory_pending_tests, container, false);
+        laboratoryPendingTestRecyclerView = view.findViewById(R.id.laboratory_pending_recyclerview);
+        laboratoryPendingTestRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         user = ((LaboratoryActivity) requireActivity()).getUser();
         String id = user.getUserid();
 
-        BackgroundLaboratoryLandingTestsWorker backgroundWorker = new BackgroundLaboratoryLandingTestsWorker(
-                LaboratoryLandingTestsFragment.this);
-        backgroundWorker.execute("get_landing_tests", id);
+        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(
+                LaboratoryPendingTestsFragment.this);
+        backgroundWorker.execute("get_tests", id);
 
         return view;
     }
 
-    public void onLoadSuccess(List<LaboratoryLandingTestsModel> testsModels) {
-        laboratoryLandingTestRecyclerView.setAdapter(new LaboratoryLandingTestsAdapter(testsModels));
+    public void onLoadSuccess(List<LaboratoryPendingTestsModel> testsModels) {
+        laboratoryPendingTestRecyclerView.setAdapter(new LaboratoryPendingTestsAdapter(testsModels, LaboratoryPendingTestsFragment.this));
     }
 
-    public void onAddtestClicked(LaboratoryLandingTestsModel testsModel) {
+    public void onAddtestClicked(LaboratoryPendingTestsModel testsModel) {
 
-        BackgroundLaboratoryLandingTestsWorker backgroundWorker = new BackgroundLaboratoryLandingTestsWorker(LaboratoryLandingTestsFragment.this);
+        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment.this);
         backgroundWorker.execute("add_test", testsModel);
     }
     public void onUpdate(String errorMessage) {
@@ -56,7 +56,7 @@ public class LaboratoryLandingTestsFragment extends Fragment
             Toast.makeText(getActivity(), "Failed to add test report", Toast.LENGTH_SHORT).show();
         }
 
-        BackgroundLaboratoryLandingTestsWorker backgroundWorker = new BackgroundLaboratoryLandingTestsWorker(LaboratoryLandingTestsFragment.this);
+        BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment.this);
         backgroundWorker.execute("get_test", user.getUserid());
     }
 

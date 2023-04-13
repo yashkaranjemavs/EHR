@@ -61,7 +61,7 @@ public class LaboratoryActivity extends AppCompatActivity {
 
             case R.id.laboratory_menu_home:
 //              Navigating from Laboratory Profile Fragment or Laboratory Tests Fragment to Laboratory Fragment Home Page
-                if (currentFragment instanceof LaboratoryLandingTestsFragment)
+                if (currentFragment instanceof LaboratoryPendingTestsFragment)
                 {
                     break;
                 }
@@ -78,7 +78,7 @@ public class LaboratoryActivity extends AppCompatActivity {
 
             case R.id.laboratory_menu_profile:
 //              Navigating from Laboratory Fragment or Laboratory Tests Fragment to Laboratory Profile Fragment Page
-                if (currentFragment instanceof LaboratoryLandingTestsFragment)
+                if (currentFragment instanceof LaboratoryPendingTestsFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryLandingTestsFragment_to_laboratoryProfileFragment, bundle);
                 }
@@ -95,7 +95,7 @@ public class LaboratoryActivity extends AppCompatActivity {
 
 //              Navigating from Laboratory Fragment or Laboratory profile Fragment to Laboratory Tests Fragment Page
             case R.id.laboratory_menu_tests:
-                if (currentFragment instanceof LaboratoryLandingTestsFragment)
+                if (currentFragment instanceof LaboratoryPendingTestsFragment)
                 {
                     Navigation.findNavController(findViewById(R.id.laboratory_nav_host)).navigate(R.id.action_laboratoryLandingTestsFragment_to_laboratoryAllTestsFragment, bundle);
                 }

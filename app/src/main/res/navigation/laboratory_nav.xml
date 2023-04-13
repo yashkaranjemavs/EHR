@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/laboratoryLandingTestsFragment"
-        android:name="com.example.ehr.LaboratoryLandingTestsFragment"
+        android:name="com.example.ehr.LaboratoryPendingTestsFragment"
         android:label="Laboratory"
-        tools:layout="@layout/fragment_laboratory_landing_tests" >
+        tools:layout="@layout/fragment_laboratory_pending_tests" >
         <action
             android:id="@+id/action_laboratoryLandingTestsFragment_to_laboratoryProfileFragment"
             app:destination="@id/laboratoryProfileFragment" />
@@ -18,14 +18,6 @@
             app:destination="@id/laboratoryAllTestsFragment" />
     </fragment>
 
-
-    <fragment
-        android:id="@+id/laboratoryPendingTestsFragment"
-        android:name="com.example.ehr.LaboratoryPendingTestsFragment"
-        android:label="Laboratory Test Details"
-        tools:layout="@layout/fragment_laboratory_pending_tests">
-
-    </fragment>
 
     <fragment
         android:id="@+id/laboratoryAllTestsFragment"

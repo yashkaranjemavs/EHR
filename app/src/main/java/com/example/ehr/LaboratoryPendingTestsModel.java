@@ -2,7 +2,7 @@ package com.example.ehr;
 
 import java.io.Serializable;
 
-public class LaboratoryLandingTestsModel implements Serializable {
+public class LaboratoryPendingTestsModel implements Serializable {
     String testname;
     String firstname;
     String lastname;
@@ -25,7 +25,7 @@ public class LaboratoryLandingTestsModel implements Serializable {
 
 
 
-    public LaboratoryLandingTestsModel(String testname, String testid, String firstname, String lastname, String gender, String dob, String city, String state, String zip,String contact,String emailid, String address1, String address2, String patientid, String laboratoryid,String visitid,String tdate, String testreport) {
+    public LaboratoryPendingTestsModel(String testname, String testid, String firstname, String lastname, String gender, String dob, String city, String state, String zip, String contact, String emailid, String address1, String address2, String patientid, String laboratoryid, String visitid, String tdate, String testreport) {
         this.testname = testname;
         this.testid = testid;
         this.patientid=patientid;

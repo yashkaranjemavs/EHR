@@ -9,15 +9,15 @@ import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatButton;
 
 public class LaboratoryPatientDetailsDialog extends Dialog {
-    private LaboratoryLandingTestsModel laboratoryLandingTestsModel;
+    private LaboratoryPendingTestsModel laboratoryPendingTestsModel;
 
     private TextView nameTextView, genderTextView, dobTextView, emailidTextView, contactTextView,
             address1TextView, address2TextView, cityTextView, stateTextView, zipTextView,patientidTextView;
 
-    public LaboratoryPatientDetailsDialog(Context ctx, LaboratoryLandingTestsModel laboratoryLandingTestsModel) {
+    public LaboratoryPatientDetailsDialog(Context ctx, LaboratoryPendingTestsModel laboratoryPendingTestsModel) {
         super(ctx);
 
-        this.laboratoryLandingTestsModel = laboratoryLandingTestsModel;
+        this.laboratoryPendingTestsModel = laboratoryPendingTestsModel;
     }
 
     @Override
@@ -47,17 +47,17 @@ public class LaboratoryPatientDetailsDialog extends Dialog {
     }
 
     private void setViews() {
-        nameTextView.setText(laboratoryLandingTestsModel.getFirstname() + " " + laboratoryLandingTestsModel.getLastname());
-        genderTextView.setText(laboratoryLandingTestsModel.getGender());
-        dobTextView.setText(laboratoryLandingTestsModel.getDob());
-        cityTextView.setText(laboratoryLandingTestsModel.getCity());
-        stateTextView.setText(laboratoryLandingTestsModel.getState());
-        zipTextView.setText(laboratoryLandingTestsModel.getZip());
-        contactTextView.setText(laboratoryLandingTestsModel.getContact());
-        emailidTextView.setText(laboratoryLandingTestsModel.getEmailid());
-        address1TextView.setText(laboratoryLandingTestsModel.getAddress1());
-        address2TextView.setText(laboratoryLandingTestsModel.getAddress2());
-        patientidTextView.setText(laboratoryLandingTestsModel.getPatientid());
+        nameTextView.setText(laboratoryPendingTestsModel.getFirstname() + " " + laboratoryPendingTestsModel.getLastname());
+        genderTextView.setText(laboratoryPendingTestsModel.getGender());
+        dobTextView.setText(laboratoryPendingTestsModel.getDob());
+        cityTextView.setText(laboratoryPendingTestsModel.getCity());
+        stateTextView.setText(laboratoryPendingTestsModel.getState());
+        zipTextView.setText(laboratoryPendingTestsModel.getZip());
+        contactTextView.setText(laboratoryPendingTestsModel.getContact());
+        emailidTextView.setText(laboratoryPendingTestsModel.getEmailid());
+        address1TextView.setText(laboratoryPendingTestsModel.getAddress1());
+        address2TextView.setText(laboratoryPendingTestsModel.getAddress2());
+        patientidTextView.setText(laboratoryPendingTestsModel.getPatientid());
 
     }
 }

@@ -12,14 +12,16 @@ import androidx.appcompat.widget.AppCompatButton;
 
 
 public class LaboratoryTestDetailsDialog extends Dialog {
-    private LaboratoryLandingTestsModel laboratoryLandingTestsModel;
+    private LaboratoryPendingTestsModel laboratoryPendingTestsModel;
 
     private TextView laboratoryidTextView,testidTextView,visitidTextView,testnameTextView,testdateTextView,nameTextView;
-private EditText testreportTextView;
-    public LaboratoryTestDetailsDialog(Context ctx, LaboratoryLandingTestsModel laboratoryLandingTestsModel) {
+    private EditText testreportTextView;
+    LaboratoryPendingTestsFragment fragment;
+    public LaboratoryTestDetailsDialog(Context ctx, LaboratoryPendingTestsModel laboratoryPendingTestsModel, LaboratoryPendingTestsFragment fragment) {
         super(ctx);
 
-        this.laboratoryLandingTestsModel = laboratoryLandingTestsModel;
+        this.laboratoryPendingTestsModel = laboratoryPendingTestsModel;
+        this.fragment = fragment;
     }
 
     @Override
@@ -40,9 +42,9 @@ private EditText testreportTextView;
         AppCompatButton closeButton = findViewById(R.id.laboratory_patient_dialog_close_button);
 
         addbutton.setOnClickListener(view -> {
-            String testreport = testreportTextView.getText().toString();
+            laboratoryPendingTestsModel.setTestreport(testreportTextView.getText().toString());
 
-
+            fragment.onAddtestClicked(laboratoryPendingTestsModel);
 
         });
         closeButton.setOnClickListener(view -> {
@@ -52,12 +54,12 @@ private EditText testreportTextView;
     }
 
     private void setViews() {
-        nameTextView.setText(laboratoryLandingTestsModel.getFirstname() + " " + laboratoryLandingTestsModel.getLastname());
-        laboratoryidTextView.setText(laboratoryLandingTestsModel.getLaboratoryid());
-        testidTextView.setText(laboratoryLandingTestsModel.getTestid());
-        visitidTextView.setText(laboratoryLandingTestsModel.getVisitid());
-        testnameTextView.setText(laboratoryLandingTestsModel.getTestname());
-        testdateTextView.setText(laboratoryLandingTestsModel.getTdate());
-        testreportTextView.setText(laboratoryLandingTestsModel.getTestreport());
+        nameTextView.setText(laboratoryPendingTestsModel.getFirstname() + " " + laboratoryPendingTestsModel.getLastname());
+        laboratoryidTextView.setText(laboratoryPendingTestsModel.getLaboratoryid());
+        testidTextView.setText(laboratoryPendingTestsModel.getTestid());
+        visitidTextView.setText(laboratoryPendingTestsModel.getVisitid());
+        testnameTextView.setText(laboratoryPendingTestsModel.getTestname());
+        testdateTextView.setText(laboratoryPendingTestsModel.getTdate());
+        testreportTextView.setText(laboratoryPendingTestsModel.getTestreport());
     }
 }

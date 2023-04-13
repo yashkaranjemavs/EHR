@@ -22,11 +22,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Void, String> {
-    LaboratoryLandingTestsFragment testsFragment;
+public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Void, String> {
+    LaboratoryPendingTestsFragment testsFragment;
     String actionType;
-    LaboratoryLandingTestsModel testsModel;
-    public BackgroundLaboratoryLandingTestsWorker(LaboratoryLandingTestsFragment testsFragment) {
+    LaboratoryPendingTestsModel testsModel;
+    public BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment testsFragment) {
         this.testsFragment = testsFragment;
     }
 
@@ -37,8 +37,8 @@ public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Vo
 
         try {
             //Viewing Laboratory Tests
-            if (actionType.equals("get_landing_tests")) {
-                String urlString = baseUrl + "/ps_getLaboratorylandingTests.php";
+            if (actionType.equals("get_tests")) {
+                String urlString = baseUrl + "/ps_getLaboratoryTests.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
@@ -50,7 +50,7 @@ public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Vo
                 String urlString = baseUrl + "/ps_updateLaboratoryTests.php";
                 URL url = new URL(urlString);
 
-                testsModel = (LaboratoryLandingTestsModel) params[1];
+                testsModel = (LaboratoryPendingTestsModel) params[1];
                 String testreport = testsModel.getTestreport();
                 String visitid = testsModel.getVisitid();
                 String testid = testsModel.getTestid();
@@ -123,11 +123,11 @@ public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Vo
 
     private void handleResponse(String resultString) {
         try {
-            if (actionType.equals("get_landing_tests"))
+            if (actionType.equals("get_tests"))
             {
                 JSONArray resultArr = new JSONArray(resultString);
 
-                List<LaboratoryLandingTestsModel> testsList = new ArrayList<>();
+                List<LaboratoryPendingTestsModel> testsList = new ArrayList<>();
 
                 for (int i = 0; i < resultArr.length(); i++) {
                     JSONObject alltestfields = (JSONObject) resultArr.get(i);
@@ -151,7 +151,7 @@ public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Vo
                     String tdate = alltestfields.getString("tdate");
                     String testreport = alltestfields.getString("testreport");
 
-                    LaboratoryLandingTestsModel test = new LaboratoryLandingTestsModel(testname, testid, firstname, lastname, gender, dob, city, state, zip, contact, emailid, address1, address2, patientid, laboratoryid, visitid, tdate, testreport);
+                    LaboratoryPendingTestsModel test = new LaboratoryPendingTestsModel(testname, testid, firstname, lastname, gender, dob, city, state, zip, contact, emailid, address1, address2, patientid, laboratoryid, visitid, tdate, testreport);
                     testsList.add(test);
                 }
 
