@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LaboratoryLandingTestsViewHolder extends  RecyclerView.ViewHolder {
     TextView testname, firstname, testid;
-    AppCompatButton Viewtest;
+    AppCompatButton Viewtest,Viewpatient;
 
     public LaboratoryLandingTestsViewHolder(@NonNull View view) {
         super(view);
@@ -20,6 +20,7 @@ public class LaboratoryLandingTestsViewHolder extends  RecyclerView.ViewHolder {
         //lastname = view.findViewById(R.id.laboratory_last_name);
 
         Viewtest =view.findViewById(R.id.laboratory_landing_view_test_button);
+        Viewpatient =view.findViewById(R.id.laboratory_landing_view_patient_button);
 
 
 

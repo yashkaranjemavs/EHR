@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class LaboratoryLandingTestsFragment extends Fragment
 {
     UserModel user;
-    RecyclerView laboratoryTestRecyclerView;
+    RecyclerView laboratoryLandingTestRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,16 +27,9 @@ public class LaboratoryLandingTestsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_laboratory_landing_tests, container, false);
+        laboratoryLandingTestRecyclerView = view.findViewById(R.id.laboratory_landing_recyclerview);
+        laboratoryLandingTestRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-
-
-        laboratoryTestRecyclerView = view.findViewById(R.id.laboratory_landing_recyclerview);
-        laboratoryTestRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
-
-      /*  if (getArguments() == null) {
-            return view;
-        }*/
         user = ((LaboratoryActivity) requireActivity()).getUser();
         String id = user.getUserid();
 
@@ -47,10 +41,10 @@ public class LaboratoryLandingTestsFragment extends Fragment
     }
 
     public void onLoadSuccess(List<LaboratoryLandingTestsModel> testsModels) {
-        laboratoryTestRecyclerView.setAdapter(new LaboratoryLandingTestsAdapter(testsModels, LaboratoryLandingTestsFragment.this));
+        laboratoryLandingTestRecyclerView.setAdapter(new LaboratoryLandingTestsAdapter(testsModels));
     }
 
     public void onLoadFailed(String errorMessage) {
-        System.out.println("Failed to Load");
+        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
     }
 }

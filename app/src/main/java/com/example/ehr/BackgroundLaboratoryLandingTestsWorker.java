@@ -118,8 +118,18 @@ public class BackgroundLaboratoryLandingTestsWorker extends AsyncTask<Object, Vo
                     String testid = alltestfields.getString("testid");
                     String firstname = alltestfields.getString("firstname");
                     String lastname = alltestfields.getString("lastname");
+                    String gender = alltestfields.getString("gender");
+                    String dob = alltestfields.getString("dob");
+                    String city = alltestfields.getString("city");
+                    String state = alltestfields.getString("state");
+                    String zip = alltestfields.getString("zip");
+                    String contact = alltestfields.getString("contact");
+                    String emailid = alltestfields.getString("emailid");
+                    String address1 = alltestfields.getString("address1");
+                    String address2 = alltestfields.getString("address2");
+                    String patientid = alltestfields.getString("patientid");
 
-                    LaboratoryLandingTestsModel test = new LaboratoryLandingTestsModel(testname, testid, firstname, lastname);
+                    LaboratoryLandingTestsModel test = new LaboratoryLandingTestsModel(testname, testid, firstname, lastname,gender,dob,city,state,zip,contact,emailid,address1,address2,patientid);
                     testsList.add(test);
                 }
 
