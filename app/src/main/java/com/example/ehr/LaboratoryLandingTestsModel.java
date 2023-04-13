@@ -17,11 +17,15 @@ public class LaboratoryLandingTestsModel implements Serializable {
     String address1;
     String address2;
     String patientid;
+    String laboratoryid;
+    String visitid;
+    String tdate;
+    String testreport;
 
 
 
 
-    public LaboratoryLandingTestsModel(String testname, String testid, String firstname, String lastname, String gender, String dob, String city, String state, String zip,String contact,String emailid, String address1, String address2, String patientid) {
+    public LaboratoryLandingTestsModel(String testname, String testid, String firstname, String lastname, String gender, String dob, String city, String state, String zip,String contact,String emailid, String address1, String address2, String patientid, String laboratoryid,String visitid,String tdate, String testreport) {
         this.testname = testname;
         this.testid = testid;
         this.patientid=patientid;
@@ -36,6 +40,10 @@ public class LaboratoryLandingTestsModel implements Serializable {
         this.emailid=emailid;
         this.address1 = address1;
         this.address2=address2;
+        this.laboratoryid=laboratoryid;
+        this.visitid=visitid;
+        this.tdate=tdate;
+        this.testreport=testreport;
     }
 
     public String getTestname() {
@@ -149,5 +157,37 @@ public class LaboratoryLandingTestsModel implements Serializable {
 
     public void setPatientid(String patientid) {
         this.patientid = patientid;
+    }
+
+    public String getLaboratoryid() {
+        return laboratoryid;
+    }
+
+    public void setLaboratoryid(String laboratoryid) {
+        this.laboratoryid = laboratoryid;
+    }
+
+    public String getVisitid() {
+        return visitid;
+    }
+
+    public void setVisitid(String visitid) {
+        this.visitid = visitid;
+    }
+
+    public String getTdate() {
+        return tdate;
+    }
+
+    public void setTdate(String tdate) {
+        this.tdate = tdate;
+    }
+
+    public String getTestreport() {
+        return testreport;
+    }
+
+    public void setTestreport(String testreport) {
+        this.testreport = testreport;
     }
 }

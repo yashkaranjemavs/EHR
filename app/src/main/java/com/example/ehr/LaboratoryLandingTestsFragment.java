@@ -44,6 +44,22 @@ public class LaboratoryLandingTestsFragment extends Fragment
         laboratoryLandingTestRecyclerView.setAdapter(new LaboratoryLandingTestsAdapter(testsModels));
     }
 
+    public void onAddtestClicked(LaboratoryLandingTestsModel testsModel) {
+
+        BackgroundLaboratoryLandingTestsWorker backgroundWorker = new BackgroundLaboratoryLandingTestsWorker(LaboratoryLandingTestsFragment.this);
+        backgroundWorker.execute("add_test", testsModel);
+    }
+    public void onUpdate(String errorMessage) {
+        if (errorMessage.equals("")) {
+            Toast.makeText(getActivity(), "Test Added successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Failed to add test report", Toast.LENGTH_SHORT).show();
+        }
+
+        BackgroundLaboratoryLandingTestsWorker backgroundWorker = new BackgroundLaboratoryLandingTestsWorker(LaboratoryLandingTestsFragment.this);
+        backgroundWorker.execute("get_test", user.getUserid());
+    }
+
     public void onLoadFailed(String errorMessage) {
         Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
     }

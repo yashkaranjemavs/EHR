@@ -84,8 +84,6 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,
                     StandardCharsets.UTF_8));
-
-
             bufferedWriter.write(postData);
             bufferedWriter.close();
             outputStream.close();

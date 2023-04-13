@@ -1,17 +1,13 @@
 package com.example.ehr;
 
+import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.ehr.insurance.InsuranceSubscriberDialog;
 
 import java.util.List;
 
@@ -51,17 +47,18 @@ public class LaboratoryLandingTestsAdapter extends RecyclerView.Adapter<Laborato
         holder.testname.setText(testname);
         holder.firstname.setText(firstname);
 
-        holder.Viewtest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.Viewtest.setOnClickListener(view -> {
+            LaboratoryPendingTestDialog dialog = new LaboratoryPendingTestDialog(view.getContext(), testsModel);
+            dialog.show();
 
-             AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    LaboratoryPendingTestsFragment laboratoryPendingTestsFragment = new LaboratoryPendingTestsFragment();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.laboratory_landing_recyclerview,laboratoryPendingTestsFragment).addToBackStack(null).commit();
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(dialog.getWindow().getAttributes());
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.getWindow().setAttributes(layoutParams);
 
-
-            }
         });
+
 
         holder.Viewpatient.setOnClickListener(view -> {
             LaboratoryTestDialog dialog = new LaboratoryTestDialog(view.getContext(), testsModel);
