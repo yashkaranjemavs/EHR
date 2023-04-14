@@ -57,7 +57,7 @@ public class LaboratoryPendingTestsFragment extends Fragment
         }
 
         BackgroundLaboratoryPendingTestsWorker backgroundWorker = new BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment.this);
-        backgroundWorker.execute("get_test", user.getUserid());
+        backgroundWorker.execute("get_tests", user.getUserid());
     }
 
     public void onLoadFailed(String errorMessage) {

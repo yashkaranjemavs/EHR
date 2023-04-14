@@ -94,6 +94,7 @@
 
                 <TextView
                     android:id="@+id/laboratory_first_name"
+                    android:textColor="@color/purple_700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="6dp"
@@ -116,20 +117,6 @@
                 android:text="View Test"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/laboratory_pending_view_patient_button"
-                android:layout_width="117dp"
-                android:layout_height="31dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/custom_primary_button"
-                android:paddingStart="5dp"
-                android:text="View Patient"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

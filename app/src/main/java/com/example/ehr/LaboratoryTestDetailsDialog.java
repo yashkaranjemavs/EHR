@@ -45,6 +45,7 @@ public class LaboratoryTestDetailsDialog extends Dialog {
             laboratoryPendingTestsModel.setTestreport(testreportTextView.getText().toString());
 
             fragment.onAddtestClicked(laboratoryPendingTestsModel);
+            dismiss();
 
         });
         closeButton.setOnClickListener(view -> {
@@ -52,6 +53,7 @@ public class LaboratoryTestDetailsDialog extends Dialog {
         });
         setViews();
     }
+
 
     private void setViews() {
         nameTextView.setText(laboratoryPendingTestsModel.getFirstname() + " " + laboratoryPendingTestsModel.getLastname());

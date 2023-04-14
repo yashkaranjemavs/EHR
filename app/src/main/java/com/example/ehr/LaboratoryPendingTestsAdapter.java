@@ -60,7 +60,7 @@ public class LaboratoryPendingTestsAdapter extends RecyclerView.Adapter<Laborato
         });
 
 
-        holder.Viewpatient.setOnClickListener(view -> {
+        holder.firstname.setOnClickListener(view -> {
             LaboratoryPatientDetailsDialog dialog = new LaboratoryPatientDetailsDialog(view.getContext(), testsModel);
             dialog.show();
 

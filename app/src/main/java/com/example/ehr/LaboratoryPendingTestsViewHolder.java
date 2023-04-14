@@ -10,19 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LaboratoryPendingTestsViewHolder extends  RecyclerView.ViewHolder {
     TextView testname, firstname, testid;
-    AppCompatButton Viewtest,Viewpatient;
+    AppCompatButton Viewtest;
 
     public LaboratoryPendingTestsViewHolder(@NonNull View view) {
         super(view);
         testname = view.findViewById(R.id.laboratory_test_name);
         testid = view.findViewById(R.id.laboratory_test_id);
         firstname = view.findViewById(R.id.laboratory_first_name);
-        //lastname = view.findViewById(R.id.laboratory_last_name);
-
         Viewtest =view.findViewById(R.id.laboratory_pending_view_test_button);
-        Viewpatient =view.findViewById(R.id.laboratory_pending_view_patient_button);
-
-
-
     }
 }
