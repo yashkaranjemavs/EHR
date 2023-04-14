@@ -79,6 +79,12 @@
     <string name="insurance_subscriber_dialog_zip">ZIP:</string>
     <string name="insurance_subscriber_dialog_expiry">Expiry:</string>
     <string name="insurance_subscriber_dialog_close">Close</string>
+    <string name="insurance_coverage_dialog_title">Coverage Details</string>
+    <string name="insurance_coverage_dialog_name">Name:</string>
+    <string name="insurance_coverage_dialog_charges">Charges:</string>
+    <string name="insurance_coverage_dialog_patient_payment">Patient Payment:</string>
+    <string name="insurance_coverage_dialog_insurance_coverage">Insurance Coverage:</string>
+    <string name="insurance_coverage_dialog_status">Status:</string>
     <string-array name="insurance_names">
     </string-array>
     <string-array name="gender_options">
