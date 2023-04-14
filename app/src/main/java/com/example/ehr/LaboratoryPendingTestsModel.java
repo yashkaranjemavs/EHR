@@ -1,4 +1,3 @@
-
 package com.example.ehr;
 
 import java.io.Serializable;
@@ -7,22 +6,44 @@ public class LaboratoryPendingTestsModel implements Serializable {
     String testname;
     String firstname;
     String lastname;
-    String testreport;
+    String testid;
+    String gender;
+    String dob;
+    String city;
+    String state;
+    String zip;
+    String contact;
+    String emailid;
+    String address1;
+    String address2;
+    String patientid;
     String laboratoryid;
     String visitid;
+    String tdate;
+    String testreport;
 
-    String testid;
 
 
-    public LaboratoryPendingTestsModel(String testname, String firstname, String lastname, String testreport, String laboratoryid, String visitid, String testid) {
+
+    public LaboratoryPendingTestsModel(String testname, String testid, String firstname, String lastname, String gender, String dob, String city, String state, String zip, String contact, String emailid, String address1, String address2, String patientid, String laboratoryid, String visitid, String tdate, String testreport) {
         this.testname = testname;
+        this.testid = testid;
+        this.patientid=patientid;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.testreport= testreport;
-        this.laboratoryid = laboratoryid;
-        this.visitid = visitid;
-        this.testid = testid;
-
+        this.gender = gender;
+        this.dob=dob;
+        this.city=city;
+        this.state=state;
+        this.zip=zip;
+        this.contact=contact;
+        this.emailid=emailid;
+        this.address1 = address1;
+        this.address2=address2;
+        this.laboratoryid=laboratoryid;
+        this.visitid=visitid;
+        this.tdate=tdate;
+        this.testreport=testreport;
     }
 
     public String getTestname() {
@@ -49,21 +70,94 @@ public class LaboratoryPendingTestsModel implements Serializable {
         this.lastname = lastname;
     }
 
-    public String getTestreport() {
-        return testreport;
+
+    public String getTestid() {
+        return testid;
     }
 
-    public void setTestreport(String testreport) {
-        this.testreport = testreport;
+    public void setTestid(String testid) {
+        this.testid = testid;
     }
 
-   /* public String getTestdate() {
-        return tdate;
+    public String getGender() {
+        return gender;
     }
 
-    public void setTestdate(String tdate) {
-        this.tdate = tdate;
-    }*/
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getEmailid() {
+        return emailid;
+    }
+
+    public void setEmailid(String emailid) {
+        this.emailid = emailid;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getPatientid() {
+        return patientid;
+    }
+
+    public void setPatientid(String patientid) {
+        this.patientid = patientid;
+    }
 
     public String getLaboratoryid() {
         return laboratoryid;
@@ -81,16 +175,19 @@ public class LaboratoryPendingTestsModel implements Serializable {
         this.visitid = visitid;
     }
 
-    public String getTestid() {
-        return testid;
+    public String getTdate() {
+        return tdate;
     }
 
-    public void setTestid(String testid) {
-        this.testid = testid;
+    public void setTdate(String tdate) {
+        this.tdate = tdate;
     }
 
-    public void set(int position, String testreport) {
+    public String getTestreport() {
+        return testreport;
+    }
+
+    public void setTestreport(String testreport) {
         this.testreport = testreport;
-
     }
 }

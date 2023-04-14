@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="235dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -16,35 +16,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="235dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="6dp"
-                    android:text="Test Name"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/laboratory_test_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="6dp"
-                    android:paddingEnd="0dp"
-                    android:textSize="18sp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,19 +60,19 @@
                     android:layout_marginBottom="5dp"
                     android:paddingStart="0dp"
                     android:paddingEnd="6dp"
-                    android:text="Patient Name"
+                    android:text="Test Name"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/laboratory_first_name"
+                    android:id="@+id/laboratory_test_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="6dp"
                     android:paddingEnd="0dp"
                     android:textSize="18sp" />
-
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -112,37 +85,38 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:paddingStart="0dp"
                     android:paddingEnd="6dp"
-                    android:text="Test Report"
+                    android:text="Patient Name"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/laboratory_test_report"
+                <TextView
+                    android:id="@+id/laboratory_first_name"
+                    android:textColor="@color/purple_700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="6dp"
                     android:paddingEnd="0dp"
-                    android:textSize="18sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
 
+
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/laboratory_pending_test_view_button"
-                android:layout_width="114dp"
-                android:layout_height="48dp"
+                android:id="@+id/laboratory_pending_view_test_button"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_primary_button"
                 android:paddingStart="5dp"
-                android:text="Add Test"
+                android:text="View Test"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

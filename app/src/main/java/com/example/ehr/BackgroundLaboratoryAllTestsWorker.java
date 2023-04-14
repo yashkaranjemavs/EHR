@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackgroundLaboratoryAllTestsWorker extends AsyncTask<Object, Void, String> {
-LaboratoryTestsFragment testsFragment;
+LaboratoryAllTestsFragment testsFragment;
 String actionType;
 
-    public BackgroundLaboratoryAllTestsWorker(LaboratoryTestsFragment testsFragment) {
+    public BackgroundLaboratoryAllTestsWorker(LaboratoryAllTestsFragment testsFragment) {
         this.testsFragment = testsFragment;
     }
 

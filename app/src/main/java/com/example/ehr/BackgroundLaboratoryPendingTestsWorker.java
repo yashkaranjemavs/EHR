@@ -23,12 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Void, String> {
-    LaboratoryFragment testFragment;
+    LaboratoryPendingTestsFragment testsFragment;
     String actionType;
     LaboratoryPendingTestsModel testsModel;
-
-    public BackgroundLaboratoryPendingTestsWorker(LaboratoryFragment testFragment) {
-        this.testFragment = testFragment;
+    public BackgroundLaboratoryPendingTestsWorker(LaboratoryPendingTestsFragment testsFragment) {
+        this.testsFragment = testsFragment;
     }
 
     @Override
@@ -37,9 +36,9 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
         String baseUrl = BaseUrl.baseUrl;
 
         try {
-            //Viewing Laboratory Profile
-            if (actionType.equals("get_test")) {
-                String urlString = baseUrl + "/ps_getLaboratoryPendingTests.php";
+            //Viewing Laboratory Tests
+            if (actionType.equals("get_tests")) {
+                String urlString = baseUrl + "/ps_getLaboratoryTests.php";
                 URL url = new URL(urlString);
 
                 String id = (String) params[1];
@@ -47,7 +46,6 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
 
                 return handlePostRequest(url, postData);
             }
-
             else if (actionType.equals("add_test")) {
                 String urlString = baseUrl + "/ps_updateLaboratoryTests.php";
                 URL url = new URL(urlString);
@@ -59,8 +57,8 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
                 String laboratoryid = testsModel.getLaboratoryid();
 
                 String postData = URLEncoder.encode("testreport", "UTF-8") + "=" + URLEncoder.encode(testreport, "UTF-8") + "&" +
-              URLEncoder.encode("visitid", "UTF-8") + "=" + URLEncoder.encode(visitid, "UTF-8") + "&" +
-              URLEncoder.encode("testid", "UTF-8") + "=" + URLEncoder.encode(testid, "UTF-8") + "&" +
+                        URLEncoder.encode("visitid", "UTF-8") + "=" + URLEncoder.encode(visitid, "UTF-8") + "&" +
+                        URLEncoder.encode("testid", "UTF-8") + "=" + URLEncoder.encode(testid, "UTF-8") + "&" +
                         URLEncoder.encode("laboratoryid", "UTF-8") + "=" + URLEncoder.encode(laboratoryid, "UTF-8");
 
                 return handlePostRequest(url, postData);
@@ -125,41 +123,53 @@ public class BackgroundLaboratoryPendingTestsWorker extends AsyncTask<Object, Vo
 
     private void handleResponse(String resultString) {
         try {
-            if (actionType.equals("get_test")) {
+            if (actionType.equals("get_tests"))
+            {
                 JSONArray resultArr = new JSONArray(resultString);
 
-                List<LaboratoryPendingTestsModel> testList = new ArrayList<>();
+                List<LaboratoryPendingTestsModel> testsList = new ArrayList<>();
 
                 for (int i = 0; i < resultArr.length(); i++) {
-                    JSONObject testfields = (JSONObject) resultArr.get(i);
+                    JSONObject alltestfields = (JSONObject) resultArr.get(i);
 
-                    String testname = testfields.getString("testname");
-                    String firstname = testfields.getString("firstname");
-                    String lastname = testfields.getString("lastname");
-                    String testreport = testfields.getString("testreport");
-                    String laboratoryid = testfields.getString("laboratoryid");
-                    String visitid = testfields.getString("visitid");
-                    String testid = testfields.getString("testid");
+                    String testname = alltestfields.getString("testname");
+                    String testid = alltestfields.getString("testid");
+                    String firstname = alltestfields.getString("firstname");
+                    String lastname = alltestfields.getString("lastname");
+                    String gender = alltestfields.getString("gender");
+                    String dob = alltestfields.getString("dob");
+                    String city = alltestfields.getString("city");
+                    String state = alltestfields.getString("state");
+                    String zip = alltestfields.getString("zip");
+                    String contact = alltestfields.getString("contact");
+                    String emailid = alltestfields.getString("emailid");
+                    String address1 = alltestfields.getString("address1");
+                    String address2 = alltestfields.getString("address2");
+                    String patientid = alltestfields.getString("patientid");
+                    String laboratoryid = alltestfields.getString("laboratoryid");
+                    String visitid = alltestfields.getString("visitid");
+                    String tdate = alltestfields.getString("tdate");
+                    String testreport = alltestfields.getString("testreport");
 
-                    LaboratoryPendingTestsModel test = new LaboratoryPendingTestsModel(testname, firstname, lastname, testreport, laboratoryid, visitid, testid);
-                    testList.add(test);
+                    LaboratoryPendingTestsModel test = new LaboratoryPendingTestsModel(testname, testid, firstname, lastname, gender, dob, city, state, zip, contact, emailid, address1, address2, patientid, laboratoryid, visitid, tdate, testreport);
+                    testsList.add(test);
                 }
 
-                this.testFragment.onLoadSuccess(testList);
+                this.testsFragment.onLoadSuccess(testsList);
             }
-                else if (actionType.equals("add_test")) {
-                    JSONObject resultObj = new JSONObject(resultString);
-
-                    if (resultObj.has("error")) {
-                        this.testFragment.onUpdate(resultObj.getString("error"));
-                        return;
-                    }
-
-                    this.testFragment.onUpdate("");
+            else if (actionType.equals("add_test"))
+            {
+                JSONObject resultObj = new JSONObject(resultString);
+                if (resultObj.has("error")) {
+                    this.testsFragment.onUpdate(resultObj.getString("error"));
+                    return;
+                }
+                this.testsFragment.onUpdate("");
             }
-        } catch (JSONException e) {
+    }
+    catch (JSONException e) {
 
-            this.testFragment.onFailed("Something went wrong");
+            this.testsFragment.onLoadFailed("Something went wrong");
         }
 
     }

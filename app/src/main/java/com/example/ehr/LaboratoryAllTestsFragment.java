@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class LaboratoryTestsFragment extends Fragment
+public class LaboratoryAllTestsFragment extends Fragment
 {
     UserModel user;
     RecyclerView laboratoryTestRecyclerView;
@@ -25,7 +25,7 @@ public class LaboratoryTestsFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_laboratory_tests, container, false);
+        View view = inflater.inflate(R.layout.fragment_laboratory_all_tests, container, false);
 
 
 
@@ -40,14 +40,14 @@ public class LaboratoryTestsFragment extends Fragment
         String id = user.getUserid();
 
         BackgroundLaboratoryAllTestsWorker backgroundWorker = new BackgroundLaboratoryAllTestsWorker(
-                LaboratoryTestsFragment.this);
+                LaboratoryAllTestsFragment.this);
         backgroundWorker.execute("get_tests", id);
 
         return view;
     }
 
     public void onLoadSuccess(List<LaboratoryAllTestsModel> testsModels) {
-        laboratoryTestRecyclerView.setAdapter(new LaboratoryTestsAdapter(testsModels, LaboratoryTestsFragment.this));
+        laboratoryTestRecyclerView.setAdapter(new LaboratoryAllTestsAdapter(testsModels, LaboratoryAllTestsFragment.this));
     }
 
     public void onLoadFailed(String errorMessage) {

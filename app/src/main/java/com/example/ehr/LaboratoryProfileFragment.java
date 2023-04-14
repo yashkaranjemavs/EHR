@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ehr.BackgroundLaboratoryProfileWorker;
+
 public class LaboratoryProfileFragment extends Fragment {
     UserModel user;
     ProgressBar progressBar;
