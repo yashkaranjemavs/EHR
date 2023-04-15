@@ -332,7 +332,7 @@
                     android:textAllCaps="false"
                     android:layout_height="32dp"
                     android:background="@drawable/custom_primary_button"
-                    android:text="Close:"
+                    android:text="Close"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
