@@ -130,6 +130,7 @@ public class sb_admin_addprovider extends AppCompatActivity implements AdapterVi
                 else if(menuItem.getItemId()==R.id.admin_logout)
                 {
                     Intent intent=new Intent(sb_admin_addprovider.this,LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("user",user);
                     startActivity(intent);
                 }

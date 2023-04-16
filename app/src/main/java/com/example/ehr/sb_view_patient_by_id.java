@@ -102,6 +102,7 @@ public class sb_view_patient_by_id extends AppCompatActivity {
                 else if(menuItem.getItemId()==R.id.provider_logout)
                 {
                     Intent intent=new Intent(sb_view_patient_by_id.this,LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("user", user);
                     startActivity(intent);
                 }

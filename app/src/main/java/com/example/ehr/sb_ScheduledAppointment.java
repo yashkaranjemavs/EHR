@@ -163,6 +163,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
                 else if(menuItem.getItemId()==R.id.provider_logout)
                 {
                     Intent intent=new Intent(sb_ScheduledAppointment.this,LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("user", user);
                     startActivity(intent);
                 }
