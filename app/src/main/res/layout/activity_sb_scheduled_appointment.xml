@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sb_ScheduledAppointment">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/provider_toolbar"
+        android:background="@color/primary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/provider_nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:defaultNavHost="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/provider_toolbar"
+        app:navGraph="@navigation/provider_nav" />
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/sb_baseline_menu_24"
+        app:layout_constraintBottom_toTopOf="@+id/provider_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/provider_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/provider_toolbar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Patient Name"
+            android:textSize="16sp"
+            android:id="@+id/t1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="16sp"
+            android:id="@+id/t2"/>
+        <EditText
+            android:id="@+id/Diagnosis"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Diagnosis"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t2"
+            android:autofillHints="" />
+        <EditText
+            android:id="@+id/Symptoms"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Symptoms"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Diagnosis"
+            android:autofillHints="" />
+        <EditText
+            android:id="@+id/ProviderNotes"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Provider Notes"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Symptoms"
+            android:autofillHints="" />
+        <Button
+            android:id="@+id/btnsave1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProviderNotes"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Test Details"
+            android:textSize="16sp"
+            android:id="@+id/t3"/>
+        <EditText
+            android:id="@+id/TestName"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Test Name"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t3"
+            android:autofillHints="" />
+
+        <Spinner
+            android:id="@+id/Laboratory"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TestName" />
+        <Button
+            android:id="@+id/btnsave2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProviderNotes"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Medication Details"
+            android:textSize="16sp"
+            android:id="@+id/t4"/>
+        <EditText
+            android:id="@+id/Medication"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Medication"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t4"
+            android:autofillHints="" />
+        <Spinner
+            android:id="@+id/Pharmacy"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Medication" />
+        <Button
+            android:id="@+id/btnsave3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProviderNotes"/>
+        <EditText
+            android:id="@+id/Charges"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Appointment Charges"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t4"
+            android:autofillHints="" />
+        <EditText
+            android:id="@+id/Patientpay"
+            android:layout_width="360dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Patient Pay"
+            android:textColorHint="@color/dark_gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Charges"
+            android:autofillHints="" />
+        <Button
+            android:id="@+id/btnsave4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Patientpay"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

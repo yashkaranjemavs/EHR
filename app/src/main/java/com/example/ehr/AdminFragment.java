@@ -19,4 +19,6 @@ public class AdminFragment extends Fragment {
 
         return inflater.inflate(R.layout.fragment_admin, container, false);
     }
+
+
 }

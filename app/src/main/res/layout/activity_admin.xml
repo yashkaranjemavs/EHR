@@ -27,5 +27,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/admin_toolbar"
         app:navGraph="@navigation/admin_nav" />
-
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/sb_baseline_menu_24"
+        app:layout_constraintBottom_toTopOf="@+id/admin_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/admin_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

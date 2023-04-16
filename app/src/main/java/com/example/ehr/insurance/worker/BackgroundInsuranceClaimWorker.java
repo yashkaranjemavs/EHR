@@ -46,9 +46,9 @@ public class BackgroundInsuranceClaimWorker extends AsyncTask<Object, Void, Stri
 
                 insuranceClaim = (InsuranceClaimModel) params[1];
                 String insuranceCoverage = insuranceClaim.getInsuranceCoverage();
-                String visitId = insuranceClaim.getVisitId();
+                String chargeId = insuranceClaim.getChargeId();
 
-                String postData = URLEncoder.encode("visitId", "UTF-8") + "=" + URLEncoder.encode(visitId, "UTF-8") + "&" +
+                String postData = URLEncoder.encode("chargeId", "UTF-8") + "=" + URLEncoder.encode(chargeId, "UTF-8") + "&" +
                         URLEncoder.encode("insuranceCoverage", "UTF-8") + "=" + URLEncoder.encode(insuranceCoverage, "UTF-8");
 
                 return WorkerHelper.handlePostRequest(url, postData);
@@ -89,8 +89,9 @@ public class BackgroundInsuranceClaimWorker extends AsyncTask<Object, Void, Stri
                     String charges = claimObj.getString("charges");
                     String patientPayment = claimObj.getString("patientPayment");
                     String visitId = claimObj.getString("visitId");
+                    String chargeId = claimObj.getString("chargeId");
 
-                    InsuranceClaimModel claim = new InsuranceClaimModel(patientId,firstName, lastName, charges, patientPayment, null, visitId);
+                    InsuranceClaimModel claim = new InsuranceClaimModel(patientId,firstName, lastName, charges, patientPayment, null, visitId, chargeId);
                     claims.add(claim);
                 }
 
