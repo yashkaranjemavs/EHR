@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:id="@+id/provider_profile"
+    android:title="Profile" />
+    <item
+        android:id="@+id/provider_schedule"
+        android:title="Schedule" />
+    <item
+        android:id="@+id/provider_appointments"
+        android:title="Appointments" />
+    <item
+        android:id="@+id/provider_patients"
+        android:title="Patients" />
+    <item
+        android:id="@+id/provider_analytics"
+        android:title="Analytics" />
+    <item
+        android:id="@+id/provider_logout"
+        android:title="Logout" />
+</menu>

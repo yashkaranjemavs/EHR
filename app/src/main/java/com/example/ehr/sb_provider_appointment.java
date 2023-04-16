@@ -22,19 +22,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class ProviderActivity extends AppCompatActivity {
+public class sb_provider_appointment extends AppCompatActivity {
     NavController navController;
     UserModel user;
     RecyclerView review;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider);
-        user = (UserModel) getIntent().getSerializableExtra("user");
+        setContentView(R.layout.activity_sb_provider_appointment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.provider_toolbar);
         setSupportActionBar(toolbar);
         ImageView menuIcon=findViewById(R.id.menuIcon);
+        user = (UserModel) getIntent().getSerializableExtra("user");
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user", user);
         menuIcon.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -52,50 +53,50 @@ public class ProviderActivity extends AppCompatActivity {
         }
         review=findViewById(R.id.recview);
         review.setLayoutManager(new LinearLayoutManager(this));
-        //new sb_myadapter(getApplicationContext());
         processData();
     }
     private void showMenu(View v)
     {
-        PopupMenu popupmenu=new PopupMenu(ProviderActivity.this, v);
+        PopupMenu popupmenu=new PopupMenu(sb_provider_appointment.this, v);
         popupmenu.getMenuInflater().inflate(R.menu.sb_popup_menu,popupmenu.getMenu());
         popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 if(menuItem.getItemId()==R.id.provider_profile)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_ProviderProfileActivity.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_provider_appointment.this,sb_ProviderProfileActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
+
                 }
                 else if(menuItem.getItemId()==R.id.provider_schedule)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_ProviderScheduleActivity.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_provider_appointment.this,sb_ProviderScheduleActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_appointments)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_provider_appointment.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_provider_appointment.this,sb_provider_appointment.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_patients)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_provider_patientsearch.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_provider_appointment.this,sb_provider_patientsearch.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_analytics)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_provider_analytics.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_provider_appointment.this,sb_provider_analytics.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_logout)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,LoginActivity.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_provider_appointment.this,LoginActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 return false;
@@ -103,17 +104,18 @@ public class ProviderActivity extends AppCompatActivity {
         });
         popupmenu.show();
     }
+
     public void processData()
     {
-        Call<List<sb_ResponseModel_Schedule>> call=sb_apiController
+        Call<List<sb_ResponseModel_Appointments>> call=sb_apiControllerAppointmentList
                 .getInstance()
                 .getApi()
                 .getData();
-        call.enqueue(new Callback<List<sb_ResponseModel_Schedule>>() {
+        call.enqueue(new Callback<List<sb_ResponseModel_Appointments>>() {
             @Override
-            public void onResponse(Call<List<sb_ResponseModel_Schedule>> call, Response<List<sb_ResponseModel_Schedule>> response) {
-                List<sb_ResponseModel_Schedule> data=response.body();
-                sb_myadapter adapter=new sb_myadapter(data);
+            public void onResponse(Call<List<sb_ResponseModel_Appointments>> call, Response<List<sb_ResponseModel_Appointments>> response) {
+                List<sb_ResponseModel_Appointments> data=response.body();
+                sb_myadapaterAppointmentList adapter=new sb_myadapaterAppointmentList(data);
                 user = (UserModel) getIntent().getSerializableExtra("user");
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);
@@ -121,7 +123,7 @@ public class ProviderActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<sb_ResponseModel_Schedule>> call, Throwable t) {
+            public void onFailure(Call<List<sb_ResponseModel_Appointments>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
             }
         });

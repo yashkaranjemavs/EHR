@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
-
+    tools:context=".sb_admin_viewusers">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +13,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="MissingConstraints" />
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/admin_nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -39,4 +37,45 @@
         app:layout_constraintBottom_toTopOf="@+id/admin_toolbar"
         app:layout_constraintEnd_toEndOf="@id/admin_toolbar"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnViewProvider"
+        android:textColor="@color/white"
+        android:layout_marginTop="60dp"
+        android:text="View Providers"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/admin_toolbar"/>
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnviewlab"
+        android:textColor="@color/white"
+        android:text="View Laboratories"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewProvider"/>
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnviewpharmacy"
+        android:textColor="@color/white"
+        android:text="View Pharmacies"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnviewlab"/>
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnviewins"
+        android:textColor="@color/white"
+        android:text="View Insurance Companies"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnviewpharmacy"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.example.ehr;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,19 +24,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class ProviderActivity extends AppCompatActivity {
+public class sb_ProviderScheduleActivity extends AppCompatActivity {
+    RecyclerView review;
     NavController navController;
     UserModel user;
-    RecyclerView review;
+    public static final String MyPREFERENCES = "MyPrefs" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider);
-        user = (UserModel) getIntent().getSerializableExtra("user");
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.provider_toolbar);
         setSupportActionBar(toolbar);
         ImageView menuIcon=findViewById(R.id.menuIcon);
+        SharedPreferences sharedpreferences;
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
         menuIcon.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -57,45 +61,46 @@ public class ProviderActivity extends AppCompatActivity {
     }
     private void showMenu(View v)
     {
-        PopupMenu popupmenu=new PopupMenu(ProviderActivity.this, v);
+        PopupMenu popupmenu=new PopupMenu(sb_ProviderScheduleActivity.this, v);
         popupmenu.getMenuInflater().inflate(R.menu.sb_popup_menu,popupmenu.getMenu());
         popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 if(menuItem.getItemId()==R.id.provider_profile)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_ProviderProfileActivity.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_ProviderScheduleActivity.this,sb_ProviderProfileActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
+
                 }
                 else if(menuItem.getItemId()==R.id.provider_schedule)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_ProviderScheduleActivity.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_ProviderScheduleActivity.this,sb_ProviderScheduleActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_appointments)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_provider_appointment.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_ProviderScheduleActivity.this,sb_provider_appointment.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_patients)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_provider_patientsearch.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_ProviderScheduleActivity.this,sb_provider_patientsearch.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_analytics)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,sb_provider_analytics.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_ProviderScheduleActivity.this,sb_provider_analytics.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 else if(menuItem.getItemId()==R.id.provider_logout)
                 {
-                    Intent intent=new Intent(ProviderActivity.this,LoginActivity.class);
-                    intent.putExtra("user",user);
+                    Intent intent=new Intent(sb_ProviderScheduleActivity.this,LoginActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
                 return false;

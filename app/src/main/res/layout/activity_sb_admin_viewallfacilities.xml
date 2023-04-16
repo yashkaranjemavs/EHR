@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
-
+    tools:context=".sb_admin_viewallfacilities">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +13,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="MissingConstraints" />
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/admin_nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -38,5 +36,14 @@
         android:src="@drawable/sb_baseline_menu_24"
         app:layout_constraintBottom_toTopOf="@+id/admin_toolbar"
         app:layout_constraintEnd_toEndOf="@id/admin_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/admin_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/admin_toolbar"
+        app:layout_constraintEnd_toStartOf="@id/admin_toolbar"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

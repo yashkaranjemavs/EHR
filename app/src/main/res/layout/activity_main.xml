@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
-
+    tools:context=".sb_provider_analytics">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/admin_toolbar"
+        android:id="@+id/provider_toolbar"
         android:background="@color/primary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/admin_nav_host"
+        android:id="@+id/provider_nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,8 +24,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_toolbar"
-        app:navGraph="@navigation/admin_nav" />
+        app:layout_constraintTop_toBottomOf="@+id/provider_toolbar"
+        app:navGraph="@navigation/provider_nav" />
+
     <ImageView
         android:id="@+id/menuIcon"
         android:layout_width="wrap_content"
@@ -36,7 +36,17 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/sb_baseline_menu_24"
-        app:layout_constraintBottom_toTopOf="@+id/admin_toolbar"
-        app:layout_constraintEnd_toEndOf="@id/admin_toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/provider_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/provider_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/provider_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/provider_toolbar"
+        app:layout_constraintEnd_toStartOf="@id/provider_toolbar"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
