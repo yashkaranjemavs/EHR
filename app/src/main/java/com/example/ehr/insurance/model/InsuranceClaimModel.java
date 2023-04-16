@@ -10,6 +10,7 @@ public class InsuranceClaimModel implements Serializable {
     private String patientPayment;
     private String insuranceCoverage;
     private String visitId;
+    private String chargeId;
 
     public InsuranceClaimModel(
             String patientId,
@@ -18,8 +19,8 @@ public class InsuranceClaimModel implements Serializable {
             String charges,
             String patientPayment,
             String insuranceCoverage,
-            String visitId
-    ) {
+            String visitId,
+            String chargeId) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +28,7 @@ public class InsuranceClaimModel implements Serializable {
         this.patientPayment = patientPayment;
         this.insuranceCoverage = insuranceCoverage;
         this.visitId = visitId;
-
+        this.chargeId = chargeId;
     }
 
     public String getPatientId() {
@@ -80,4 +81,12 @@ public class InsuranceClaimModel implements Serializable {
 
     public String getInsuranceCoverage() {return insuranceCoverage;}
     public void setInsuranceCoverage(String insuranceCoverage) {this.insuranceCoverage = insuranceCoverage;}
+
+    public String getChargeId() {
+        return chargeId;
+    }
+
+    public void setChargeId(String chargeId) {
+        this.chargeId = chargeId;
+    }
 }
