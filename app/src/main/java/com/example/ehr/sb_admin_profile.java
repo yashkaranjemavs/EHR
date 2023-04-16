@@ -63,7 +63,7 @@ public class sb_admin_profile extends AppCompatActivity {
 
     public void updateAdminProfile(View view)
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_updateadminprofile.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_updateadminprofile.php";
         EditText e3 = (EditText)findViewById(R.id.email);
         EditText e4 = (EditText)findViewById(R.id.password);
         class dbprocess extends AsyncTask<String, Void, JSONObject> {
@@ -175,7 +175,7 @@ public class sb_admin_profile extends AppCompatActivity {
         user = (UserModel) getIntent().getSerializableExtra("user");
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
-        String baseUrl = "https://ssb4235.uta.cloud/sb_getadminprofile.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_getadminprofile.php";
         EditText e3 = (EditText)findViewById(R.id.email);
         EditText e4 = (EditText)findViewById(R.id.password);
         class dbprocess extends AsyncTask<String, Void, JSONObject>

@@ -84,7 +84,7 @@ public class sb_admin_adduser extends AppCompatActivity {
                 }
                 else if(menuItem.getItemId()==R.id.admin_viewusers)
                 {
-                    Intent intent=new Intent(sb_admin_adduser.this,sb_provider_appointment.class);
+                    Intent intent=new Intent(sb_admin_adduser.this,sb_admin_viewusers.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
                 }

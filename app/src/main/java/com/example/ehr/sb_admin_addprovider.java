@@ -140,7 +140,8 @@ public class sb_admin_addprovider extends AppCompatActivity implements AdapterVi
     }
     public void saveProviderDetails(View view)
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_saveproviderdetails.php";
+        String baseUrl = BaseUrl.baseUrl;
+        baseUrl += "/sb_saveproviderdetails.php";
         EditText e1 = (EditText)findViewById(R.id.firstname);
         EditText e2 = (EditText)findViewById(R.id.lastname);
         EditText e3 = (EditText)findViewById(R.id.email);

@@ -16,6 +16,7 @@ import java.util.List;
 public class sb_myadapter extends RecyclerView.Adapter<sb_myadapter.myViewHolder>
 {
     public Context context;
+    public UserModel user;
     List<sb_ResponseModel_Schedule> data;
     public sb_myadapter(Context context)
     {
@@ -30,8 +31,10 @@ public class sb_myadapter extends RecyclerView.Adapter<sb_myadapter.myViewHolder
         System.out.println("I'm called---------------------------");
         this.context=context;
     }
-    public sb_myadapter(List<sb_ResponseModel_Schedule> data) {
+    public sb_myadapter(List<sb_ResponseModel_Schedule> data, UserModel user)
+    {
         this.data = data;
+        this.user=user;
     }
     @NonNull
     @Override
@@ -54,10 +57,22 @@ public class sb_myadapter extends RecyclerView.Adapter<sb_myadapter.myViewHolder
         holder.b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String userid="";
+                userid=user.getUserid().toString();
                 Intent intent = new Intent(context, sb_ScheduledAppointment.class);
                 intent.putExtra("visitid",visitid);
                 intent.putExtra("pname",pname);
                 intent.putExtra("vdatetime",one);
+                intent.putExtra("user",user);
+                intent.putExtra("myadapteruserid",userid);
+                if(user==null)
+                {
+                    System.out.println("user is null in myadapter");
+                }
+                else {
+                    System.out.println("user is not null in myadapter");
+                    System.out.println("value in myadapter is: "+user.getUserid());
+                }
                 context.startActivity(intent);
             }
         });

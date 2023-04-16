@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.security.Provider;
 import java.util.List;
 
 import retrofit2.Call;
@@ -113,8 +114,8 @@ public class ProviderActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<sb_ResponseModel_Schedule>> call, Response<List<sb_ResponseModel_Schedule>> response) {
                 List<sb_ResponseModel_Schedule> data=response.body();
-                sb_myadapter adapter=new sb_myadapter(data);
                 user = (UserModel) getIntent().getSerializableExtra("user");
+                sb_myadapter adapter=new sb_myadapter(data, user);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);
                 review.setAdapter(adapter);

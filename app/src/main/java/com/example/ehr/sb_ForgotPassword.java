@@ -52,7 +52,7 @@ public class sb_ForgotPassword extends AppCompatActivity implements AdapterView.
 
     public void emailPassword(View view)
     {
-        String baseUrl = "https://ssb4235.uta.cloud/ContactEmail.php";
+        String baseUrl = BaseUrl.baseUrl + "/ContactEmail.php";
         EditText e1 = (EditText)findViewById(R.id.email);
         String emailid=e1.getText().toString();
         TextView t1= (TextView) findViewById(R.id.error_text);

@@ -57,9 +57,12 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
         userid=user.getUserid(); */
-        SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        userid = sharedPreferences.getString("userid","notset");
-        System.out.println("value is scheduled is: "+userid);
+        //SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        user= (UserModel) getIntent().getSerializableExtra("user");
+        userid=user.getUserid();
+        //userid=sharedPreferences.getString("userid",user.getUserid());
+
+        //System.out.println("value in scheduled is: "+userid);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.provider_nav_host);
         if (navHostFragment != null) {
             navController = NavHostFragment.findNavController(navHostFragment);
@@ -183,7 +186,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
     }
     public void getLaboratoryList(View view)
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_getlablist.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_getlablist.php";
         Spinner sp=(Spinner) findViewById(R.id.Laboratory);
         class dbprocess extends AsyncTask<String, Void, JSONArray>
         {
@@ -251,7 +254,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
     }
     public void getPharmacyList(View view)
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_getPharmacylist.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_getPharmacylist.php";
         Spinner sp=(Spinner) findViewById(R.id.Laboratory);
         class dbprocess extends AsyncTask<String, Void, JSONArray>
         {
@@ -319,7 +322,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
     }
     public void fetchVisitDataFromDB()
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_getvisitbyid.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_getvisitbyid.php";
         EditText e1 = (EditText)findViewById(R.id.Diagnosis);
         EditText e2 = (EditText)findViewById(R.id.Symptoms);
         EditText e3 = (EditText)findViewById(R.id.ProviderNotes);
@@ -414,7 +417,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
         String diagnosis=e1.getText().toString();
         String symptoms=e2.getText().toString();
         String providernotes=e3.getText().toString();
-        String baseUrl = "https://ssb4235.uta.cloud/sb_updatevisitbyid.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_updatevisitbyid.php";
         String pname=getIntent().getStringExtra("pname");
         String vdatetime=getIntent().getStringExtra("vdatetime");
         String visitid=getIntent().getStringExtra("visitid");
@@ -501,7 +504,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
         StringBuilder result = new StringBuilder();
         EditText e1=(EditText) findViewById(R.id.TestName);
         String testname=e1.getText().toString();
-        String baseUrl = "https://ssb4235.uta.cloud/sb_addlabtest.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_addlabtest.php";
         String visitid=getIntent().getStringExtra("visitid");
         Spinner s3=(Spinner) findViewById(R.id.Laboratory);
         class dbprocess extends AsyncTask<String, Void, JSONObject>
@@ -547,6 +550,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
                             URLEncoder.encode(testname, "UTF-8") + "&" +
                             URLEncoder.encode("labname", "UTF-8") + "=" +
                             URLEncoder.encode(labname, "UTF-8");
+                    System.out.println("values for test, visitid:"+visitid+" testname:"+testname+" labname:"+labname);
                     bufferedWriter.write(post_data);
                     bufferedWriter.close();
                     outputStream.close();
@@ -579,7 +583,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
         StringBuilder result = new StringBuilder();
         EditText e1=(EditText) findViewById(R.id.Medication);
         String medication=e1.getText().toString();
-        String baseUrl = "https://ssb4235.uta.cloud/sb_addMedication.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_addMedication.php";
         String visitid=getIntent().getStringExtra("visitid");
         Spinner s3=(Spinner) findViewById(R.id.Pharmacy);
         class dbprocess extends AsyncTask<String, Void, JSONObject>
@@ -659,7 +663,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
         String charges=e1.getText().toString();
         EditText e2=(EditText) findViewById(R.id.Patientpay);
         String patientpay=e2.getText().toString();
-        String baseUrl = "https://ssb4235.uta.cloud/sb_addCharges.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_addCharges.php";
         String visitid=getIntent().getStringExtra("visitid");
         class dbprocess extends AsyncTask<String, Void, JSONObject>
         {

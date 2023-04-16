@@ -118,8 +118,8 @@ public class sb_ProviderScheduleActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<sb_ResponseModel_Schedule>> call, Response<List<sb_ResponseModel_Schedule>> response) {
                 List<sb_ResponseModel_Schedule> data=response.body();
-                sb_myadapter adapter=new sb_myadapter(data);
                 user = (UserModel) getIntent().getSerializableExtra("user");
+                sb_myadapter adapter=new sb_myadapter(data,user);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);
                 review.setAdapter(adapter);

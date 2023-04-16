@@ -103,7 +103,7 @@ public class sb_admin_addfacility extends AppCompatActivity implements AdapterVi
     }
     public void saveFacilityDetails(View view)
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_savefacilitydetails.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_savefacilitydetails.php";
         EditText e1 = (EditText)findViewById(R.id.name);
         EditText e3 = (EditText)findViewById(R.id.email);
         EditText e5 = (EditText)findViewById(R.id.contact);

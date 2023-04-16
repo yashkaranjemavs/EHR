@@ -113,7 +113,7 @@ public class sb_ViewAppointmentDetailsByID extends AppCompatActivity {
     }
     public void fetchVisitDataFromDB()
     {
-        String baseUrl = "https://ssb4235.uta.cloud/sb_getAppointmentDetailsByID.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_getAppointmentDetailsByID.php";
         TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11;
         t1=(TextView) findViewById(R.id.t1);
         t2=(TextView) findViewById(R.id.t2);

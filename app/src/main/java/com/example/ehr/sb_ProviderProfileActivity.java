@@ -65,7 +65,7 @@ public class sb_ProviderProfileActivity extends AppCompatActivity {
         user = (UserModel) getIntent().getSerializableExtra("user");
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
-        String baseUrl = "https://ssb4235.uta.cloud/sb_getproviderprofile.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_getproviderprofile.php";
         EditText e1 = (EditText)findViewById(R.id.firstname);
         EditText e2 = (EditText)findViewById(R.id.lastname);
         EditText e3 = (EditText)findViewById(R.id.email);
@@ -167,7 +167,7 @@ public class sb_ProviderProfileActivity extends AppCompatActivity {
         user = (UserModel) getIntent().getSerializableExtra("user");
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
-        String baseUrl = "https://ssb4235.uta.cloud/sb_updateproviderprofile.php";
+        String baseUrl = BaseUrl.baseUrl + "/sb_updateproviderprofile.php";
         EditText e1 = (EditText)findViewById(R.id.firstname);
         EditText e2 = (EditText)findViewById(R.id.lastname);
         EditText e3 = (EditText)findViewById(R.id.email);

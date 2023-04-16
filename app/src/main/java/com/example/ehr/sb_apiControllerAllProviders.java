@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class sb_apiControllerAllProviders {
 
-    String url="https://ssb4235.uta.cloud/";
+    String url=BaseUrl.baseUrl;
     private static sb_apiControllerAllProviders clientobject;
     private static Retrofit retrofit;
 
