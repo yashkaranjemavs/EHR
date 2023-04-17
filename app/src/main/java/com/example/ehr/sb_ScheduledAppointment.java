@@ -45,6 +45,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
     NavController navController;
     public String userid="";
     public String labname="";
+    public String pharmacyname="";
     public static final String MyPREFERENCES = "MyPrefs" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,19 +69,34 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
             navController = NavHostFragment.findNavController(navHostFragment);
             NavigationUI.setupWithNavController(toolbar, navController);
         }
-        menuIcon.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                //Toast.makeText(ProviderActivity.this,"You clicked on the icon",Toast.LENGTH_SHORT).show();
-                showMenu(v);
-            }
+        menuIcon.setOnClickListener(v -> {
+            //Toast.makeText(ProviderActivity.this,"You clicked on the icon",Toast.LENGTH_SHORT).show();
+            showMenu(v);
         });
         Spinner s2=(Spinner)findViewById(R.id.Laboratory);
-        s2.setOnItemSelectedListener(this);
+        s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                labname= adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         Spinner s4=(Spinner)findViewById(R.id.Pharmacy);
-        s4.setOnItemSelectedListener(this);
+        s4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                pharmacyname= adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         Button btn1, btn2, btn3, btn4;
         btn1=(Button)findViewById(R.id.btnsave1);
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -629,7 +645,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
                             URLEncoder.encode("medication", "UTF-8") + "=" +
                             URLEncoder.encode(medication, "UTF-8") + "&" +
                             URLEncoder.encode("pharmacy", "UTF-8") + "=" +
-                            URLEncoder.encode(labname, "UTF-8");
+                            URLEncoder.encode(pharmacyname, "UTF-8");
                     bufferedWriter.write(post_data);
                     bufferedWriter.close();
                     outputStream.close();
@@ -738,8 +754,7 @@ public class sb_ScheduledAppointment extends AppCompatActivity implements Adapte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        labname= adapterView.getItemAtPosition(i).toString();
-       // Toast.makeText(getApplicationContext(), "Selected Laboratory: "+labname ,Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
