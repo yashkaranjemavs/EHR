@@ -21,7 +21,6 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
     private ArrayList<JSONObject> listOfRecords;
     final String COMPLETED = "Completed";
     final String PENDING = "Pending";
-    final String statusPrefix = "Status: ";
 
     public yk_recyclerAdapter(ArrayList<JSONObject> listOfRecords) {
         this.listOfRecords = listOfRecords;
@@ -39,6 +38,8 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
         private TextView patientContact;
         private ToggleButton toggleButtonStatus;
 
+        private TextView medicationidHeading, statusHeading, patientNameHeading, patientidHeading, medicationsHeading, patientNotesHeading, providerNotesHeading, patientEmailidHeading, patientContactHeading;
+
         public MyViewHolder(final View view){
             super(view);
             medicationid = view.findViewById(R.id.textViewMedicationId);
@@ -52,18 +53,28 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
             patientEmailid = view.findViewById(R.id.textView12);
             patientContact = view.findViewById(R.id.textView13);
 
+            medicationidHeading = view.findViewById(R.id.textViewMedicationIdHeading);
+            statusHeading = view.findViewById(R.id.textViewStatusHeading);
+            patientNameHeading = view.findViewById(R.id.textViewPatientNameHeading);
+            patientidHeading = view.findViewById(R.id.textView7Heading);
+            medicationsHeading = view.findViewById(R.id.textView9Heading);
+            patientNotesHeading = view.findViewById(R.id.textView10Heading);
+            providerNotesHeading = view.findViewById(R.id.textView11Heading);
+            patientEmailidHeading = view.findViewById(R.id.textView12Heading);
+            patientContactHeading = view.findViewById(R.id.textView13Heading);
+
             toggleButtonStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if(toggleButtonStatus.isChecked()){
                         doUpdateStatus(medicationid.getText().toString(), COMPLETED);
                         toggleButtonStatus.setTextOn(COMPLETED);
-                        status.setText(statusPrefix+COMPLETED);
+                        status.setText(COMPLETED);
                         toggleButtonStatus.setTextColor(Color.parseColor("#00ff00"));
                     }else{
                         doUpdateStatus(medicationid.getText().toString(), PENDING);
                         toggleButtonStatus.setTextOff(PENDING);
-                        status.setText(statusPrefix+PENDING);
+                        status.setText(PENDING);
                         toggleButtonStatus.setTextColor(Color.parseColor("#ff0000"));
                     }
                 }
@@ -72,7 +83,6 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
     }
 
     public void doUpdateStatus(String medicationid, String status){
-        medicationid = medicationid.split("[ ]")[1];
         BackgroundMedicationDetailWorker backgroundMedicationDetailWorker = new BackgroundMedicationDetailWorker(new PharmacyActivity());
         backgroundMedicationDetailWorker.execute("updateMedicationStatus", medicationid, status);
     }
@@ -103,9 +113,9 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
                 throw new RuntimeException(e);
             }
 
-            holder.medicationid.setText(holder.medicationid.getText().toString().concat(medicationid));
-            holder.status.setText(holder.status.getText().toString().concat(status));
-            holder.patientName.setText(holder.patientName.getText().toString().concat(patientFirstname.concat(" ").concat(patientLastname)));
+            holder.medicationid.setText(medicationid);
+            holder.status.setText(status);
+            holder.patientName.setText(patientFirstname.concat(" ").concat(patientLastname));
             if (status.equalsIgnoreCase(COMPLETED)){
                 holder.toggleButtonStatus.setText(COMPLETED);
                 holder.toggleButtonStatus.setTextColor(Color.parseColor("#00ff00"));
@@ -115,13 +125,14 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
             }else{
                 holder.toggleButtonStatus.setText("Invalid Status");
             }
-            holder.medications.setText(holder.medications.getText().toString().concat(medications));
-            holder.patientid.setText(holder.patientid.getText().toString().concat(patientid));
-            holder.patientNotes.setText(holder.patientNotes.getText().toString().concat(patientnotes));
-            holder.providerNotes.setText(holder.providerNotes.getText().toString().concat(providernotes));
-            holder.patientEmailid.setText(holder.patientEmailid.getText().toString().concat(patientemailid));
-            holder.patientContact.setText(holder.patientContact.getText().toString().concat(patientcontact));
+            holder.medications.setText(medications);
+            holder.patientid.setText(patientid);
+            holder.patientNotes.setText(patientnotes);
+            holder.providerNotes.setText(providernotes);
+            holder.patientEmailid.setText(patientemailid);
+            holder.patientContact.setText(patientcontact);
         }else{
+//            Set fields to empty string
             holder.medicationid.setText("");
             holder.status.setText("");
             holder.patientName.setText("");
@@ -132,6 +143,31 @@ public class yk_recyclerAdapter extends RecyclerView.Adapter<yk_recyclerAdapter.
             holder.providerNotes.setText("");
             holder.patientEmailid.setText("");
             holder.patientContact.setText("");
+
+//            Set field headings to empty string
+            holder.medicationidHeading.setText("");
+            holder.statusHeading.setText("");
+            holder.patientNameHeading.setText("");
+            holder.medicationsHeading.setText("");
+            holder.patientidHeading.setText("");
+            holder.patientNotesHeading.setText("");
+            holder.providerNotesHeading.setText("");
+            holder.patientEmailidHeading.setText("");
+            holder.patientContactHeading.setText("");
+
+//            Set field background to white
+            holder.medicationid.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.status.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.patientName.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.medications.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.patientid.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.patientNotes.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.providerNotes.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.patientEmailid.setBackgroundColor(Color.argb(255, 255, 255, 255));
+            holder.patientContact.setBackgroundColor(Color.argb(255, 255, 255, 255));
+
+//            Disable the status button
+            holder.toggleButtonStatus.setEnabled(false);
         }
     }
 
