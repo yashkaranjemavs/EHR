@@ -46,10 +46,10 @@ public class PatientActivity extends AppCompatActivity {
     UserModel user;
 
     TextView vdate;
-    AppCompatButton chooseDate;
+//    AppCompatButton chooseDate;
 
     TextView vtime;
-    AppCompatButton chooseTime;
+//    AppCompatButton chooseTime;
 
     EditText patientnotes;
     AppCompatButton bookButton;
@@ -58,7 +58,7 @@ public class PatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
-        frameLayout = findViewById(R.id.framelayout);
+//        frameLayout = findViewById(R.id.framelayout);
 
 
         user = (UserModel) getIntent().getSerializableExtra("user");
@@ -70,9 +70,9 @@ public class PatientActivity extends AppCompatActivity {
 
         ImageView menuIcon = findViewById(R.id.menuIcon);
         vdate = findViewById(R.id.show_date);
-        chooseDate = (AppCompatButton) findViewById(R.id.choose_date);
+//        chooseDate = (AppCompatButton) findViewById(R.id.choose_date);
         vtime = findViewById(R.id.show_time);
-        chooseTime = (AppCompatButton) findViewById(R.id.choose_time);
+//        chooseTime = (AppCompatButton) findViewById(R.id.choose_time);
         patientnotes = (EditText) findViewById(R.id.patient_notes);
         bookButton = (AppCompatButton) findViewById(R.id.book_button);
 
@@ -84,12 +84,12 @@ public class PatientActivity extends AppCompatActivity {
         });
 
 
-        chooseDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
+//        chooseDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openDialog();
+//            }
+//        });
 
         vdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,12 +98,12 @@ public class PatientActivity extends AppCompatActivity {
             }
         });
 
-        chooseTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openTimeDialog();
-            }
-        });
+//        chooseTime.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openTimeDialog();
+//            }
+//        });
 
         vtime.setOnClickListener(new View.OnClickListener() {
             @Override
