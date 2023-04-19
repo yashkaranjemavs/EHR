@@ -1,5 +1,5 @@
 <?php
-	require "connection.php";
+	require "conn.php";
 	
 	$email = $_POST["email"];
     $password = $_POST["password"];
@@ -18,7 +18,7 @@
 				echo json_encode($user);
 			}
 		} else {
-			$error = array("error" => "Invalid email/password/user");
+			$error = array("error" => "Invalid email/password");
 			echo json_encode($error);
 		} 
     }
@@ -33,7 +33,7 @@
 				echo json_encode($user);
 			}
 		} else {
-			$error = array("error" => "Invalid email/password/user");
+			$error = array("error" => "Invalid email/password");
 			echo json_encode($error);
 		} 
     }
@@ -48,7 +48,7 @@
 				echo json_encode($user);
 			}
 		} else {
-			$error = array("error" => "Invalid email/password/user");
+			$error = array("error" => "Invalid email/password");
 			echo json_encode($error);
 		} 
     }
@@ -63,7 +63,7 @@
 				echo json_encode($user);
 			}
 		} else {
-			$error = array("error" => "Invalid email/password/user");
+			$error = array("error" => "Invalid email/password");
 			echo json_encode($error);
 		} 
     }
@@ -78,7 +78,7 @@
 				echo json_encode($user);
 			}
 		} else {
-			$error = array("error" => "Invalid email/password/user");
+			$error = array("error" => "Invalid email/password");
 			echo json_encode($error);
 		} 
     }
@@ -93,12 +93,12 @@
 				echo json_encode($user);
 			}
 		} else {
-			$error = array("error" => "Invalid email/password/user");
+			$error = array("error" => "Invalid email/password");
 			echo json_encode($error);
 		} 
     }
     else {
-		$error = array("error" => "Invalid email/password/user");
+		$error = array("error" => "Invalid email/password");
 		echo json_encode($error);
 	} 
 ?>

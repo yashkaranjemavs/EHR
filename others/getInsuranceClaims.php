@@ -5,7 +5,7 @@ $id = $_GET["id"];
 
 header("Content-Type: application/json");
 
-$sql_query = "SELECT p.patientid, p.firstname, p.lastname, c.charges, c.patientpayment, v.visitid, c.patientpayment FROM accountcharges c, patient p, visits v WHERE c.visitid = v.visitid AND v.patientid=p.patientid AND c.status='Pending' AND p.patientid IN (SELECT i.patientid FROM patientinsurance i WHERE i.insurerid=$id) AND v.status='Complete';";
+$sql_query = "SELECT p.patientid, p.firstname, p.lastname, c.charges, c.chargeid, c.patientpayment, v.visitid, c.patientpayment FROM accountcharges c, patient p, visits v WHERE c.visitid = v.visitid AND v.patientid=p.patientid AND c.status='Pending' AND p.patientid IN (SELECT i.patientid FROM patientinsurance i WHERE i.insurerid=$id) AND v.status='Complete';";
 
 $results = mysqli_query($conn, $sql_query);
 
@@ -18,7 +18,8 @@ if (mysqli_num_rows($results) > 0) {
             "lastName" => $data["lastname"],
             "charges" => $data["charges"],
             "patientPayment" => $data["patientpayment"],
-            "visitId" => $data["visitid"]
+            "visitId" => $data["visitid"],
+            "chargeId" => $data["chargeid"],
         ];
         
         array_push($coverages, $coverage);
