@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "conn.php";
 header("Content-Type: application/json");
 
 $emailid = $_GET["emailid"];
