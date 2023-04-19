@@ -57,11 +57,13 @@ public class LoginFragment extends Fragment implements AdapterView.OnItemSelecte
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText emailEditText = scrollView.findViewById(R.id.email);
-                Bundle bundle = new Bundle();
-
-                bundle.putString("email", emailEditText.getText().toString());
-                Navigation.findNavController(view).navigate(R.id.action_login_to_forgotPassword, bundle);
+//                EditText emailEditText = scrollView.findViewById(R.id.email);
+//                Bundle bundle = new Bundle();
+//
+//                bundle.putString("email", emailEditText.getText().toString());
+//                Navigation.findNavController(view).navigate(R.id.action_login_to_forgotPassword, bundle);
+                Intent intent = new Intent(getActivity(), sb_ForgotPassword.class);
+                startActivity(intent);
             }
         });
 
