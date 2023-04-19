@@ -7,21 +7,14 @@
     tools:context=".PatientActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/patient_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/patient_toolbar"
         android:background="@color/primary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="MissingConstraints" />
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/framelayout">
-
-    </FrameLayout>
 
     <ImageView
         android:id="@+id/menuIcon"
@@ -40,102 +33,75 @@
         android:id="@+id/book_appointment_text"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
         android:text="Book Appointment"
         android:textSize="40sp"
-        android:gravity="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_toolbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/patient_toolbar" />
 
     <TextView
         android:id="@+id/show_date"
         android:layout_width="360dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_edit_text"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="Choose Date (yyyy-mm-dd)"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:drawablePadding="8dp"
-        android:background="@drawable/custom_edit_text"
-        android:hint="yyyy-mm-dd"
-        android:gravity="center_vertical"
         android:textColorHint="@color/dark_gray"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book_appointment_text"
-        android:autofillHints="" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/choose_date"
-        android:layout_width="360dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custom_primary_button"
-        android:text="Choose Date"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/show_date" />
-
+        app:layout_constraintTop_toBottomOf="@+id/book_appointment_text" />
 
     <TextView
         android:id="@+id/show_time"
         android:layout_width="360dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_edit_text"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="Choose Time (hh:mm)"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:drawablePadding="8dp"
-        android:background="@drawable/custom_edit_text"
-        android:hint="hh:mm"
-        android:gravity="center_vertical"
         android:textColorHint="@color/dark_gray"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_date"
-        android:autofillHints="" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/choose_time"
-        android:layout_width="360dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custom_primary_button"
-        android:text="Choose Time"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/show_time" />
+        app:layout_constraintTop_toBottomOf="@+id/show_date" />
 
     <EditText
         android:id="@+id/patient_notes"
         android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:overScrollMode="always"
-        android:scrollbars="vertical"
-        android:lines="6"
-        android:gravity="top"
-        android:scrollHorizontally="false"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_edit_text"
+        android:drawablePadding="8dp"
+        android:gravity="top"
+        android:hint="Notes"
+        android:inputType="textMultiLine"
+        android:lines="6"
+        android:overScrollMode="always"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:drawablePadding="8dp"
-        android:background="@drawable/custom_edit_text"
-        android:hint="Notes"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
         android:textColorHint="@color/dark_gray"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_time"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/show_time" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/book_button"
-        android:layout_width="360dp"
-        android:layout_height="56dp"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/custom_primary_button"
         android:text="Book"
@@ -144,7 +110,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patient_notes" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
