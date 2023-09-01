@@ -217,7 +217,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
                             URLEncoder.encode("addressline1", "UTF-8") + "=" + URLEncoder.encode(patient.getAddress1(), "UTF-8") + "&" +
                             URLEncoder.encode("addressline2", "UTF-8") + "=" + URLEncoder.encode(patient.getAddress2(), "UTF-8") + "&" +
                             URLEncoder.encode("city", "UTF-8") + "=" + URLEncoder.encode(patient.getCity(), "UTF-8") + "&" +
-                            URLEncoder.encode("state", "UTF-8") + "=" + URLEncoder.encode(patient.getZip(), "UTF-8") + "&" +
+                            URLEncoder.encode("state", "UTF-8") + "=" + URLEncoder.encode(patient.getState(), "UTF-8") + "&" +
                             URLEncoder.encode("zip", "UTF-8") + "=" + URLEncoder.encode(patient.getZip(), "UTF-8") + "&" +
                             URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(patient.getPassword(), "UTF-8");
 
